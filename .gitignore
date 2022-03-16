@@ -7,6 +7,8 @@
 /public/mix-manifest.json
 /public/mix.js.map
 
+# for people (cast and crew place holder images)
+/public/images/people
 
 /storage/*.key
 /vendor

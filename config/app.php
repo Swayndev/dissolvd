@@ -167,6 +167,7 @@ return [
         /*
          * Package Service Providers...
          */
+        // ADD THIS LINE OF CODE BELLOW TO MAKE FORTIFY ACTIVE
         App\Providers\FortifyServiceProvider::class,
         /*
          * Application Service Providers...
