@@ -14,7 +14,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+        // Defaultly provided by laravel project \App\Models\User::factory(10)->create();
 
         $this->call([
             MovieSeeder::class,

@@ -21,6 +21,8 @@ return new class extends Migration
             $table->boolean('is_watched');
             $table->boolean('is_watchlist');
             $table->boolean('is_favorite');
+
+            $table->timestamps();
         });
     }
 

@@ -25,6 +25,7 @@ return new class extends Migration
 
             $table->text('overview')->nullable();      // this is good and checked
             $table->integer('runtime')->nullable();   // this is good and checked
+            $table->timestamps();
         });
     }
 

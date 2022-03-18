@@ -5,8 +5,7 @@ namespace Database\Seeders;
 use App\Models\Movie;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-
-use DB;
+use Illuminate\Support\Facades\DB;
 
 
 class MovieSeeder extends Seeder
@@ -372,34 +371,39 @@ class MovieSeeder extends Seeder
 
         foreach ($movies_test_seeder as $movie) {
 
-            dd($movies_test_seeder)
-            Movie::create(
-                [
-                    'id' => $movie['id'],
-                    'original_title' => $movie['original_title'],
-                    'release_date' => $movie['release_date'],
+            // dd($movies_test_seeder);
+            
+            $new_movie = new Movie();
+            $new_movie->id = $movie['id'];    // CHECK THIS 
+            $new_movie->title = $movie['title'];
+            $new_movie->original_title = $movie['original_title'];
+            $new_movie->release_date = $movie['release_date'];
+            
+            $new_movie->backdrop_path = $movie['backdrop_path'];
+            $new_movie->poster_path = $movie['poster_path'];
+            
+            $new_movie->overview = $movie['overview'];
+            $new_movie->runtime = $movie['runtime'];
+            
+            $new_movie->save();
 
-                    'poster_path' => $movie['poster_path'],
-                    'backdrop_path' => $movie['backdrop_path'],
 
-                    'overview' => $movie['overview'],
-                    'runtime' => $movie['runtime'],
+        }
 
-                ]
-            );
+            // Movie::create(
+            //     [
+            //         'id' => $movie['id'],
+            //         'original_title' => $movie['original_title'],
+            //         'release_date' => $movie['release_date'],
+        
+            //         'poster_path' => $movie['poster_path'],
+            //         'backdrop_path' => $movie['backdrop_path'],
+        
+            //         'overview' => $movie['overview'],
+            //         'runtime' => $movie['runtime'],
+        
+            //     ]
+            // );
 
-            // $new_movie = new Movie();
-            // $new_movie->id = $movie['id'];
-            // $new_movie->original_title = $movie['original_title'];
-            // $new_movie->release_date = $movie['release_date'];
-
-            // $new_movie->poster_path = $movie['poster_path'];
-            // $new_movie->backdrop_path = $movie['backdrop_path'];
-
-            // $new_movie->overview = $movie['overview'];
-            // $new_movie->runtime = $movie['runtime'];
-
-            // $new_movie->save();
-        };
     } // end of the run function
 }

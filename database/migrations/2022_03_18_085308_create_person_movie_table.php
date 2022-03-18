@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('job');
             $table->string('character');
 
+            $table->timestamps();
            
         });
     }

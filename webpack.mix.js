@@ -44,6 +44,6 @@ mix
 // Examples:
 
 
-mix.sass('resources/css/app.scss', 'public/css');
-mix.js('resources/js/library.js', 'public/js');
-mix.js('resources/js/app.js', 'public/js').react();
+mix.sass('resources/css/app.scss', 'public/scss');
+// mix.js('resources/js/library.js', 'public/js');
+mix.js('resources/js/homepage.js', 'public/js').react();

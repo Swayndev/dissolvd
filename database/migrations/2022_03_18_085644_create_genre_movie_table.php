@@ -16,6 +16,8 @@ return new class extends Migration
         Schema::create('genre_movie', function (Blueprint $table) {
             $table->foreignId('genre_id');
             $table->foreignId('movie_id');
+
+            $table->timestamps();
         });
     }
 
