@@ -16,16 +16,15 @@ return new class extends Migration
         Schema::create('movies', function (Blueprint $table) {
             $table->id();
 
-            $table->string('title');
-            $table->year('release_year');
+            $table->string('title');                        // this is good and checked
+            $table->string('original_title');              // this is good and checked
+            $table->string('release_date')->nullable();    // this is good and checked
 
-            // $table->img('poster');
-            // $table->string('backdrop_path');
+            $table->string('poster_path')->nullable();    // this is good and checked
+            $table->string('backdrop_path')->nullable(); // this is good and checked
 
-            $table->tinyText('synopsis');
-
-
-            $table->timestamps();
+            $table->text('overview')->nullable();      // this is good and checked
+            $table->integer('runtime')->nullable();   // this is good and checked
         });
     }
 

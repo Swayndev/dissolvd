@@ -13,10 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('people', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->string('profile_path');
+        Schema::create('user_movie', function (Blueprint $table) {
+            $table->foreignId('movie_id');
+            $table->foreignId('user_id');
+            $table->text('review');
+            $table->float('rating');
+            $table->boolean('is_watched');
+            $table->boolean('is_watchlist');
+            $table->boolean('is_favorite');
         });
     }
 
@@ -27,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('people');
+        Schema::dropIfExists('user_movie');
     }
 };
