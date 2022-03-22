@@ -22,7 +22,8 @@
     <h1> The better way to discuss films FROM LAYOUTS/MAIN.BLADE</h1>
 
     @yield('content')
-    {{-- will display the content--}}
+
+    {{-- will wrap all the different views that extends it-}}
 
 </body>
 </html>
