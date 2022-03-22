@@ -87,13 +87,14 @@ useEffect(() => {
   
     return (
     <div>
-    <Header setQuery={setQuery}/>
-    <HomePage movieResults={movieResults} displayResults={!!movieResults.length && query !== ""}/>
-    {/*  
     
-  */}
-  <FilmPage movie={movie}/>
-  <Footer />
+      <Header setQuery={setQuery}/>
+      <HomePage movieResults={movieResults} displayResults={!!movieResults.length && query !== ""}/>
+      {/*  
+      
+      */}
+    <FilmPage movie={movie}/>
+    <Footer />
     </div>
   )
 }
