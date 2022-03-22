@@ -14,7 +14,7 @@ export const CrewCard = () => {
     const response = await fetch(url);
     const data = await response.json();
 
-    console.log(data);
+    // console.log(data);
 
     data && setCrew(data.crew);
   };
@@ -23,7 +23,7 @@ export const CrewCard = () => {
     loadCrew();
   }, []);
 
-  console.log(crew);
+  // console.log(crew);
 
   const breakPoints = [{ itemsToShow: 4 }];
 

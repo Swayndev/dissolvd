@@ -7,9 +7,10 @@ const SearchCard = ({ movie }) => {
       <div className="search-card" key={movie.id}>
         {movie.poster_path ? (
           <div>
+          {/* DEFINE THE POSTER AS A LINK TO THE APPROPRIATE FILM PAGE*/}
             <img
               className="real-poster-search"
-              src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
+              src={`https://image.tmdb.org/t/p/w185/${movie.poster_path}`}
               alt={`${movie.title} Poster`}
             />
           </div>

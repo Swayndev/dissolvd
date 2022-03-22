@@ -3,17 +3,21 @@ import {useState, useEffect} from 'react'
 import { Header } from "./Header/Header";
 import  HomePage  from "./HomePage/HomePage";
 import { Footer } from "./Footer/Footer";
-import SearchBar from './SearchBar/SearchBar';
+
+import {FilmPage}  from './FilmPage/FilmPage';
 
 const Body = () => {
 
+  const apiKey = "f1206acdc6dd0ff0374585c4b4b936a1";
+
+  // ============ FETCH HOME =================
     // REACT HOOKS
-    const apiKey = "f1206acdc6dd0ff0374585c4b4b936a1";
 
   const [query, setQuery] = useState("");
 
   const [movieResults, setMovieResults] = useState([]);
 
+  // DO NOT FORGET TO DISPLAY ERROR MESSAGE IF TITLE DOES NOT EXIST OR IF LOADING TIME IS SLOW\
   const [errorMessage, setErrorMessage] = useState([]);
 
   useEffect(() => {
@@ -27,9 +31,7 @@ const Body = () => {
 
   // FUNCTIONS AND LOGIC
   const handleSearch = async (e) => {
-  
-  // e.preventDefault();
-  // setQuery(e.target.value);
+
 
   const response = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&language=en-US&page=1&include_adult=false&query=${query}`);
 
@@ -49,19 +51,49 @@ const Body = () => {
       
 };
 
+console.log('MOVIE RESULTS', movieResults)
 
-console.log('THIS IS MOVIE RESULTS FROM BODY', movieResults);
+// ======== FETCH INDIVIDUAL MOVIES =================
+
+const [movie, setMovie] = useState([]);
+
+const handleMovie = async () => {
+console.log('fetching')
+const movieUrl = `https://api.themoviedb.org/3/movie/550?api_key=${apiKey}&language=en-US`;
+
+// const movieUrl = (`https://api.themoviedb.org/3/movie/${movie_id}?api_key=${apiKey}&language=en-US`)
+
+  const response = await fetch(movieUrl);
+
+const data = await response.json();
+
+data && setMovie(data);
+
+console.log('THIS IS DATA', data)
+}
 
 
-console.log('THIS IS QUERY FROM BODY', query);
-  
+
+console.log('THIS IS INDIVIDUAL MOVIE', movie);
+
+
+useEffect(() => {
+    handleMovie();
+    }, []);
+
+
+
+  // ======================================================
   
     return (
     <div>
-        <Header setQuery={setQuery}/>
-        <HomePage movieResults={movieResults} displayResults={!!movieResults.length && query !== ""}/>
-        {/*TO BE DEFINED ==> <SearchPage /> */}
-        <Footer />
+    <Header setQuery={setQuery}/>
+    <HomePage movieResults={movieResults} displayResults={!!movieResults.length && query !== ""}/>
+    {/*  
+    
+  */}
+  <FilmPage movie={movie}/>
+  <Footer />
     </div>
   )
 }

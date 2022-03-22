@@ -7,6 +7,8 @@ export const ResultCard = ({ movie }) => {
     <div className="result-card">
       {movie.poster_path ? (
         <div>
+
+        {/* DEFINE THE POSTER AS A LINK TO THE APPROPRIATE FILM PAGE*/}
           <img
             className="real-poster"
             src={`https://image.tmdb.org/t/p/w342/${movie.poster_path}`}

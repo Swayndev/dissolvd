@@ -26,10 +26,9 @@ const HomePage = ({ movieResults, displayResults }) => {
       <HomeIntro />
 
       <HomeGallery />
+      
+     
 
-      <HomeExplain />
-
-      <FilmPage />
     </main>
   );
 };
