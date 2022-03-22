@@ -19,7 +19,7 @@
         <a>About us</a>
     <nav>
     
-    <h1> The better way to discuss films FROM LAYOUTS/MAIN.BLADE</h1>
+    <h1> The better way to discuss films</h1>
 
     @yield('content')
 

@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('user_movie', function (Blueprint $table) {
+        Schema::create('movie_user', function (Blueprint $table) {
             $table->foreignId('movie_id');
             $table->foreignId('user_id');
             $table->text('review');

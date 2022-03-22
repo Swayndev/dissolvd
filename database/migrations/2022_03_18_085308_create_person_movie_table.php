@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('person_movie', function (Blueprint $table) {
+        Schema::create('movie_person', function (Blueprint $table) {
             $table->foreignId('movie_id');
             $table->foreignId('people_id');
             $table->boolean('is_cast');
@@ -21,7 +21,6 @@ return new class extends Migration
             $table->string('character');
 
             $table->timestamps();
-           
         });
     }
 

@@ -4,10 +4,6 @@
 
 <div id="app"></div>
 
-<script src="{{ mix('
-
- {{--   js/movie.js   --}}
-
-') }}"></script>
+<script src="{{ mix('js/index.js ') }}"></script>
 
 @endsection
