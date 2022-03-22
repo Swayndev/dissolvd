@@ -1,96 +1,111 @@
+@import url(https://fonts.googleapis.com/css2?family=Rubik:wght@400;600;700;900&display=swap);
+
+body {
+    margin: 0;
+}
+
 .film-wrap {
-  width: 100%;
-  margin: auto;
+    width: 100%;
+    margin: auto;
+    font-family: "Rubik";
 }
 
 .film-backdrop-wrap {
-  display: flex;
-  background-color: rgba(255, 190, 24, 1);
-  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+    display: flex;
+    background-color: rgba(255, 190, 24, 1);
+    mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
 }
 
 .film-backdrop {
-  margin: auto;
-  background-color: rgba(255, 190, 24, 1);
-  /* mask-image: linear-gradient(to top, rgba(255, 190, 24, 1), rgba(0, 0, 0, 0)); */
+    margin: auto;
+    background-color: rgba(255, 190, 24, 1);
+    mask-image: linear-gradient(
+        to top,
+        rgba(255, 190, 24, 1),
+        rgba(0, 0, 0, 0)
+    );
 }
 
 .film-backdrop img {
-  width: 1080px;
-  padding-top: 1rem;
+    width: 1080px;
+    padding-top: 1rem;
 
-  background: linear-gradient(to top, rgba(255, 190, 24, 1), rgba(0, 0, 0, 0));
+    background: linear-gradient(
+        to top,
+        rgba(255, 190, 24, 1),
+        rgba(0, 0, 0, 0)
+    );
 }
 
 .film-details-wrap {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: auto;
-  z-index: 1;
-  position: relative;
-  bottom: 13rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    z-index: 1;
+    position: relative;
+    bottom: 13rem;
 }
 
 .film-poster {
-  display: flex;
-  justify-content: flex-start;
+    display: flex;
+    justify-content: flex-start;
 }
 
 .film-poster img {
-  width: 225px;
-  height: 350px;
-  border-radius: 0.3rem;
-  filter: drop-shadow(7px 9px 4px rgba(0, 0, 0, 0.25));
+    width: 225px;
+    height: 350px;
+    border-radius: 0.3rem;
+    filter: drop-shadow(7px 9px 4px rgba(0, 0, 0, 0.25));
 }
 
 .film-heading {
-  display: flex;
-  padding: 0rem 1rem;
+    display: flex;
+    padding: 0rem 1rem;
 }
 
 .film-title {
-  font-family: "Gibroma";
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
-  letter-spacing: 0.1rem;
-  font-size: 3rem;
-  margin: 0;
-  padding: 1rem;
+    font-family: "Gibroma";
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    letter-spacing: 0.1rem;
+    font-size: 3rem;
+    margin: 0;
+    padding: 1rem;
 }
 
 .film-year {
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
-  margin: 0;
-  font-size: 1.5rem;
-  padding-bottom: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    margin: 0;
+    font-size: 1.5rem;
+    padding-bottom: 2rem;
 }
 
 .film-director {
-  display: flex;
-  flex-direction: column;
-  padding: 0rem 2rem;
+    display: flex;
+    flex-direction: column;
+    padding: 0rem 2rem;
 }
 
 .film-director p {
-  margin: 0;
-  font-size: 1.3rem;
+    margin: 0;
+    font-size: 1.3rem;
 }
 
 .film-overview {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: auto;
-  width: 700px;
-  position: relative;
-  bottom: 12rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    width: 700px;
+    position: relative;
+    bottom: 12rem;
 }
 
 .film-overview {
-  line-height: 2rem;
-  text-align: justify;
+    line-height: 2rem;
+    text-align: justify;
 }

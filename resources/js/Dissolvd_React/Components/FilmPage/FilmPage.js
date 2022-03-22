@@ -1,6 +1,5 @@
 import React from "react";
 import { useState, useEffect } from "react";
-
 import { CastCard } from "../Cards/CastCard";
 import { CrewCard } from "../Cards/CrewCard";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";

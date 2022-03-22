@@ -1,1 +1,11 @@
+@import url(https://fonts.googleapis.com/css2?family=Rubik:wght@400;600;700;900&display=swap);
+html {
+  box-sizing: border-box;
+}
 
+body {
+  background-size: cover;
+  margin: auto;
+}
+
+/*# sourceMappingURL=app.css.map*/
