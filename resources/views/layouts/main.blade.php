@@ -9,10 +9,7 @@
     <title>Dissolvd</title>
 </head>
 <body>
-
-    
-    
-    <h1> The better way to discuss films</h1>
+    {{-- <h1> THIS IS LARAVEL LAYOUT</h1> --}}
 
     @yield('content')
 

@@ -2,7 +2,8 @@
 
 @section('content')
 
-<div id="app"></div>
+<div id="root"></div>
+<p>I LOVE ME</p>
 
 <script src="{{ mix('js/index.js') }}"></script>
 
