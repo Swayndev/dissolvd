@@ -10,7 +10,7 @@ class MovieController extends Controller
 {
     public function index(Request $request)
     {
-        // get the search term from the request
+        // // get the search term from the request
         // $search_term = $request->input('search');
         // $status = $request->input('status');
 

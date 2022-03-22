@@ -10,20 +10,13 @@
 </head>
 <body>
 
-    <nav>
-        <img class="dissolvd-logo"/>
-        <a>Sign in</a>
-        <a>Create account</a>
-        <a>How it works</a>
-        <a>Films</a>
-        <a>About us</a>
-    <nav>
+    
     
     <h1> The better way to discuss films</h1>
 
     @yield('content')
 
-    {{-- will wrap all the different views that extends it-}}
+    {{-- will wrap all the different views that extends it--}}
 
 </body>
 </html>
