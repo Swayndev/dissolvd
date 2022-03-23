@@ -1,4 +1,8 @@
 import { useState, useEffect } from "react";
+
+import { Routes, Route, Link } from "react-router-dom";
+
+// importing components that display in the body
 import { Header } from "./Header/Header";
 import HomePage from "./HomePage/HomePage";
 import { Footer } from "./Footer/Footer";
@@ -41,11 +45,24 @@ const Body = () => {
     return (
         <div>
             <Header setQuery={setQuery} />
-            <HomePage
-                movieResults={movieResults}
-                displayResults={!!movieResults.length && query !== ""}
-            />
-            <FilmPage />
+
+            <Routes>
+                <Route
+                    exact
+                    path="/"
+                    element={
+                        <HomePage
+                            movieResults={movieResults}
+                            displayResults={
+                                !!movieResults.length && query !== ""
+                            }
+                        />
+                    }
+                />
+
+                <Route exact path="/movie" element={<FilmPage />} />
+            </Routes>
+
             <Footer />
         </div>
     );
