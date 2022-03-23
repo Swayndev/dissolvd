@@ -8,6 +8,8 @@ import HomePage from "./HomePage/HomePage";
 import { Footer } from "./Footer/Footer";
 import { FilmPage } from "./FilmPage/FilmPage";
 
+import SignUpPage from "./SignUpPage/SignUpPage";
+
 const Body = () => {
     const apiKey = "f1206acdc6dd0ff0374585c4b4b936a1";
 
