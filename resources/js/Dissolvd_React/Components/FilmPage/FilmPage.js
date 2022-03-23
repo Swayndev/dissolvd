@@ -15,7 +15,7 @@ export const FilmPage = () => {
     const [movie, setMovie] = useState([]);
 
     const handleMovie = async () => {
-        const movieUrl = `https://api.themoviedb.org/3/movie/550?api_key=${apiKey}&language=en-US`;
+        const movieUrl = `https://api.themoviedb.org/3/movie/620?api_key=${apiKey}&language=en-US`;
 
         const response = await fetch(movieUrl);
 
