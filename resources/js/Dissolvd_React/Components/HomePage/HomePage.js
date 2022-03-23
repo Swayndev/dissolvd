@@ -12,12 +12,14 @@ const HomePage = ({ movieResults, displayResults }) => {
 
   return (
     <main className="main">
+
+    
       <div className="search-wrap">
         <div className="search-card-wrap">
           {displayResults &&
-            movieResults.map((movie) => (
-              <div key={movie.id}>
-                <SearchCard movie={movie} />
+            movieResults.map((movieResult) => (
+              <div key={movieResult.id}>
+                <SearchCard movieResult={movieResult} />
               </div>
             ))}
         </div>

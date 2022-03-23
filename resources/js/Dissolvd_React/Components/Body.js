@@ -1,9 +1,11 @@
 import {useState, useEffect} from 'react'
 
+import { Routes, Route, Link } from 'react-router-dom';
+
+// importing components that display in the body
 import { Header } from "./Header/Header";
 import  HomePage  from "./HomePage/HomePage";
 import { Footer } from "./Footer/Footer";
-
 import {FilmPage}  from './FilmPage/FilmPage';
 
 const Body = () => {
@@ -89,12 +91,15 @@ useEffect(() => {
     <div>
     
       <Header setQuery={setQuery}/>
-      <HomePage movieResults={movieResults} displayResults={!!movieResults.length && query !== ""}/>
-      {/*  
+    
+        <Routes>
       
-      */}
-    <FilmPage movie={movie}/>
-    <Footer />
+          <Route exact path="/" element={<HomePage movieResults={movieResults} displayResults={!!movieResults.length && query !== ""}/>} />
+
+          <Route exact path="/movie" element={<FilmPage movie={movie}/>} />
+        </Routes>
+          
+        <Footer />
     </div>
   )
 }
