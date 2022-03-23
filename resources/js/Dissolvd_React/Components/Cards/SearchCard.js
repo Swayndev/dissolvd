@@ -8,7 +8,7 @@ const SearchCard = ({ movieResult }) => {
     
   return (
         <>
-            <div className="search-card" key={movieResult.id} onClick={() => navigate("/hey")}>
+            <div className="search-card" key={movieResult.id} onClick={() => navigate("/hello")}>
                 {movieResult.poster_path ? (
                     <div>
                         {/* DEFINE THE POSTER AS A LINK TO THE APPROPRIATE FILM PAGE*/}
