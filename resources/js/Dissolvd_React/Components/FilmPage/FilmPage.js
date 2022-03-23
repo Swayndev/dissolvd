@@ -6,9 +6,10 @@ import "react-tabs/style/react-tabs.css";
 import "./FilmPage.css";
 import fakeposter from "../../img/fakeposter.png";
 import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 
 export const FilmPage = () => {
-    ////////////////
+    
 
     const apiKey = "f1206acdc6dd0ff0374585c4b4b936a1";
 
@@ -24,11 +25,17 @@ export const FilmPage = () => {
         data && setMovie(data);
     };
 
+
+    // useParams hook HAS TO be used here to make sure the redirection is done towards the right movieResult.id coming from the API
+    const params = useParams()
+
+    console.log(params)
+
     useEffect(() => {
         handleMovie();
     }, []);
 
-    ///////////////
+  
 
     return (
         <div>

@@ -10,6 +10,8 @@ import SearchCard from "../Cards/SearchCard";
 const HomePage = ({ movieResults, displayResults }) => {
     // console.log(results)
 
+    
+
     return (
         <main className="main">
             <div className="search-wrap">
