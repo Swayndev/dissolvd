@@ -8,29 +8,26 @@ import { FilmPage } from "../FilmPage/FilmPage";
 import SearchCard from "../Cards/SearchCard";
 
 const HomePage = ({ movieResults, displayResults }) => {
-  // console.log(results)
+    // console.log(results)
 
-  return (
-    <main className="main">
-      <div className="search-wrap">
-        <div className="search-card-wrap">
-          {displayResults &&
-            movieResults.map((movie) => (
-              <div key={movie.id}>
-                <SearchCard movie={movie} />
-              </div>
-            ))}
-        </div>
-      </div>
+    return (
+        <main className="main">
+            <div className="search-wrap">
+                <div className="search-card-wrap">
+                    {displayResults &&
+                        movieResults.map((movieResult) => (
+                            <div key={movieResult.id}>
+                                <SearchCard movieResult={movieResult} />
+                            </div>
+                        ))}
+                </div>
+            </div>
 
-      <HomeIntro />
+            <HomeIntro />
 
-      <HomeGallery />
-      
-     
-
-    </main>
-  );
+            <HomeGallery />
+        </main>
+    );
 };
 
 export default HomePage;

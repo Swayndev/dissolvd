@@ -1,69 +1,107 @@
 import React from "react";
-import { useState, useEffect } from "react";
 import { CastCard } from "../Cards/CastCard";
 import { CrewCard } from "../Cards/CrewCard";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import "./FilmPage.css";
+import fakeposter from "../../img/fakeposter.png";
+import { useState, useEffect } from "react";
 
-export const FilmPage = ({movie}) => {
-  
-  console.log(movie)
-  
-  return (
-    <div>
-      <div className="film-wrap">
-        <div className="film-backdrop-wrap">
-          <div className="film-backdrop">
-            <img src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`}></img>
-          </div>
-        </div>
-        <div className="film-details-wrap">
-          <div className="film-poster">
-            <img src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}></img>
-          </div>
-          <div>
-            <div className="film-heading">
-              <h1 className="film-title">{movie.title}</h1>
+export const FilmPage = () => {
+    ////////////////
 
-              {movie.release_date ? (
-                <p className="film-year">({movie.release_date.substring(0, 4)})</p>
-              ) : (
-                <p className="film-year">
-                  <i>(Unreleased)</i>
-                </p>
-              )}
+    const apiKey = "f1206acdc6dd0ff0374585c4b4b936a1";
 
+    const [movie, setMovie] = useState([]);
+
+    const handleMovie = async () => {
+        const movieUrl = `https://api.themoviedb.org/3/movie/550?api_key=${apiKey}&language=en-US`;
+
+        const response = await fetch(movieUrl);
+
+        const data = await response.json();
+
+        data && setMovie(data);
+    };
+
+    useEffect(() => {
+        handleMovie();
+    }, []);
+
+    ///////////////
+
+    return (
+        <div>
+            <div className="film-wrap">
+                <div className="film-backdrop-wrap">
+                    <div className="film-backdrop">
+                        <img
+                            src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`}
+                        ></img>
+                    </div>
+                </div>
+                <div className="film-details-wrap">
+                    {movie.poster_path ? (
+                        <div className="film-poster">
+                            {/* DEFINE THE POSTER AS A LINK TO THE APPROPRIATE FILM PAGE*/}
+                            <img
+                                className="real-poster-search"
+                                src={`https://image.tmdb.org/t/p/w185/${movie.poster_path}`}
+                                alt={`${movie.title} Poster`}
+                            />
+                        </div>
+                    ) : (
+                        <div className="film-poster">
+                            <img
+                                className="filler-poster-search"
+                                src={fakeposter}
+                                alt="No Poster Found"
+                            />
+                        </div>
+                    )}
+                    <div>
+                        <div className="film-heading">
+                            <h1 className="film-title">{movie.title}</h1>
+
+                            {movie.release_date ? (
+                                <p className="film-year">
+                                    ({movie.release_date.substring(0, 4)})
+                                </p>
+                            ) : (
+                                <p className="film-year">
+                                    <i>(Unreleased)</i>
+                                </p>
+                            )}
+                        </div>
+                        <div className="film-director">
+                            <p>Directed by</p>
+                            <p>
+                                {/* TO COMPLETE LATER */}
+                                <strong>David Fincher</strong>
+                            </p>
+                        </div>
+                    </div>
+                    <div className="film-buttons"></div>
+                </div>
+                <div className="film-overview">
+                    <p>{movie.overview}</p>
+                </div>
+                <Tabs className="film-credits-wrap">
+                    <TabList className="film-credits-heading">
+                        <Tab>Cast</Tab>
+                        <Tab>Crew</Tab>
+                    </TabList>
+
+                    <TabPanel>
+                        <CastCard movie={movie} />
+                    </TabPanel>
+                    <TabPanel>
+                        <CrewCard movie={movie} />
+                    </TabPanel>
+                </Tabs>
             </div>
-            <div className="film-director">
-              <p>Directed by</p>
-              <p>
-                {/* TO COMPLETE LATER */}
-                <strong>Paul Thomas Anderson</strong>
-              </p>
-            </div>
-          </div>
-          <div className="film-buttons"></div>
         </div>
-        <div className="film-overview">
-          <p>{movie.overview}</p>
-        </div>
-        <Tabs className="film-credits-wrap">
-          <TabList className="film-credits-heading">
-            <Tab>Cast</Tab>
-            <Tab>Crew</Tab>
-          </TabList>
-
-          <TabPanel>
-            <CastCard />
-          </TabPanel>
-          <TabPanel>
-            <CrewCard />
-          </TabPanel>
-        </Tabs>
-      </div>
-    </div>
-  );
+    );
 };
 
 // export default FilmPage;
