@@ -1,21 +1,19 @@
-import React from "react";
+import React, { Fragment, useState, useEffect } from "react";
 import { CastCard } from "../Cards/CastCard";
 import { CrewCard } from "../Cards/CrewCard";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import "./FilmPage.css";
 import fakeposter from "../../img/fakeposter.png";
-import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
 export const FilmPage = () => {
-
     const apiKey = "f1206acdc6dd0ff0374585c4b4b936a1";
 
     const [movie, setMovie] = useState([]);
 
     const handleMovie = async () => {
-        const movieUrl = `https://api.themoviedb.org/3/movie/400617?api_key=${apiKey}&language=en-US`;
+        const movieUrl = `https://api.themoviedb.org/3/movie/299534?api_key=${apiKey}&language=en-US`;
 
         const response = await fetch(movieUrl);
 
@@ -24,22 +22,36 @@ export const FilmPage = () => {
         data && setMovie(data);
     };
 
-
     // useParams hook HAS TO be used here to make sure the redirection is done towards the right movieResult.id coming from the API
-    const params = useParams()
+    const params = useParams();
     // THIS IS GOING TO BE TRICKY
 
-
-
-
-
-    console.log(params)
+    // console.log(params);
 
     useEffect(() => {
         handleMovie();
     }, []);
 
-  
+    ////////////////////////////////////
+
+    const [credits, setCredits] = useState({});
+
+    const loadCredits = async () => {
+        const creditsUrl = `https://api.themoviedb.org/3/movie/${movie.id}/credits?api_key=${apiKey}&language=en-US`;
+
+        const response = await fetch(creditsUrl);
+
+        let data = await response.json();
+
+        data && setCredits(data);
+    };
+
+    useEffect(() => {
+        if (movie.id) {
+            loadCredits();
+        }
+    }, [movie]);
+
     return (
         <div>
             <div className="film-wrap">
@@ -85,10 +97,18 @@ export const FilmPage = () => {
                         </div>
                         <div className="film-director">
                             <p>Directed by</p>
-                            <p>
-                                {/* TO COMPLETE LATER */}
-                                <strong>David Fincher</strong>
-                            </p>
+                            {credits.crew &&
+                                credits.crew.map((crew) => (
+                                    <div>
+                                        {crew.job === "Director" ? (
+                                            <p>
+                                                <strong>{crew.name}</strong>
+                                            </p>
+                                        ) : (
+                                            <p></p>
+                                        )}
+                                    </div>
+                                ))}
                         </div>
                     </div>
                     <div className="film-buttons"></div>
@@ -101,17 +121,18 @@ export const FilmPage = () => {
                         <Tab>Cast</Tab>
                         <Tab>Crew</Tab>
                     </TabList>
-
-                    <TabPanel>
-                        <CastCard movie={movie} />
-                    </TabPanel>
-                    <TabPanel>
-                        <CrewCard movie={movie} />
-                    </TabPanel>
+                    {credits.cast && credits.crew && (
+                        <Fragment>
+                            <TabPanel>
+                                <CastCard credits={credits} />
+                            </TabPanel>
+                            <TabPanel>
+                                <CrewCard credits={credits} />
+                            </TabPanel>
+                        </Fragment>
+                    )}
                 </Tabs>
             </div>
         </div>
     );
 };
-
-// export default FilmPage;

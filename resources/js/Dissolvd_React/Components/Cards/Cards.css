@@ -100,6 +100,8 @@
     margin: auto;
     position: relative;
     bottom: 13rem;
+    display: flex;
+    flex-direction: column;
 }
 
 .film-credits-heading {
@@ -112,7 +114,8 @@
 .cast-character,
 .crew-job {
     font-size: 0.8rem;
-    width: 90%;
+    width: 100%;
+
     margin: 0;
 }
 
@@ -193,4 +196,20 @@
 
 .film-crew-job {
     text-transform: uppercase;
+}
+
+.film-crew-wrap {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 700px;
+    margin: auto;
+}
+
+.film-crew {
+    width: 300px;
+    border-top: 1px solid black;
 }

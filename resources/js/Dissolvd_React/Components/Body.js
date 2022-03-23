@@ -60,9 +60,7 @@ const Body = () => {
                     }
                 />
 
-                <Route
-                  exact path="/movie/:movie_id"
-                  element={<FilmPage />} />
+                <Route exact path="/movie/:movie_id" element={<FilmPage />} />
             </Routes>
             <FilmPage />
 

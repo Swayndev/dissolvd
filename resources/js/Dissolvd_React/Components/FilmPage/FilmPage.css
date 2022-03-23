@@ -45,6 +45,7 @@ body {
     z-index: 1;
     position: relative;
     bottom: 13rem;
+    width: 700px;
 }
 
 .film-poster {
