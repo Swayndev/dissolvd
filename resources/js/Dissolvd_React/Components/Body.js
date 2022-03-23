@@ -18,6 +18,8 @@ const Body = () => {
 
     const [movieResults, setMovieResults] = useState([]);
 
+    const [movieId, setMovieId] = useState(550);
+
     // DO NOT FORGET TO DISPLAY ERROR MESSAGE IF TITLE DOES NOT EXIST OR IF LOADING TIME IS SLOW\
     const [errorMessage, setErrorMessage] = useState([]);
 
@@ -56,14 +58,24 @@ const Body = () => {
                             displayResults={
                                 !!movieResults.length && query !== ""
                             }
+                            setMovieId={setMovieId}
                         />
                     }
                 />
 
-                <Route exact path="/movie/:movie_id" element={<FilmPage />} />
+                <Route
+                    exact
+                    path="/movie/:id"
+                    element={<FilmPage movieId={movieId} apiKey={apiKey} />}
+                />
+                {/*
+                 */}
             </Routes>
-            <FilmPage />
 
+            {/*
+            <FilmPage movieResults={movieResults} apiKey={apiKey} />
+              THIS IS ADRIEN TEST FOR REDIRECTING TO THE FILMPAGE ON USER'S CLICK ON A SEARCHCARD
+              */}
             <Footer />
         </div>
     );

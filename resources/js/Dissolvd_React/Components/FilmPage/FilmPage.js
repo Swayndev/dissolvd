@@ -7,13 +7,15 @@ import "./FilmPage.css";
 import fakeposter from "../../img/fakeposter.png";
 import { useParams } from "react-router-dom";
 
-export const FilmPage = () => {
-    const apiKey = "f1206acdc6dd0ff0374585c4b4b936a1";
+export const FilmPage = ({ apiKey, movieId }) => {
+    // const apiKey = "f1206acdc6dd0ff0374585c4b4b936a1";
 
     const [movie, setMovie] = useState([]);
 
     const handleMovie = async () => {
-        const movieUrl = `https://api.themoviedb.org/3/movie/299534?api_key=${apiKey}&language=en-US`;
+        const movieUrl = `https://api.themoviedb.org/3/movie/${movieId}?api_key=${apiKey}&language=en-US`;
+
+        // const movieUrlAdrien = `https://api.themoviedb.org/3/movie/${}?api_key=${apiKey}&language=en-US`;
 
         const response = await fetch(movieUrl);
 
@@ -23,18 +25,16 @@ export const FilmPage = () => {
     };
 
     // useParams hook HAS TO be used here to make sure the redirection is done towards the right movieResult.id coming from the API
-    const params = useParams();
+    // const params = useParams();
     // THIS IS GOING TO BE TRICKY
 
     // console.log(params);
 
-    useEffect(() => {
-        handleMovie();
-    }, []);
-
     ////////////////////////////////////
 
     const [credits, setCredits] = useState({});
+    // const params = useParams()
+    // console.log(params)
 
     const loadCredits = async () => {
         const creditsUrl = `https://api.themoviedb.org/3/movie/${movie.id}/credits?api_key=${apiKey}&language=en-US`;
@@ -51,6 +51,10 @@ export const FilmPage = () => {
             loadCredits();
         }
     }, [movie]);
+    // This will trigger the handleMovie function each time the page load and reload
+    useEffect(() => {
+        handleMovie();
+    }, []);
 
     return (
         <div>
