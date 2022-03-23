@@ -27,11 +27,9 @@ const SearchCard = ({ movieResult }) => {
                     <div className="search-card-heading">
                         <h2>{movieResult.title}</h2>
                         {movieResult.release_date ? (
-                            <p>{movieResult.release_date.substring(0, 4)}</p>
+                            <p>({movieResult.release_date.substring(0, 4)})</p>
                         ) : (
-                            <p>
-                                <i>Unreleased</i>
-                            </p>
+                            <p>(No Release Date)</p>
                         )}
                     </div>
                 </div>

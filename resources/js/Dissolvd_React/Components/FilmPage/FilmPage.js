@@ -15,7 +15,7 @@ export const FilmPage = () => {
     const [movie, setMovie] = useState([]);
 
     const handleMovie = async () => {
-        const movieUrl = `https://api.themoviedb.org/3/movie/620?api_key=${apiKey}&language=en-US`;
+        const movieUrl = `https://api.themoviedb.org/3/movie/400617?api_key=${apiKey}&language=en-US`;
 
         const response = await fetch(movieUrl);
 
@@ -46,7 +46,7 @@ export const FilmPage = () => {
                             {/* DEFINE THE POSTER AS A LINK TO THE APPROPRIATE FILM PAGE*/}
                             <img
                                 className="real-poster-search"
-                                src={`https://image.tmdb.org/t/p/w185/${movie.poster_path}`}
+                                src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
                                 alt={`${movie.title} Poster`}
                             />
                         </div>
@@ -69,7 +69,7 @@ export const FilmPage = () => {
                                 </p>
                             ) : (
                                 <p className="film-year">
-                                    <i>(Unreleased)</i>
+                                    <i>(No Release Date)</i>
                                 </p>
                             )}
                         </div>

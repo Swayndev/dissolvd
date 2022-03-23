@@ -1,193 +1,196 @@
 .popular,
 .latest {
-  display: flex;
-  flex-direction: column;
-  margin: auto;
-  text-align: left;
-  font-size: 1.3rem;
-  width: 1080px;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    text-align: left;
+    font-size: 1.3rem;
+    width: 1080px;
 }
 
 .popular-heading,
 .latest-heading {
-  text-transform: uppercase;
-  font-weight: 600;
-  display: flex;
-  flex-direction: row;
-  padding-left: 4.1rem;
+    text-transform: uppercase;
+    font-weight: 600;
+    display: flex;
+    flex-direction: row;
+    padding-left: 4.1rem;
 }
 
 .popular-movie,
 .latest-movie {
-  display: flex;
-  justify-content: space-between;
+    display: flex;
+    justify-content: space-between;
 }
 
 .filler-poster,
 .real-poster {
-  width: 225px;
-  height: 350px;
-  border-radius: 0.3rem;
+    width: 225px;
+    height: 350px;
+    border-radius: 0.3rem;
 }
 
 .filler-poster-person,
 .real-poster-person {
-  height: 225px;
-  border: 1px solid black;
-  border-radius: 0.3rem;
+    height: 225px;
+    border: 1px solid black;
+    border-radius: 0.3rem;
 }
 
 .results-search-info {
-  font-family: "Rubik", Helvetica, sans-serif;
-  text-transform: uppercase;
+    font-family: "Rubik", Helvetica, sans-serif;
+    text-transform: uppercase;
 }
 
 .results-search-heading {
-  font-family: "Gibroma", sans-serif;
-  font-size: 4rem;
-  margin: 0;
+    font-family: "Gibroma", sans-serif;
+    font-size: 4rem;
+    margin: 0;
 }
 
 .results {
-  width: 1080px;
-  margin: auto;
+    width: 1080px;
+    margin: auto;
 }
 
 .results-movie {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  align-items: center;
-  height: 100%;
-  font-family: "Rubik", Helvetica, sans-serif;
-  margin: auto;
-  color: #232323;
-  width: 80%;
-  margin: auto;
-  padding-bottom: 2rem;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    height: 100%;
+    font-family: "Rubik", Helvetica, sans-serif;
+    margin: auto;
+    color: #232323;
+    width: 80%;
+    margin: auto;
+    padding-bottom: 2rem;
 }
 
 .rec.rec-arrow {
-  background-color: white;
-  box-shadow: 0 0 1px 3px var(--clr-primary-400);
+    background-color: white;
+    box-shadow: 0 0 1px 3px var(--clr-primary-400);
 }
 
 .rec.rec-arrow-left:enabled,
 .rec.rec-arrow-right:enabled {
-  background-color: white;
-  box-shadow: 0 0 1px 3px var(--clr-primary-400);
+    background-color: white;
+    box-shadow: 0 0 1px 3px var(--clr-primary-400);
 }
 
 .rec.rec-arrow:hover:enabled {
-  color: black;
-  background-color: white;
-  box-shadow: 0 0 1px 3px var(--clr-primary-400);
+    color: black;
+    background-color: white;
+    box-shadow: 0 0 1px 3px var(--clr-primary-400);
 }
 
 .rec.rec-arrow:focus:enabled {
-  color: black;
-  background-color: white;
-  box-shadow: 0 0 1px 3px var(--clr-primary-400);
+    color: black;
+    background-color: white;
+    box-shadow: 0 0 1px 3px var(--clr-primary-400);
 }
 
 .rec.rec-arrow:disabled {
-  visibility: hidden;
+    visibility: hidden;
 }
 
 .film-credits-wrap {
-  width: 860px;
-  margin: auto;
-  position: relative;
-  bottom: 13rem;
+    width: 860px;
+    margin: auto;
+    position: relative;
+    bottom: 13rem;
 }
 
 .film-credits-heading {
-  text-transform: uppercase;
-  font-weight: bold;
-  padding-left: 5rem;
-  font-size: 1rem;
+    text-transform: uppercase;
+    font-weight: bold;
+    padding-left: 5rem;
+    font-size: 1rem;
 }
 
 .cast-character,
 .crew-job {
-  font-size: 0.8rem;
-  width: 90%;
-  margin: 0;
+    font-size: 0.8rem;
+    width: 90%;
+    margin: 0;
 }
 
 .cast-name,
 .crew-name {
-  font-size: 0.8rem;
-  width: 90%;
-  margin: 0;
+    font-size: 0.8rem;
+    width: 90%;
+    margin: 0;
 }
 
 .search-card-wrap {
-  display: flex;
-  flex-wrap: wrap;
-  width: 1080px;
-  justify-content: flex-start;
-  align-items: center;
-  background-color: rgba(255, 190, 24, 1);
+    display: flex;
+    flex-wrap: wrap;
+    width: 1080px;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: rgba(255, 190, 24, 1);
 }
 
 .search-card {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  width: 540px;
-  padding-bottom: 2rem;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 540px;
+    padding-bottom: 2rem;
 }
 
 .search-wrap {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  background-color: rgba(255, 190, 24, 1);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255, 190, 24, 1);
 }
 
 .search-card-info {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .search-card-heading {
-  display: flex;
-  flex-direction: column;
+    display: flex;
+    flex-direction: column;
 }
 
 .search-card-heading h2 {
-  font-family: "Gibroma", "Rubik";
-  margin: 0;
-  padding: 0rem 1rem;
-  font-weight: bold;
+    font-family: "Gibroma", "Rubik";
+    margin: 0;
+    padding: 0rem 1rem;
+    font-weight: bold;
 }
 
 .search-card-heading p {
-  margin: 0;
-  display: flex;
-  justify-content: flex-start;
-  align-items: flex-start;
-  padding: 0rem 1rem;
-  font-style: italic;
+    margin: 0;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 0rem 1rem;
 }
 
 .search-card-director {
-  padding-top: 1rem;
+    padding-top: 1rem;
 }
 
 .search-card-director p {
-  padding: 0rem 1rem;
-  margin: 0;
+    padding: 0rem 1rem;
+    margin: 0;
 }
 
 .real-poster-search,
 .filler-poster-search {
-  height: 150px;
-  width: 100px;
-  border-radius: 0.3rem;
-  border: 1px solid black;
+    height: 150px;
+    width: 100px;
+    border-radius: 0.3rem;
+    border: 1px solid black;
+}
+
+.film-crew-job {
+    text-transform: uppercase;
 }

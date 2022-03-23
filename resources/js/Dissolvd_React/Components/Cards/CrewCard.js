@@ -30,41 +30,43 @@ export const CrewCard = ({ movie }) => {
         }
     }, [movie]);
 
-    const breakPoints = [{ itemsToShow: 4 }];
+    // const breakPoints = [{ itemsToShow: 4 }];
 
     return (
-        <div className="film-cast">
-            <Carousel breakPoints={breakPoints}>
-                {crew.slice(0, 20).map((person) => (
-                    <div key={person.id}>
-                        {person.profile_path ? (
-                            <div>
-                                <img
-                                    className="real-poster-person"
-                                    src={`https://image.tmdb.org/t/p/w185${person.profile_path}`}
-                                    alt={`Picture of ${person.name}`}
-                                />
+        <div className="film-crew-wrap">
+            {crew.map((crew) => {
+                {
+                    {
+                        crew.job === "Director" ? (
+                            <div className="film-crew">
+                                <h4 className="film-crew-job">Directing</h4>
+                                <p className="film-crew-name">{crew.name}</p>
                             </div>
                         ) : (
-                            <div>
-                                <img
-                                    className="filler-poster-person"
-                                    src={fakeposter}
-                                    alt="No Poster"
-                                />
+                            <div className="film-crew">
+                                <h4 className="film-crew-job">Directing</h4>
+                                <p className="film-crew-name">No Director</p>
                             </div>
-                        )}
-                        <div>
-                            <p className="crew-job">
-                                <strong>{person.job}</strong>
-                            </p>
-                        </div>
-                        <div>
-                            <p className="crew-name">{person.name}</p>
-                        </div>
-                    </div>
-                ))}
-            </Carousel>
+                        );
+                    }
+                }
+            })}
+            <div className="film-crew">
+                <h4 className="film-crew-job">Writing</h4>
+                <p className="film-crew-name"></p>
+            </div>
+            <div className="film-crew">
+                <h4 className="film-crew-job">Cinematography</h4>
+                <p className="film-crew-name"></p>
+            </div>
+            <div className="film-crew">
+                <h4 className="film-crew-job">Editing</h4>
+                <p className="film-crew-name"></p>
+            </div>
+            <div className="film-crew">
+                <h4 className="film-crew-job">Music</h4>
+                <p className="film-crew-name"></p>
+            </div>
         </div>
     );
 };
