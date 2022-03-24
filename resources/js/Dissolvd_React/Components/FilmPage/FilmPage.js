@@ -1,5 +1,5 @@
 import React, { Fragment, useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import "./FilmPage.css";
@@ -16,7 +16,7 @@ export const FilmPage = ({
     movieResults,
     displayResults,
     setMovieId,
-    setQuery,
+    setQuery
 }) => {
     // USESTATE AND FUNCTIONS SECTION
     const [movie, setMovie] = useState([]);
@@ -63,13 +63,14 @@ export const FilmPage = ({
     }, [movieId]);
 
     return (
-        <div>
+        <Fragment>
             <SearchResult
                 displayResults={displayResults}
                 movieResults={movieResults}
                 setMovieId={setMovieId}
                 setQuery={setQuery}
             />
+
             <div className="film-wrap">
                 <div className="film-backdrop-wrap">
                     {movie.backdrop_path ? (
@@ -153,6 +154,6 @@ export const FilmPage = ({
                     )}
                 </Tabs>
             </div>
-        </div>
+        </Fragment>
     );
 };

@@ -8,11 +8,16 @@ import SearchResult from "../SearchResult/SearchResult";
 import SearchCard from "../Cards/SearchCard";
 import { CreateAccountPage } from "../CreateAccountPage/CreateAccountPage";
 
-const HomePage = ({ movieResults, displayResults, setMovieId, setQuery }) => {
+const HomePage = ({
+    movieResults,
+    displayResults,
+    setMovieId,
+    setQuery }) => {
     
     
     return (
         <main className="main">
+
             <SearchResult
                 displayResults={displayResults}
                 movieResults={movieResults}

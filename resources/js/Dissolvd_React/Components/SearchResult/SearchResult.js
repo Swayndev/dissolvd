@@ -4,7 +4,11 @@ import "./SearchResult.css";
 import SearchCard from '../Cards/SearchCard';
 
 
-const SearchResult = ({ movieResults, displayResults, setMovieId, setQuery }) => {
+const SearchResult = ({
+    displayResults, 
+    movieResults, 
+    setMovieId, 
+    setQuery }) => {
   
   
   
