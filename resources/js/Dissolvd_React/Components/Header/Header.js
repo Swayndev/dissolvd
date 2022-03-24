@@ -19,11 +19,13 @@ export const Header = ({ setQuery, query }) => {
                 {/* NAV BAR LOGOS */}
                 <div className="logo">
                 {/*  LOGO FOR BROWSER VERSION */}
+                <Link to="/">
                     <img
                         className="logo--big"
                         src={logobd}
                         alt="dissolvd_logo"
                     />
+                </Link>
                     <img
                         className="logo--small"
                         src={logosd}
@@ -32,7 +34,10 @@ export const Header = ({ setQuery, query }) => {
                 </div>
                 {/* NAV BAR DESKTOP */}
                 <div className="desktop open">
-                    <Link to="/" className="desktop--item underline" >home</Link>
+                    <Link to="/" className="desktop--item underline" >
+                        home
+                    
+                    </Link>
 
                     <Link to="/sign-in" className="desktop--item underline" >
                         sign in
