@@ -9,8 +9,7 @@ import SearchResult from "../SearchResult/SearchResult";
 import SearchCard from "../Cards/SearchCard";
 
 const HomePage = ({ movieResults, displayResults, setMovieId, setQuery }) => {
-    // console.log(results)
-
+    
     
 
     return (

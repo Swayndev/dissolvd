@@ -9,7 +9,7 @@ export const HomeGallery = ( {setMovieId}) => {
       setMovieId={setMovieId}
        />
       <LatestCards
-      setMovieId={setMovieId}
+        setMovieId={setMovieId}
       />
     </div>
   );

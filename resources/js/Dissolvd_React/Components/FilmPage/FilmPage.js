@@ -11,7 +11,7 @@ import { CrewCard } from "../Cards/CrewCard";
 import SearchResult from "../SearchResult/SearchResult";
 
 
-export const FilmPage = ({ apiKey, movieId, movieResults, displayResults, setMovieId, setQuery, query }) => {
+export const FilmPage = ({ apiKey, movieId, movieResults, displayResults, setMovieId, setQuery}) => {
     
     // USESTATE AND FUNCTIONS SECTION
     const [movie, setMovie] = useState([]);
