@@ -72,6 +72,34 @@ export const CreateAccountPage = ({
                         </div>
                     </div>
                 </div>
+            
+                <form action="" method="post">
+
+                    <label htmlFor="email">Email</label>
+                    <br/>
+                    <input type="email" name="email" id="email" />
+                    <br/><br/>
+
+                    <label htmlFor="username">Username</label>
+                    <br/>
+                    <input type="text" name="username" id="username"/>
+                    <br/><br/>
+
+                    <label htmlFor="password">Create password</label>
+                    <br/>
+                    <input type="password" name="password" id="password"/>
+                    <br/><br/>
+
+                    <label htmlFor="password-confirm">Confirm password</label>
+                    <br/>
+                    <input type="password" name="password-confirm" id="password-confirm"/>
+                    <br/><br/>
+
+                    <button type="submit" value="submit" >Create account</button>
+
+                </form>
+
+
             </div>
         </div>
     );
