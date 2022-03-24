@@ -7,7 +7,7 @@ import "./FilmPage.css";
 import fakeposter from "../../img/fakeposter.png";
 import { useParams } from "react-router-dom";
 
-export const FilmPage = ({ apiKey, movieId }) => {
+export const FilmPage = ({ apiKey, movieId, movieResults, displayResults, setMovieId, setQuery }) => {
     // const apiKey = "f1206acdc6dd0ff0374585c4b4b936a1";
 
     const [movie, setMovie] = useState([]);

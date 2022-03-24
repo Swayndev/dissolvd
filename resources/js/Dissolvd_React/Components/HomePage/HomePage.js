@@ -7,7 +7,7 @@ import { HomeExplain } from "./Home/HomeExplain";
 
 import SearchCard from "../Cards/SearchCard";
 
-const HomePage = ({ movieResults, displayResults, setMovieId }) => {
+const HomePage = ({ movieResults, displayResults, setMovieId, setQuery }) => {
     // console.log(results)
 
     
@@ -23,6 +23,7 @@ const HomePage = ({ movieResults, displayResults, setMovieId }) => {
                                 <SearchCard
                                 movieResult={movieResult}
                                 setMovieId={setMovieId}
+                                setQuery={setQuery}
                                 />
                             </div>
                         ))}

@@ -8,7 +8,7 @@ import HomePage from "./HomePage/HomePage";
 import { Footer } from "./Footer/Footer";
 import { FilmPage } from "./FilmPage/FilmPage";
 
-import SignUpPage from "./SignUpPage/SignUpPage";
+import SignUpPage from "./CreateAccountPage/CreateAccountPage";
 
 const Body = () => {
     const apiKey = "f1206acdc6dd0ff0374585c4b4b936a1";
@@ -48,7 +48,7 @@ const Body = () => {
 
     return (
         <div>
-            <Header setQuery={setQuery} />
+            <Header setQuery={setQuery} query={query} />
 
             <Routes>
                 <Route
@@ -57,10 +57,9 @@ const Body = () => {
                     element={
                         <HomePage
                             movieResults={movieResults}
-                            displayResults={
-                                !!movieResults.length && query !== ""
-                            }
+                            displayResults={!!movieResults.length && query !== ""}
                             setMovieId={setMovieId}
+                            setQuery={setQuery}
                         />
                     }
                 />
@@ -68,7 +67,16 @@ const Body = () => {
                 <Route
                     exact
                     path="/movie/:id"
-                    element={<FilmPage movieId={movieId} apiKey={apiKey} />}
+                    element={
+                        <FilmPage
+                            movieId={movieId}
+                            apiKey={apiKey}
+                            movieResults={movieResults}
+                            displayResults={!!movieResults.length && query !== ""}
+                            setMovieId={setMovieId}
+                            setQuery={setQuery}
+                    
+                    />}
                 />
                 {/*
                  */}
