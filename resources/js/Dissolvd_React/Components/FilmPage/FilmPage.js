@@ -1,11 +1,14 @@
 import React, { Fragment, useState, useEffect } from "react";
-import { CastCard } from "../Cards/CastCard";
-import { CrewCard } from "../Cards/CrewCard";
+import { useParams } from "react-router-dom";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import "./FilmPage.css";
 import fakeposter from "../../img/fakeposter.png";
-import { useParams } from "react-router-dom";
+
+// importing components that display in the body
+import { CastCard } from "../Cards/CastCard";
+import { CrewCard } from "../Cards/CrewCard";
+import SearchResult from "../SearchResult/SearchResult";
 
 export const FilmPage = ({
     apiKey,
@@ -15,8 +18,7 @@ export const FilmPage = ({
     setMovieId,
     setQuery,
 }) => {
-    // const apiKey = "f1206acdc6dd0ff0374585c4b4b936a1";
-
+    // USESTATE AND FUNCTIONS SECTION
     const [movie, setMovie] = useState([]);
 
     const handleMovie = async () => {
@@ -33,11 +35,6 @@ export const FilmPage = ({
 
     // useParams hook HAS TO be used here to make sure the redirection is done towards the right movieResult.id coming from the API
     // const params = useParams();
-    // THIS IS GOING TO BE TRICKY
-
-    // console.log(params);
-
-    ////////////////////////////////////
 
     const [credits, setCredits] = useState({});
     // const params = useParams()
@@ -53,18 +50,26 @@ export const FilmPage = ({
         data && setCredits(data);
     };
 
+    // USEEFFECT SECTION  ////////////////////////////////////
     useEffect(() => {
         if (movie.id) {
             loadCredits();
         }
     }, [movie]);
+
     // This will trigger the handleMovie function each time the page load and reload
     useEffect(() => {
         handleMovie();
-    }, []);
+    }, [movieId]);
 
     return (
         <div>
+            <SearchResult
+                displayResults={displayResults}
+                movieResults={movieResults}
+                setMovieId={setMovieId}
+                setQuery={setQuery}
+            />
             <div className="film-wrap">
                 <div className="film-backdrop-wrap">
                     {movie.backdrop_path ? (

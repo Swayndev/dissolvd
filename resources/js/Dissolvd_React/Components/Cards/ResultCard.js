@@ -1,10 +1,21 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import fakeposter from "../../img/fakeposter.png";
 import "./Cards.css";
 
-export const ResultCard = ({ movie }) => {
+export const ResultCard = ({ movie, setMovieId }) => {
+
+  const navigate = useNavigate()
+
   return (
-    <div className="result-card">
+    <div className="result-card"
+      key={movie.id}
+      onClick={
+
+        () => {navigate("/movie/"+ movie.id ), setMovieId(movie.id)
+        }          
+      }>
+
       {movie.poster_path ? (
         <div>
 
