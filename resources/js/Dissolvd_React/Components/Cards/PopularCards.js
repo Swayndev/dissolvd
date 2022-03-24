@@ -24,7 +24,7 @@ const PopularCards = () => {
   const breakPoints = [{ itemsToShow: 4 }];
 
   return (
-    <>
+    <div>
       <div className="popular">
         <div className="popular-heading">
           <p>Popular this week</p>
@@ -40,7 +40,7 @@ const PopularCards = () => {
           </Carousel>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

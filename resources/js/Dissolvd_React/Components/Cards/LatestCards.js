@@ -24,7 +24,7 @@ const LatestCards = () => {
   const breakPoints = [{ itemsToShow: 4 }];
 
   return (
-    <>
+    <div>
       <div className="latest">
         <div className="latest-heading">
           <p>Latest films</p>
@@ -39,7 +39,7 @@ const LatestCards = () => {
           </Carousel>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

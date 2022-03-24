@@ -33,6 +33,10 @@ const Body = () => {
         }
     }, [query]);
 
+
+
+    console.log(movieId)
+
     // FUNCTIONS AND LOGIC
     const handleSearch = async (e) => {
         const response = await fetch(
@@ -52,8 +56,7 @@ const Body = () => {
 
             <Routes>
                 <Route
-                    exact
-                    path="/"
+                    exact path="/"
                     element={
                         <HomePage
                             movieResults={movieResults}
@@ -65,8 +68,7 @@ const Body = () => {
                 />
 
                 <Route
-                    exact
-                    path="/movie/:id"
+                    exact path="/movie/:id"
                     element={
                         <FilmPage
                             movieId={movieId}
@@ -75,6 +77,7 @@ const Body = () => {
                             displayResults={!!movieResults.length && query !== ""}
                             setMovieId={setMovieId}
                             setQuery={setQuery}
+                            query={query}
                     
                     />}
                 />
@@ -83,8 +86,9 @@ const Body = () => {
             </Routes>
 
             {/*
-            <FilmPage movieResults={movieResults} apiKey={apiKey} />
-              THIS IS ADRIEN TEST FOR REDIRECTING TO THE FILMPAGE ON USER'S CLICK ON A SEARCHCARD
+            <Route
+                exact path="" 
+                 element
               */}
             <Footer />
         </div>

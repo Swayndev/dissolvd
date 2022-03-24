@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import fakeposter from "../../img/fakeposter.png";
-import { FilmPage } from "../FilmPage/FilmPage";
+
 
 const SearchCard = ({ movieResult, setMovieId, setQuery }) => {
 
