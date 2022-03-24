@@ -25,7 +25,9 @@ const HomePage = ({ movieResults, displayResults, setMovieId, setQuery }) => {
 
             <HomeIntro />
 
-            <HomeGallery />
+            <HomeGallery 
+                setMovieId={setMovieId}
+            />
         </main>
     );
 };

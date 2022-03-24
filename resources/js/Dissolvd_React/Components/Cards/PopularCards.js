@@ -4,7 +4,7 @@ import { ResultCard } from "./ResultCard";
 import Carousel from "react-elastic-carousel";
 import "./Cards.css";
 
-const PopularCards = () => {
+const PopularCards = ({setMovieId}) => {
   const apiKey = "f1206acdc6dd0ff0374585c4b4b936a1";
   const url = `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&language=en-US&page=1`;
 
@@ -34,7 +34,10 @@ const PopularCards = () => {
           <Carousel breakPoints={breakPoints}>
             {popular.map((movie) => (
               <div key={movie.id}>
-                <ResultCard movie={movie} />
+                <ResultCard 
+                  movie={movie}
+                  setMovieId={setMovieId}
+                 />
               </div>
             ))}
           </Carousel>
