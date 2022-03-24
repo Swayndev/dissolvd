@@ -6,12 +6,19 @@ import search_icon from "../../img/search_icon.png";
 import SearchBar from "../SearchBar/SearchBar";
 import "./Header.css";
 
-export const Header = ({ setQuery }) => {
+export const Header = ({ setQuery, query }) => {
+    
+    
+    
+    
+    
+    
     return (
         <div className="header-wrap">
             <header className="header">
                 {/* NAV BAR LOGOS */}
                 <div className="logo">
+                {/*  LOGO FOR BROWSER VERSION */}
                     <img
                         className="logo--big"
                         src={logobd}
@@ -25,16 +32,17 @@ export const Header = ({ setQuery }) => {
                 </div>
                 {/* NAV BAR DESKTOP */}
                 <div className="desktop open">
-                    <a className="desktop--item underline" href>
+                    <Link to="/" className="desktop--item underline" >home</Link>
+                    <Link to="/sign-in" className="desktop--item underline" href>
                         sign in
-                    </a>
-                    <a className="desktop--item underline" href>
+                    </Link>
+                    <Link to="/create-account" className="desktop--item underline" href>
                         create account
-                    </a>
-                    <a className="desktop--item underline" href>
+                    </Link>
+                    <Link to="/about-us" className="desktop--item underline" href>
                         about us
-                    </a>
-                    <SearchBar setQuery={setQuery} />
+                    </Link>
+                    <SearchBar setQuery={setQuery} query={query} />
                 </div>
                 {/* CHOCOLATE MENU */}
                 <div className="menu">

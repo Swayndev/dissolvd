@@ -1,0 +1,154 @@
+.create-wrap {
+    width: 100%;
+    margin: 0;
+}
+
+.create-header {
+    height: 50vh;
+    background-color: #ffbf17;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: "Gibroma", "Rubik";
+    font-size: 2rem;
+}
+
+.create-header h1 {
+    margin: 0;
+}
+
+.create-header button {
+    font-family: "Rubik", Helvetica, sans-serif;
+    margin: 0;
+    border-radius: 2rem;
+    background-color: #f71647;
+    border: none;
+    cursor: pointer;
+    color: #ffffff;
+    font-size: 1rem;
+    padding: 1rem 2rem;
+    margin-top: 2rem;
+    text-decoration: none;
+}
+
+.create-header button:hover {
+    background-color: #f64c72;
+}
+
+.create-goal {
+    height: 30vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.create-goal h3 {
+    font-family: "Gibroma", "Rubik";
+    font-size: 3rem;
+    margin: 0;
+}
+
+.create-goal p {
+    margin: 0;
+    width: 30%;
+    text-align: center;
+    font-size: 1rem;
+}
+
+.create-watch {
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 4rem 0rem;
+}
+
+.create-watch-heading p {
+    text-align: center;
+    font-size: 1.5rem;
+    margin: 0;
+    padding-bottom: 0.5rem;
+    font-weight: 100;
+}
+
+.create-watch-heading h3 {
+    text-align: center;
+    font-family: "Gibroma", "Rubik";
+    font-size: 3rem;
+    margin: 0;
+    border-bottom: 4px solid #46eaea;
+    line-height: 50px;
+}
+
+.create-watch-text {
+    margin: auto;
+    text-align: center;
+    font-size: 1.3rem;
+    width: 50%;
+    line-height: 2rem;
+}
+
+.create-watch {
+    height: 50%;
+}
+
+.create-post {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    width: 67.5%;
+}
+
+.create-post-text p:nth-child(1) {
+    text-align: left;
+    font-size: 1.5rem;
+    margin: 0;
+    padding-bottom: 0.5rem;
+    font-weight: 100;
+}
+
+.create-post-text h3 {
+    text-align: left;
+    font-family: "Gibroma", "Rubik";
+    font-size: 3rem;
+    margin: 0;
+    border-bottom: 4px solid #46eaea;
+    line-height: 50px;
+    width: 6rem;
+}
+
+.create-post-body {
+    display: flex;
+}
+
+.create-post-img {
+    height: 30rem;
+}
+
+.create-post-text {
+    padding: 0rem 1rem;
+    margin: 3rem 0rem;
+}
+
+.create-post-text p:nth-child(3) {
+    font-size: 1.3rem;
+    text-align: justify;
+}
+
+.create-post-text img {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    height: 5rem;
+    /* margin: auto; */
+}
+
+.create-post-text p:nth-child(5) {
+    font-size: 1.3rem;
+    text-align: left;
+}

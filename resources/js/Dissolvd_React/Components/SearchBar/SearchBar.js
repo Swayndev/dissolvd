@@ -3,8 +3,9 @@ import React from "react";
 import search_icon from "../../img/search_icon.png";
 
 
-const SearchBar = ({setQuery}) => {
+const SearchBar = ({setQuery, query}) => {
   
+
 
   return (
     <div className="desktop__search">
@@ -13,7 +14,7 @@ const SearchBar = ({setQuery}) => {
         type="text"
         placeholder="search..."
         autocomplete="off"
-        
+        value={query}
         onChange={(e) => setQuery(e.target.value || '')}
         name="text"
         required

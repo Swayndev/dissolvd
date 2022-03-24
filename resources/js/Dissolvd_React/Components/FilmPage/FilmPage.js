@@ -7,7 +7,14 @@ import "./FilmPage.css";
 import fakeposter from "../../img/fakeposter.png";
 import { useParams } from "react-router-dom";
 
-export const FilmPage = ({ apiKey, movieId }) => {
+export const FilmPage = ({
+    apiKey,
+    movieId,
+    movieResults,
+    displayResults,
+    setMovieId,
+    setQuery,
+}) => {
     // const apiKey = "f1206acdc6dd0ff0374585c4b4b936a1";
 
     const [movie, setMovie] = useState([]);
@@ -60,11 +67,15 @@ export const FilmPage = ({ apiKey, movieId }) => {
         <div>
             <div className="film-wrap">
                 <div className="film-backdrop-wrap">
-                    <div className="film-backdrop">
-                        <img
-                            src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`}
-                        ></img>
-                    </div>
+                    {movie.backdrop_path ? (
+                        <div className="film-backdrop">
+                            <img
+                                src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`}
+                            ></img>
+                        </div>
+                    ) : (
+                        <div className="film-backrop-filler"></div>
+                    )}
                 </div>
                 <div className="film-details-wrap">
                     {movie.poster_path ? (

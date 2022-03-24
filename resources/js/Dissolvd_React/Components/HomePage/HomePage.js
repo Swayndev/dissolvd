@@ -4,25 +4,23 @@ import { HomeIntro } from "./Home/HomeIntro";
 import { HomeGallery } from "./Home/HomeGallery";
 import { HomeExplain } from "./Home/HomeExplain";
 
-
 import SearchCard from "../Cards/SearchCard";
+import { CreateAccountPage } from "../CreateAccountPage/CreateAccountPage";
 
-const HomePage = ({ movieResults, displayResults, setMovieId }) => {
+const HomePage = ({ movieResults, displayResults, setMovieId, setQuery }) => {
     // console.log(results)
-
-    
 
     return (
         <main className="main">
-
             <div className="search-wrap">
                 <div className="search-card-wrap">
                     {displayResults &&
                         movieResults.map((movieResult) => (
                             <div key={movieResult.id}>
                                 <SearchCard
-                                movieResult={movieResult}
-                                setMovieId={setMovieId}
+                                    movieResult={movieResult}
+                                    setMovieId={setMovieId}
+                                    setQuery={setQuery}
                                 />
                             </div>
                         ))}

@@ -3,21 +3,20 @@ import { useNavigate } from "react-router-dom";
 import fakeposter from "../../img/fakeposter.png";
 import { FilmPage } from "../FilmPage/FilmPage";
 
-const SearchCard = ({ movieResult, setMovieId }) => {
+const SearchCard = ({ movieResult, setMovieId, setQuery }) => {
+    const navigate = useNavigate();
 
-  const navigate = useNavigate()
-    
-
-  return (
+    return (
         <div>
-            <div className="search-card"
-            key={movieResult.id}
-            onClick={
-
-              () => {navigate("/movie/"+ movieResult.id ), setMovieId(movieResult.id)} 
-              
-            
-          }>
+            <div
+                className="search-card"
+                key={movieResult.id}
+                onClick={() => {
+                    navigate("/movie/" + movieResult.id),
+                        setMovieId(movieResult.id),
+                        setQuery("");
+                }}
+            >
                 {movieResult.poster_path ? (
                     <div>
                         {/* DEFINE THE POSTER AS A LINK TO THE APPROPRIATE FILM PAGE*/}
@@ -42,7 +41,7 @@ const SearchCard = ({ movieResult, setMovieId }) => {
                         {movieResult.release_date ? (
                             <p>({movieResult.release_date.substring(0, 4)})</p>
                         ) : (
-                            <p>(No Release Date)</p>
+                            <p></p>
                         )}
                     </div>
                 </div>
