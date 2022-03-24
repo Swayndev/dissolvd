@@ -8,7 +8,7 @@ import HomePage from "./HomePage/HomePage";
 import { Footer } from "./Footer/Footer";
 import { FilmPage } from "./FilmPage/FilmPage";
 
-import SignUpPage from "./CreateAccountPage/CreateAccountPage";
+import SignUpPage, { CreateAccountPage } from "./CreateAccountPage/CreateAccountPage";
 
 const Body = () => {
     const apiKey = "f1206acdc6dd0ff0374585c4b4b936a1";
@@ -78,18 +78,23 @@ const Body = () => {
                             setMovieId={setMovieId}
                             setQuery={setQuery}
                             query={query}
-                    
-                    />}
+                        />
+                    }
                 />
 
-                
+                <Route 
+                    exact path="/create-account"
+                    element={ 
+                        <CreateAccountPage />
+                    }
+                />
+
+
+
+                {/* FOR FUTURE ROUTE  */}
             </Routes>
 
-            {/*
-            <Route
-                exact path="" 
-                 element
-              */}
+            
             <Footer />
         </div>
     );

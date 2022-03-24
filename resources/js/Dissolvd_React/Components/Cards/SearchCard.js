@@ -4,20 +4,19 @@ import fakeposter from "../../img/fakeposter.png";
 
 
 const SearchCard = ({ movieResult, setMovieId, setQuery }) => {
+    const navigate = useNavigate();
 
-  const navigate = useNavigate()
-    
-
-  return (
+    return (
         <div>
-            <div className="search-card"
-            key={movieResult.id}
-            onClick={
-
-              () => {navigate("/movie/"+ movieResult.id ), setMovieId(movieResult.id),
-                setQuery("")
-                }
-            }>
+            <div
+                className="search-card"
+                key={movieResult.id}
+                onClick={() => {
+                    navigate("/movie/" + movieResult.id),
+                        setMovieId(movieResult.id),
+                        setQuery("");
+                }}
+            >
                 {movieResult.poster_path ? (
                     <div>
                         {/* DEFINE THE POSTER AS A LINK TO THE APPROPRIATE FILM PAGE*/}
@@ -42,7 +41,7 @@ const SearchCard = ({ movieResult, setMovieId, setQuery }) => {
                         {movieResult.release_date ? (
                             <p>({movieResult.release_date.substring(0, 4)})</p>
                         ) : (
-                            <p>(No Release Date)</p>
+                            <p></p>
                         )}
                     </div>
                 </div>

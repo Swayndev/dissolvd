@@ -8,4 +8,9 @@ body {
   margin: auto;
 }
 
+@font-face {
+  font-family: "Gibroma";
+  src: local("Gibroma"), url(../fonts/Gibroma/Gibroma.woff) format("woff");
+}
+
 /*# sourceMappingURL=app.css.map*/

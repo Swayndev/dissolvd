@@ -10,9 +10,14 @@ import { CastCard } from "../Cards/CastCard";
 import { CrewCard } from "../Cards/CrewCard";
 import SearchResult from "../SearchResult/SearchResult";
 
-
-export const FilmPage = ({ apiKey, movieId, movieResults, displayResults, setMovieId, setQuery}) => {
-    
+export const FilmPage = ({
+    apiKey,
+    movieId,
+    movieResults,
+    displayResults,
+    setMovieId,
+    setQuery,
+}) => {
     // USESTATE AND FUNCTIONS SECTION
     const [movie, setMovie] = useState([]);
 
@@ -31,7 +36,6 @@ export const FilmPage = ({ apiKey, movieId, movieResults, displayResults, setMov
     // useParams hook HAS TO be used here to make sure the redirection is done towards the right movieResult.id coming from the API
     // const params = useParams();
 
-
     const [credits, setCredits] = useState({});
     // const params = useParams()
     // console.log(params)
@@ -46,7 +50,6 @@ export const FilmPage = ({ apiKey, movieId, movieResults, displayResults, setMov
         data && setCredits(data);
     };
 
-
     // USEEFFECT SECTION  ////////////////////////////////////
     useEffect(() => {
         if (movie.id) {
@@ -54,29 +57,30 @@ export const FilmPage = ({ apiKey, movieId, movieResults, displayResults, setMov
         }
     }, [movie]);
 
-
     // This will trigger the handleMovie function each time the page load and reload
     useEffect(() => {
         handleMovie();
     }, [movieId]);
 
     return (
-
         <div>
-
             <SearchResult
                 displayResults={displayResults}
                 movieResults={movieResults}
                 setMovieId={setMovieId}
-                setQuery={setQuery} 
+                setQuery={setQuery}
             />
             <div className="film-wrap">
                 <div className="film-backdrop-wrap">
-                    <div className="film-backdrop">
-                        <img
-                            src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`}
-                        ></img>
-                    </div>
+                    {movie.backdrop_path ? (
+                        <div className="film-backdrop">
+                            <img
+                                src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`}
+                            ></img>
+                        </div>
+                    ) : (
+                        <div className="film-backrop-filler"></div>
+                    )}
                 </div>
                 <div className="film-details-wrap">
                     {movie.poster_path ? (

@@ -1,0 +1,9 @@
+@font-face {
+    font-family: 'Gibroma';
+    src: url('Gibroma.woff2') format('woff2'),
+        url('Gibroma.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+

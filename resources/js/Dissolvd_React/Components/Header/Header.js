@@ -33,13 +33,16 @@ export const Header = ({ setQuery, query }) => {
                 {/* NAV BAR DESKTOP */}
                 <div className="desktop open">
                     <Link to="/" className="desktop--item underline" >home</Link>
-                    <Link to="/sign-in" className="desktop--item underline" href>
+
+                    <Link to="/sign-in" className="desktop--item underline" >
                         sign in
                     </Link>
-                    <Link to="/create-account" className="desktop--item underline" href>
+
+                    <Link to="/create-account" className="desktop--item underline" >
                         create account
                     </Link>
-                    <Link to="/about-us" className="desktop--item underline" href>
+                    
+                    <Link to="/about-us" className="desktop--item underline" >
                         about us
                     </Link>
                     <SearchBar setQuery={setQuery} query={query} />

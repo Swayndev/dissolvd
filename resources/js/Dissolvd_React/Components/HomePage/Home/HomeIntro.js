@@ -1,6 +1,8 @@
 import React from "react";
 import discuss from "../../../img/discuss.png";
 
+import { Link } from "react-router-dom";
+
 export const HomeIntro = () => {
   return (
     <div className="intro-wrap">
@@ -11,7 +13,18 @@ export const HomeIntro = () => {
             A better way to discuss film.
           </h1>
           <h2 className="intro__info--subtitle">Watch. Post. Discuss.</h2>
-          <button className="intro__info--btn">Get Started</button>
+          {/* 
+          ORIGINAL BUTTON DESIGNED BY JAYKE:
+          <button type="type" className="intro__info--btn">
+            Get Started
+          </button>
+        */}
+        <Link to="/create-account">
+          <button type="type" className="intro__info--btn">
+            Get Started
+          </button>
+        </Link>
+
         </div>
         <div className="intro__photo">
           <img

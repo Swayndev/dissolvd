@@ -5,28 +5,24 @@ import { HomeGallery } from "./Home/HomeGallery";
 // import { HomeExplain } from "./Home/HomeExplain";
 import SearchResult from "../SearchResult/SearchResult";
 
-
 import SearchCard from "../Cards/SearchCard";
+import { CreateAccountPage } from "../CreateAccountPage/CreateAccountPage";
 
 const HomePage = ({ movieResults, displayResults, setMovieId, setQuery }) => {
     
     
-
     return (
         <main className="main">
-
-            <SearchResult 
+            <SearchResult
                 displayResults={displayResults}
                 movieResults={movieResults}
                 setMovieId={setMovieId}
-                setQuery={setQuery} 
+                setQuery={setQuery}
             />
 
             <HomeIntro />
 
-            <HomeGallery 
-                setMovieId={setMovieId}
-            />
+            <HomeGallery setMovieId={setMovieId} />
         </main>
     );
 };
