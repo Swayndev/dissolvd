@@ -22,7 +22,7 @@ class FortifyServiceProvider extends ServiceProvider
     public function register()
     {
         // ADD THIS LINE OF CODE BELLOW
-        Fortify::ignoreRoutes();
+        // Fortify::ignoreRoutes();
     }
 
     /**
@@ -37,6 +37,8 @@ class FortifyServiceProvider extends ServiceProvider
         Fortify::updateUserPasswordsUsing(UpdateUserPassword::class);
         Fortify::resetUserPasswordsUsing(ResetUserPassword::class);
 
+
+        
         // ADD THIS LINE OF CODE BELLOW
         Fortify::viewPrefix('auth.');
 
