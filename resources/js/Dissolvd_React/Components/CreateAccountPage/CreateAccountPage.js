@@ -3,13 +3,16 @@ import "./CreateAccountPage.css";
 import watch from "../../img/watch.svg";
 import post from "../../img/post.svg";
 import stars from "../../img/stars.svg";
+import discussone from "../../img/discussone.svg";
+import discusstwo from "../../img/discusstwo.svg";
+import discussthree from "../../img/discussthree.svg";
 
 export const CreateAccountPage = () => {
     return (
         <div className="create-wrap">
             <div className="create-header">
                 <h1>How does it work?</h1>
-                <button>Already know?</button>
+                <button>Already know how?</button>
             </div>
             {/* <div className="create-goal">
                 <h3>Our goal</h3>
@@ -46,11 +49,41 @@ export const CreateAccountPage = () => {
                         <h3>Post</h3>
                         <p>
                             Now that you've seen the film, you should post about
-                            it! You can leave a review, a rating or simply
+                            it. You can leave a review, a rating or simply
                             declare that you have seen it.
                         </p>
                         <img src={stars}></img>
-                        <p>It's up to you!</p>
+                        <p>
+                            Once this is done, you're now able to see other
+                            users opinions and thoughts and can participate in
+                            the discussion.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div className="create-discuss">
+                <div className="create-discuss-heading">
+                    <p>step three</p>
+                    <h3>Discuss</h3>
+                </div>
+                <div className="create-discuss-body">
+                    <div className="create-discuss-card">
+                        <img src={discussone}></img>
+                        <p>Join the discussion with other film lovers.</p>
+                    </div>
+                    <div className="create-discuss-card">
+                        <img src={discusstwo}></img>
+                        <p>
+                            Share your thoughts with them, debate and discover
+                            new opinions.
+                        </p>
+                    </div>
+                    <div className="create-discuss-card">
+                        <img src={discussthree}></img>
+                        <p>
+                            And find new friends that love films just like you
+                            do.
+                        </p>
                     </div>
                 </div>
             </div>

@@ -1,6 +1,7 @@
 .create-wrap {
     width: 100%;
     margin: 0;
+    font-family: "Rubik", Helvetica, sans-serif;
 }
 
 .create-header {
@@ -63,7 +64,10 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin: 4rem 0rem;
+    width: 1080px;
+    margin: auto;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
 }
 
 .create-watch-heading p {
@@ -87,12 +91,8 @@
     margin: auto;
     text-align: center;
     font-size: 1.3rem;
-    width: 50%;
+    width: 70%;
     line-height: 2rem;
-}
-
-.create-watch {
-    height: 50%;
 }
 
 .create-post {
@@ -101,7 +101,9 @@
     justify-content: center;
     align-items: center;
     margin: auto;
-    width: 67.5%;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    width: 1010px;
 }
 
 .create-post-text p:nth-child(1) {
@@ -144,11 +146,54 @@
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    height: 5rem;
+    height: 3rem;
+    padding: 1rem 0rem;
     /* margin: auto; */
 }
 
 .create-post-text p:nth-child(5) {
     font-size: 1.3rem;
     text-align: left;
+}
+
+.create-discuss {
+    display: flex;
+    flex-direction: column;
+    width: 1000px;
+    margin: auto;
+    margin-top: 2rem;
+    margin-bottom: 4rem;
+}
+
+.create-discuss-heading {
+    padding-left: 2rem;
+}
+
+.create-discuss-heading p {
+    text-align: left;
+    font-size: 1.5rem;
+    margin: 0;
+    padding-bottom: 0.5rem;
+    font-weight: 100;
+}
+
+.create-discuss-heading h3 {
+    text-align: left;
+    font-family: "Gibroma", "Rubik";
+    font-size: 3rem;
+    margin: 0;
+    border-bottom: 4px solid #46eaea;
+    line-height: 50px;
+    width: 10.5rem;
+}
+
+.create-discuss-body {
+    display: flex;
+}
+
+.create-discuss-card p {
+    font-size: 1.3rem;
+    text-align: center;
+    width: 70%;
+    margin: auto;
 }

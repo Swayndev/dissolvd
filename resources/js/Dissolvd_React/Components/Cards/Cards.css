@@ -1,15 +1,18 @@
 .popular,
-.latest {
+.latest,
+.recommend {
     display: flex;
     flex-direction: column;
     margin: auto;
     text-align: left;
     font-size: 1.3rem;
+    margin-bottom: 2rem;
     width: 1080px;
 }
 
 .popular-heading,
-.latest-heading {
+.latest-heading,
+.recommend-heading {
     text-transform: uppercase;
     font-weight: 600;
     display: flex;
@@ -18,7 +21,8 @@
 }
 
 .popular-movie,
-.latest-movie {
+.latest-movie,
+.recommend-movie {
     display: flex;
     justify-content: space-between;
 }

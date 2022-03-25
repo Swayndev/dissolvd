@@ -18,23 +18,11 @@ body {
 
 .film-backdrop {
     margin: auto;
-    background-color: rgba(255, 190, 24, 1);
-    mask-image: linear-gradient(
-        to top,
-        rgba(255, 190, 24, 1),
-        rgba(0, 0, 0, 0)
-    );
+    /* background-color: rgba(255, 190, 24, 1); */
 }
 
 .film-backdrop img {
     width: 1080px;
-    padding-top: 1rem;
-
-    background: linear-gradient(
-        to top,
-        rgba(255, 190, 24, 1),
-        rgba(0, 0, 0, 0)
-    );
 }
 
 .film-details-wrap {
@@ -45,7 +33,7 @@ body {
     z-index: 1;
     position: relative;
     bottom: 13rem;
-    width: 700px;
+    width: 1080px;
 }
 
 .film-poster {
@@ -62,37 +50,36 @@ body {
 
 .film-heading {
     display: flex;
+    flex-direction: column;
     padding: 0rem 1rem;
 }
 
 .film-title {
     font-family: "Gibroma";
     display: flex;
-    justify-content: center;
-    align-items: flex-end;
+    text-align: left;
     letter-spacing: 0.1rem;
     font-size: 3rem;
     margin: 0;
-    padding: 1rem;
+    padding: 1rem 1rem 0.5rem 1rem;
 }
 
 .film-year {
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
+    text-align: left;
     margin: 0;
     font-size: 1.5rem;
-    padding-bottom: 2rem;
+    padding: 0.5rem 1rem 1rem 1rem;
 }
 
 .film-director {
     display: flex;
     flex-direction: column;
-    padding: 0rem 2rem;
+    padding: 0rem 1rem;
 }
 
 .film-director p {
     margin: 0;
+    padding: 0rem 1rem;
     font-size: 1.3rem;
 }
 
