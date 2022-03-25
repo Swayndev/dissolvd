@@ -128,14 +128,14 @@ export const CreateAccountPage = ({
                         <br />
                         <br />
 
-                        <label htmlFor="password-confirm">
+                        <label htmlFor="password_confirm">
                             Confirm password
                         </label>
                         <br />
                         <input
                             type="password"
-                            name="password-confirm"
-                            id="password-confirm"
+                            name="password_confirm"
+                            id="password_confirm"
                         />
                         <br />
                         <br />
