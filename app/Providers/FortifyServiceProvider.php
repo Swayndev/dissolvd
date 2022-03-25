@@ -22,8 +22,7 @@ class FortifyServiceProvider extends ServiceProvider
     public function register()
     {
         // ADD THIS LINE OF CODE BELLOW ACCORDING TO BOOTCAMPCLASS
-        Fortify::ignoreRoutes();
-
+        // Fortify::ignoreRoutes();
     }
 
     /**
@@ -39,13 +38,17 @@ class FortifyServiceProvider extends ServiceProvider
         Fortify::resetUserPasswordsUsing(ResetUserPassword::class);
 
         // ADD THIS LINE OF CODE BELLOW ACCORDING TO BOOTCAMPCLASS
-        // Fortify::viewPrefix('auth.');
 
+        // Fortify::viewPrefix('auth.');
 
         // Fortify::loginView('auth.login');
 
 
         // Fortify::registerView('auth.register');
+
+        Fortify::registerView(function () {
+            return view('auth.register');
+        });
 
 
         RateLimiter::for('login', function (Request $request) {

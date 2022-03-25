@@ -11,6 +11,7 @@ import discussthree from "../../img/discussthree.svg";
 
 // IMPORT COMPONENTS //
 import SearchResult from "../SearchResult/SearchResult";
+import axios from "axios";
 
 export const CreateAccountPage = ({ 
     displayResults, 
@@ -23,7 +24,7 @@ export const CreateAccountPage = ({
         email: "",
         username: "",
         password: "",
-        password_confirm: ""
+        password_confirmation: ""
 
     });
 
@@ -34,13 +35,9 @@ const handleSubmit = async(e) => {
 
 
     try {
-    const response = await axios.post('/login', {
-            email:registerData.email,
-            username:registerData.username,
-
-            password: registerData.password,
-            password_confirm: registerData.password_confirm,
-        });
+    const response = await axios.post('/register', registerData);
+        
+        console.log(response.data)
     } catch(error) {
         console.log(error); // information about the error
         console.log(error.response); // the response object from the failed request
@@ -188,13 +185,13 @@ console.log("this is register data", registerData)
                         />
                     <br/><br/>
 
-                    <label htmlFor="password_confirm">Confirm password</label>
+                    <label htmlFor="password_confirmation">Confirm password</label>
                         <br/>
                     <input
                         type="password"
-                        name="password_confirm"
-                        id="password_confirm"
-                        value={registerData.password_confirm}
+                        name="password_confirmation"
+                        id="password_confirmation"
+                        value={registerData.password_confirmation}
                         onChange={handleChange}
                         />
                     <br/><br/>

@@ -36,7 +36,7 @@ const Body = () => {
 
 
 
-    console.log(movieId)
+    // console.log(movieId)
 
     // FUNCTIONS AND LOGIC
     const handleSearch = async (e) => {
