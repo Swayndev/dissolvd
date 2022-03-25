@@ -8,7 +8,7 @@ import HomePage from "./HomePage/HomePage";
 import { Footer } from "./Footer/Footer";
 import { FilmPage } from "./FilmPage/FilmPage";
 
-import SignUpPage, { CreateAccountPage } from "./CreateAccountPage/CreateAccountPage";
+import { CreateAccountPage } from "./CreateAccountPage/CreateAccountPage";
 
 const Body = () => {
     const apiKey = "f1206acdc6dd0ff0374585c4b4b936a1";
@@ -59,8 +59,8 @@ const Body = () => {
                     exact path="/"
                     element={
                         <HomePage
-                            movieResults={movieResults}
                             displayResults={!!movieResults.length && query !== ""}
+                            movieResults={movieResults}
                             setMovieId={setMovieId}
                             setQuery={setQuery}
                         />
@@ -71,12 +71,12 @@ const Body = () => {
                     exact path="/movie/:id"
                     element={
                         <FilmPage
-                            movieId={movieId}
-                            apiKey={apiKey}
-                            movieResults={movieResults}
                             displayResults={!!movieResults.length && query !== ""}
+                            movieResults={movieResults}
                             setMovieId={setMovieId}
                             setQuery={setQuery}
+                            movieId={movieId}
+                            apiKey={apiKey}
                             query={query}
                         />
                     }
@@ -85,7 +85,12 @@ const Body = () => {
                 <Route 
                     exact path="/create-account"
                     element={ 
-                        <CreateAccountPage />
+                        <CreateAccountPage
+                            displayResults={!!movieResults.length && query !== ""}
+                            movieResults={movieResults}
+                            setMovieId={setMovieId}
+                            setQuery={setQuery}
+                        />
                     }
                 />
 

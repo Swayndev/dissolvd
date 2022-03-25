@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import fakeposter from "../../img/fakeposter.png";
 
 const SearchCard = ({ movieResult, setMovieId, setQuery }) => {
+    
     const navigate = useNavigate();
 
     return (

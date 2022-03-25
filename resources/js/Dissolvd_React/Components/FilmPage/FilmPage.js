@@ -1,5 +1,5 @@
 import React, { Fragment, useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import "./FilmPage.css";
@@ -17,7 +17,7 @@ export const FilmPage = ({
     movieResults,
     displayResults,
     setMovieId,
-    setQuery,
+    setQuery
 }) => {
     // HANDLE MOVIE //
 
@@ -84,13 +84,14 @@ export const FilmPage = ({
     }, [movieId]);
 
     return (
-        <div>
+        <Fragment>
             <SearchResult
                 displayResults={displayResults}
                 movieResults={movieResults}
                 setMovieId={setMovieId}
                 setQuery={setQuery}
             />
+
             <div className="film-wrap">
                 <div className="film-backdrop-wrap">
                     {movie.backdrop_path ? (
@@ -175,6 +176,6 @@ export const FilmPage = ({
                 </Tabs>
                 <RecommendCard recommend={recommend} setMovieId={setMovieId} />
             </div>
-        </div>
+        </Fragment>
     );
 };
