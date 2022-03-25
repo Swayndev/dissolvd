@@ -7,6 +7,7 @@ import { Header } from "./Header/Header";
 import HomePage from "./HomePage/HomePage";
 import { Footer } from "./Footer/Footer";
 import { FilmPage } from "./FilmPage/FilmPage";
+import SignInPage from "./SignInPage/SignInPage";
 
 import { CreateAccountPage } from "./CreateAccountPage/CreateAccountPage";
 
@@ -81,6 +82,15 @@ const Body = () => {
                         />
                     }
                 />
+                
+                <Route 
+                    exact path="/sign-in"
+                    element={
+                        <SignInPage
+                        />
+                    }
+                />
+
 
                 <Route 
                     exact path="/create-account"

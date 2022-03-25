@@ -38,7 +38,7 @@ class UserSeeder extends Seeder
                 'id' => 3,
                 'username' => 'ilya',
                 'password' => '12345',
-                'email' => 'ilya@gmail.com',
+                'email' => 'ilyamaeda@gmail.com',
                 'role' => 'admin'
             ]
 

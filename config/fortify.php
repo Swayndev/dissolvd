@@ -47,6 +47,7 @@ return [
     */
 
     'username' => 'email',
+    // We should probably change it to 'username' => 'username'
 
     'email' => 'email',
 
@@ -119,6 +120,7 @@ return [
     */
 
     'views' => true,
+    // true is set by default and we would surely need to set it to false
 
     /*
     |--------------------------------------------------------------------------
@@ -137,7 +139,7 @@ return [
         Features::updatePasswords(),
 
         Features::emailVerification(),
-        // Features::updateProfileInformation(),
+        Features::updateProfileInformation(),
         // Features::twoFactorAuthentication([
         //     // 'confirm' => true,
         //     'confirmPassword' => true,

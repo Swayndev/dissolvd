@@ -1,4 +1,4 @@
-import React from "react";
+import {useState}  from "react";
 import "./CreateAccountPage.css";
 
 
@@ -13,7 +13,47 @@ export const CreateAccountPage = ({
     setMovieId, 
     setQuery}) => {
    
-   
+    // HOOKS ==========================
+    const [registerData, setRegisterData] = useState({
+        email: "",
+        username: "",
+        password: "",
+        password_confirm: ""
+
+    });
+
+    // FUNCTIONS AND LOGIC ===============
+
+const handleSubmit = async(e) => {
+    e.preventDefault();
+
+
+    try {
+    const response = await axios.post('/login', {
+            email:registerData.email,
+            username:registerData.username,
+
+            password: registerData.password,
+            password_confirm: registerData.password_confirm,
+        });
+    } catch(error) {
+        console.log(error); // information about the error
+        console.log(error.response); // the response object from the failed request
+    }
+
+    // TO BE CONTINUED
+}
+
+
+// This code make sure that the email value of signInData is not defaultly set to "" when the user type in the password
+const handleChange = (e) => {
+    setRegisterData({...registerData,[e.target.name]: e.target.value});
+}
+
+console.log("this is register data", registerData)
+
+
+
     return (
         <div>
 
@@ -72,30 +112,56 @@ export const CreateAccountPage = ({
                         </div>
                     </div>
                 </div>
-            
-                <form action="" method="post">
-
+                
+                {/* We do not need action and method in this case */}
+                <form onSubmit={handleSubmit}>
+                    <br/>
                     <label htmlFor="email">Email</label>
                     <br/>
-                    <input type="email" name="email" id="email" />
+                    <input
+                        type="email"
+                        name="email"
+                        id="email"
+                        value={registerData.email}
+                        onChange={handleChange}
+                    />
                     <br/><br/>
 
                     <label htmlFor="username">Username</label>
                     <br/>
-                    <input type="text" name="username" id="username"/>
+                    <input
+                        type="text"
+                        name="username"
+                        id="username"
+                        value={registerData.username}
+                        onChange={handleChange}
+
+                        />
                     <br/><br/>
 
                     <label htmlFor="password">Create password</label>
-                    <br/>
-                    <input type="password" name="password" id="password"/>
+                        <br/>
+                    <input
+                        type="password"
+                        name="password"
+                        id="password"
+                        value={registerData.password}
+                        onChange={handleChange}
+                        />
                     <br/><br/>
 
-                    <label htmlFor="password-confirm">Confirm password</label>
-                    <br/>
-                    <input type="password" name="password-confirm" id="password-confirm"/>
+                    <label htmlFor="password_confirm">Confirm password</label>
+                        <br/>
+                    <input
+                        type="password"
+                        name="password_confirm"
+                        id="password_confirm"
+                        value={registerData.password_confirm}
+                        onChange={handleChange}
+                        />
                     <br/><br/>
 
-                    <button type="submit" value="submit" >Create account</button>
+                    <button >Create account</button>
 
                 </form>
 

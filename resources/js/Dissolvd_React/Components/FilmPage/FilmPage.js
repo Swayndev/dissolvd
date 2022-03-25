@@ -37,8 +37,7 @@ export const FilmPage = ({
     // const params = useParams();
 
     const [credits, setCredits] = useState({});
-    // const params = useParams()
-    // console.log(params)
+    
 
     const loadCredits = async () => {
         const creditsUrl = `https://api.themoviedb.org/3/movie/${movie.id}/credits?api_key=${apiKey}&language=en-US`;

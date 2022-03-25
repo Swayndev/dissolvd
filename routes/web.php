@@ -15,6 +15,12 @@ use Illuminate\Support\Facades\Route;
 
 
 
-Route::get('/', 'HomeController@index');
+Route::get('/{path?}', 'HomeController@index')->where('path', '.*');
+
+
+
+
+// ROUTE FOR EXAMPLE
+// Route::get('/', 'HomeController@index')->middleware('auth')->name('home');
 
 // Route::get('/movies', 'MovieController@index');
