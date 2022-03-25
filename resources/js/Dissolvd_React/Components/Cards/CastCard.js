@@ -15,7 +15,7 @@ export const CastCard = ({ credits }) => {
                             <>
                                 <img
                                     className="real-poster-person"
-                                    src={`https://image.tmdb.org/t/p/original${person.profile_path}`}
+                                    src={`https://image.tmdb.org/t/p/h632${person.profile_path}`}
                                     alt={`Picture of ${person.name}`}
                                 />
                             </>

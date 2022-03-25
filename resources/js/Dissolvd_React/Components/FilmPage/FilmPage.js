@@ -9,6 +9,7 @@ import fakeposter from "../../img/fakeposter.png";
 import { CastCard } from "../Cards/CastCard";
 import { CrewCard } from "../Cards/CrewCard";
 import SearchResult from "../SearchResult/SearchResult";
+import { RecommendCard } from "../Cards/RecommendCard";
 
 export const FilmPage = ({
     apiKey,
@@ -18,13 +19,12 @@ export const FilmPage = ({
     setMovieId,
     setQuery
 }) => {
-    // USESTATE AND FUNCTIONS SECTION
+    // HANDLE MOVIE //
+
     const [movie, setMovie] = useState([]);
 
     const handleMovie = async () => {
         const movieUrl = `https://api.themoviedb.org/3/movie/${movieId}?api_key=${apiKey}&language=en-US`;
-
-        // const movieUrlAdrien = `https://api.themoviedb.org/3/movie/${}?api_key=${apiKey}&language=en-US`;
 
         const response = await fetch(movieUrl);
 
@@ -33,11 +33,9 @@ export const FilmPage = ({
         data && setMovie(data);
     };
 
-    // useParams hook HAS TO be used here to make sure the redirection is done towards the right movieResult.id coming from the API
-    // const params = useParams();
+    // LOAD CREDITS //
 
     const [credits, setCredits] = useState({});
-    
 
     const loadCredits = async () => {
         const creditsUrl = `https://api.themoviedb.org/3/movie/${movie.id}/credits?api_key=${apiKey}&language=en-US`;
@@ -49,16 +47,40 @@ export const FilmPage = ({
         data && setCredits(data);
     };
 
-    // USEEFFECT SECTION  ////////////////////////////////////
+    // LOAD RECOMMENDED //
+
+    const [recommend, setRecommend] = useState([]);
+
+    const loadRecommend = async () => {
+        const recommendUrl = `https://api.themoviedb.org/3/movie/${movie.id}/recommendations?api_key=${apiKey}&language=en-US&page=1`;
+
+        const response = await fetch(recommendUrl);
+
+        const data = await response.json();
+
+        data && setRecommend(data.results);
+    };
+
+    // USEEFFECT SECTION  //
+
+    useEffect(() => {
+        handleMovie();
+    }, [movieId]);
+
     useEffect(() => {
         if (movie.id) {
             loadCredits();
         }
     }, [movie]);
 
-    // This will trigger the handleMovie function each time the page load and reload
     useEffect(() => {
-        handleMovie();
+        if (movie.id) {
+            loadRecommend();
+        }
+    }, [movie]);
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
     }, [movieId]);
 
     return (
@@ -88,7 +110,7 @@ export const FilmPage = ({
                             {/* DEFINE THE POSTER AS A LINK TO THE APPROPRIATE FILM PAGE*/}
                             <img
                                 className="real-poster-search"
-                                src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
+                                src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
                                 alt={`${movie.title} Poster`}
                             />
                         </div>
@@ -152,6 +174,7 @@ export const FilmPage = ({
                         </Fragment>
                     )}
                 </Tabs>
+                <RecommendCard recommend={recommend} setMovieId={setMovieId} />
             </div>
         </Fragment>
     );
