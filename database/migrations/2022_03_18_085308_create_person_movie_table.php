@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('movie_person', function (Blueprint $table) {
             $table->foreignId('movie_id');
             $table->foreignId('people_id');
+
             $table->boolean('is_cast');
             $table->string('job');
             $table->string('character');

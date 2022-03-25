@@ -47,7 +47,6 @@ return [
     */
 
     'username' => 'email',
-    // We should probably change it to 'username' => 'username'
 
     'email' => 'email',
 
