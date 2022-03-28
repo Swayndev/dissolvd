@@ -38,7 +38,8 @@ const handleSubmit = async(e) => {
     const response = await axios.post('/register', registerData);
         
         
-        console.log('this is reponse.data', response.data)
+        console.log('this is reponse', response)
+        alert(response.statusText);
         
     } catch(error) {
         // console.log(error); // information about the error
@@ -152,8 +153,8 @@ const myRef = useRef(null);
                         onSubmit={handleSubmit}
                         className="create-form"
                         ref={myRef}
-                        action=""
-                        method="post"
+                        // action=""
+                        // method="post"
                     >
                         <label htmlFor="email"></label>
                         <input
@@ -184,11 +185,11 @@ const myRef = useRef(null);
                             value={registerData.password}
                             onChange={handleChange}
                         />
-                        <label htmlFor="password_confirm"></label>
+                        <label htmlFor="password_confirmation"></label>
                         <input
                             type="password"
-                            name="password_confirm"
-                            id="password_confirm"
+                            name="password_confirmation"
+                            id="password_confirmation"
                             placeholder="Confirm password"
                             value={registerData.password_confirmation}
                             onChange={handleChange}
