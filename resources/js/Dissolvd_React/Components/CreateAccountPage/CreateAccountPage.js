@@ -142,12 +142,12 @@ export const CreateAccountPage = ({
                             id="password"
                             placeholder="Password"
                         />
-                        <label htmlFor="password-confirm"></label>
+                        <label htmlFor="password_confirm"></label>
                         <input
                             type="password"
-                            name="password-confirm"
-                            id="password-confirm"
-                            placeholder="Confirm Password"
+                            name="password_confirm"
+                            id="password_confirm"
+                            placeholder="Confirm password"
                         />
 
                         <button
