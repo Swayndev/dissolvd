@@ -12,8 +12,6 @@ import joinus from "../../img/joinus.svg";
 
 // IMPORT COMPONENTS //
 import SearchResult from "../SearchResult/SearchResult";
-import Snackbar from "@mui/material/Snackbar";
-import Alert from "@mui/material/Alert";
 
 export const CreateAccountPage = ({
     displayResults,
@@ -23,16 +21,6 @@ export const CreateAccountPage = ({
 }) => {
     const myRef = useRef(null);
     const executeScroll = () => myRef.current.scrollIntoView();
-
-    const [successAlert, setSuccessAlert] = useState(false);
-
-    const handleSuccessAlert = () => {
-        setSuccessAlert(true);
-    };
-
-    const handleSuccessAlertClose = () => {
-        setSucesstAlert(false);
-    };
 
     return (
         <>
@@ -154,26 +142,12 @@ export const CreateAccountPage = ({
                             className="create-form-btn"
                             type="submit"
                             value="submit"
-                            onClick={handleSuccessAlert}
                         >
                             Create account
                         </button>
                     </form>
                 </div>
             </div>
-            <Snackbar
-                open={successAlert}
-                autoHideDuration={3000}
-                onClose={handleSuccessAlertClose}
-            >
-                <Alert
-                    severity="success"
-                    sx={{ width: "100%" }}
-                    onClose={handleSuccessAlertClose}
-                >
-                    {`Account creation successful!`}
-                </Alert>
-            </Snackbar>
         </>
     );
 };
