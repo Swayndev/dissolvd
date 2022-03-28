@@ -4,7 +4,7 @@ import { ResultCard } from "./ResultCard";
 import Carousel from "react-elastic-carousel";
 import "./Cards.css";
 
-const LatestCards = ({setMovieId}) => {
+const LatestCards = () => {
 
 
   const apiKey = "f1206acdc6dd0ff0374585c4b4b936a1";
@@ -39,7 +39,6 @@ const LatestCards = ({setMovieId}) => {
               <div key={movie.id}>
                 <ResultCard 
                 movie={movie} 
-                setMovieId={setMovieId}
                 />
               </div>
             ))}

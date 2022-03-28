@@ -8,4 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class User_Movie extends Model
 {
     use HasFactory;
+
+
+    
 }

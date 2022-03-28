@@ -12,13 +12,47 @@ import joinus from "../../img/joinus.svg";
 
 // IMPORT COMPONENTS //
 import SearchResult from "../SearchResult/SearchResult";
+import axios from "axios";
 
 export const CreateAccountPage = ({
     displayResults,
     movieResults,
-    setMovieId,
     setQuery,
 }) => {
+    // HOOKS ==========================
+    const [registerData, setRegisterData] = useState({
+        email: "",
+        username: "",
+        password: "",
+        password_confirmation: "",
+    });
+
+    // FUNCTIONS AND LOGIC ===============
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        try {
+            const response = await axios.post("/register", registerData);
+
+            console.log("this is reponse", response);
+            alert(response.statusText);
+        } catch (error) {
+            // console.log(error); // information about the error
+            console.log("this is error.response.data", error.response.data); // the response object from the failed request
+            alert(error.response.data.message);
+        }
+
+        // TO BE CONTINUED
+    };
+
+    // This code make sure that the email value of signInData is not defaultly set to "" when the user type in the password
+    const handleChange = (e) => {
+        setRegisterData({ ...registerData, [e.target.name]: e.target.value });
+    };
+
+    console.log("this is register data", registerData);
+
     const myRef = useRef(null);
     const executeScroll = () => myRef.current.scrollIntoView();
 
@@ -27,7 +61,6 @@ export const CreateAccountPage = ({
             <SearchResult
                 displayResults={displayResults}
                 movieResults={movieResults}
-                setMovieId={setMovieId}
                 setQuery={setQuery}
             />
 
@@ -73,6 +106,7 @@ export const CreateAccountPage = ({
                         </div>
                     </div>
                 </div>
+
                 <div className="create-discuss">
                     <div className="create-discuss-heading">
                         <p>step three</p>
@@ -101,11 +135,13 @@ export const CreateAccountPage = ({
                 </div>
                 <div className="create-form-wrap">
                     <img src={joinus}></img>
+
                     <form
+                        onSubmit={handleSubmit}
                         className="create-form"
                         ref={myRef}
-                        action=""
-                        method="post"
+                        // action=""
+                        // method="post"
                     >
                         <label htmlFor="email"></label>
                         <input
@@ -113,6 +149,8 @@ export const CreateAccountPage = ({
                             name="email"
                             id="email"
                             placeholder="Email"
+                            value={registerData.email}
+                            onChange={handleChange}
                         />
 
                         <label htmlFor="username"></label>
@@ -121,6 +159,8 @@ export const CreateAccountPage = ({
                             name="username"
                             id="username"
                             placeholder="Username"
+                            value={registerData.username}
+                            onChange={handleChange}
                         />
 
                         <label htmlFor="password"></label>
@@ -129,13 +169,17 @@ export const CreateAccountPage = ({
                             name="password"
                             id="password"
                             placeholder="Password"
+                            value={registerData.password}
+                            onChange={handleChange}
                         />
-                        <label htmlFor="password_confirm"></label>
+                        <label htmlFor="password_confirmation"></label>
                         <input
                             type="password"
-                            name="password_confirm"
-                            id="password_confirm"
+                            name="password_confirmation"
+                            id="password_confirmation"
                             placeholder="Confirm password"
+                            value={registerData.password_confirmation}
+                            onChange={handleChange}
                         />
 
                         <button

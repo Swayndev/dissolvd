@@ -5,19 +5,17 @@ import { HomeGallery } from "./Home/HomeGallery";
 import SearchResult from "../SearchResult/SearchResult";
 import { ProfilePage } from "../ProfilePage/ProfilePage";
 
-const HomePage = ({ movieResults, displayResults, setMovieId, setQuery }) => {
+const HomePage = ({ movieResults, displayResults }) => {
     return (
         <main className="main">
             <SearchResult
                 displayResults={displayResults}
                 movieResults={movieResults}
-                setMovieId={setMovieId}
-                setQuery={setQuery}
             />
 
             <HomeIntro />
 
-            <HomeGallery setMovieId={setMovieId} />
+            <HomeGallery  />
         </main>
     );
 };

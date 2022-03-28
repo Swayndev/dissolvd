@@ -118,7 +118,8 @@ return [
     |
     */
 
-    'views' => true,
+    'views' => false,
+    // true is set by default and we would surely need to set it to false
 
     /*
     |--------------------------------------------------------------------------
