@@ -7,7 +7,6 @@ import SearchCard from '../Cards/SearchCard';
 const SearchResult = ({
     displayResults, 
     movieResults, 
-    setMovieId, 
     setQuery,
     }) => {
   
@@ -22,7 +21,6 @@ const SearchResult = ({
                         <div key={movieResult.id}>
                             <SearchCard
                                 movieResult={movieResult}
-                                setMovieId={setMovieId}
                                 setQuery={setQuery}
                             />
                         </div>

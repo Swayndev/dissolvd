@@ -22,10 +22,8 @@ import { useParams } from "react-router-dom";
 
 export const FilmPage = ({
     apiKey,
-    movieId,
     movieResults,
     displayResults,
-    setMovieId,
     setQuery,
 }) => {
     // HANDLE MOVIE //
@@ -79,7 +77,7 @@ export const FilmPage = ({
 
     useEffect(() => {
         handleMovie();
-    }, [movieId, params.id]);
+    }, [params.id]);
 
     useEffect(() => {
         if (movie.id) {
@@ -95,7 +93,7 @@ export const FilmPage = ({
 
     useEffect(() => {
         window.scrollTo(0, 0);
-    }, [movieId, params.id]);
+    }, [params.id]);
 
     // MODAL //
 
@@ -126,7 +124,6 @@ export const FilmPage = ({
             <SearchResult
                 displayResults={displayResults}
                 movieResults={movieResults}
-                setMovieId={setMovieId}
                 setQuery={setQuery}
             />
 
@@ -289,7 +286,6 @@ export const FilmPage = ({
                 </Tabs>
                 <RecommendCard
                     recommend={recommend}
-                    setMovieId={setMovieId}
                     movie={movie}
                 />
             </div>

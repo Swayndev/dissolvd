@@ -17,7 +17,6 @@ import axios from "axios";
 export const CreateAccountPage = ({ 
     displayResults, 
     movieResults, 
-    setMovieId, 
     setQuery}) => {
    
     // HOOKS ==========================
@@ -73,7 +72,6 @@ const myRef = useRef(null);
             <SearchResult
                 displayResults={displayResults}
                 movieResults={movieResults}
-                setMovieId={setMovieId}
                 setQuery={setQuery}
             />
 

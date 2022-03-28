@@ -4,7 +4,7 @@ import { ResultCard } from "./ResultCard";
 import Carousel from "react-elastic-carousel";
 import "./Cards.css";
 
-export const RecommendCard = ({ recommend, setMovieId, movie }) => {
+export const RecommendCard = ({ recommend, movie }) => {
     const breakPoints = [{ itemsToShow: 4 }];
 
     return (
@@ -20,7 +20,6 @@ export const RecommendCard = ({ recommend, setMovieId, movie }) => {
                             <div key={movie.id}>
                                 <ResultCard
                                     movie={movie}
-                                    setMovieId={setMovieId}
                                 />
                             </div>
                         ))}

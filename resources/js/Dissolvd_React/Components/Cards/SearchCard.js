@@ -2,7 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import fakeposter from "../../img/fakeposter.png";
 
-const SearchCard = ({ movieResult, setMovieId, setQuery }) => {
+const SearchCard = ({ movieResult, setQuery }) => {
     
     const navigate = useNavigate();
 
@@ -13,7 +13,6 @@ const SearchCard = ({ movieResult, setMovieId, setQuery }) => {
                 key={movieResult.id}
                 onClick={() => {
                     navigate("/movie/" + movieResult.id),        
-                        setMovieId(movieResult.id),
                         setQuery("");
                 }}
             >

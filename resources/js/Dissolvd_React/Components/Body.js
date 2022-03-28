@@ -22,8 +22,6 @@ const Body = () => {
 
     const [movieResults, setMovieResults] = useState([]);
 
-    const [movieId, setMovieId] = useState(550);
-
     // DO NOT FORGET TO DISPLAY ERROR MESSAGE IF TITLE DOES NOT EXIST OR IF LOADING TIME IS SLOW\
     const [errorMessage, setErrorMessage] = useState([]);
 
@@ -38,9 +36,6 @@ const Body = () => {
             setMovieResults([]);
         }
     }, [query]);
-
-
-    // console.log(movieId)
 
     // FUNCTIONS AND LOGIC
     const handleSearch = async (e) => {
@@ -70,7 +65,6 @@ const Body = () => {
                                 !!movieResults.length && query !== ""
                             }
                             movieResults={movieResults}
-                            setMovieId={setMovieId}
                             setQuery={setQuery}
                         />
                     }
@@ -85,9 +79,7 @@ const Body = () => {
                                 !!movieResults.length && query !== ""
                             }
                             movieResults={movieResults}
-                            setMovieId={setMovieId}
                             setQuery={setQuery}
-                            movieId={movieId}
                             apiKey={apiKey}
                             query={query}
                         />
@@ -112,7 +104,6 @@ const Body = () => {
                                 !!movieResults.length && query !== ""
                             }
                             movieResults={movieResults}
-                            setMovieId={setMovieId}
                             setQuery={setQuery}
                         />
                     }
