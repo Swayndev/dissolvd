@@ -1,12 +1,13 @@
 import axios from 'axios';
 import {useState, useContext } from 'react'
-import "./LoginModal.css";
-import { Link, useNavigate } from "react-router-dom";
 import { UserContext } from '../../../../context/context';
+import { Link, useNavigate } from "react-router-dom";
+import "./LoginModal.css";
 
 
 const LoginModal = () => {
 
+    // CONTEXT
     const { setUser } = useContext(UserContext);
 
     // HOOKS ==========================
@@ -28,7 +29,8 @@ const handleSubmit = async(e) => {
             email:signInData.email,
             password: signInData.password,
         });
-        console.log('THIS IS response.data it contains user data',response.data)
+
+        console.log('This is response.data it contains user data',response.data)
 
         setUser(response.data)
 
