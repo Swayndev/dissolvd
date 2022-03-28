@@ -3,7 +3,7 @@
 }
 
 .profile-header {
-    height: 40vh;
+    height: 30vh;
     background-color: #ffbf17;
     z-index: -1;
 }
@@ -44,6 +44,16 @@
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
     display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.css-w8dmq8 {
+    position: relative;
+    bottom: 4.5rem;
+}
+
+.css-heg063-MuiTabs-flexContainer {
     justify-content: center;
     align-items: center;
 }

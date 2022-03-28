@@ -16,19 +16,17 @@ import axios from "axios";
 import { UserContext } from "../../../context/context";
 import { useNavigate } from "react-router-dom";
 
-export const CreateAccountPage = ({ 
-    displayResults, 
-    movieResults, 
-    setMovieId, 
-    setQuery}) => {
-   
+export const CreateAccountPage = ({
+    displayResults,
+    movieResults,
+    setQuery,
+}) => {
     // HOOKS ==========================
     const [registerData, setRegisterData] = useState({
         email: "",
         username: "",
         password: "",
-        password_confirmation: ""
-
+        password_confirmation: "",
     });
     
     const navigate = useNavigate();
@@ -36,8 +34,8 @@ export const CreateAccountPage = ({
     const { user, setUser } = useContext(UserContext);
     // FUNCTIONS AND LOGIC ===============
 
-const handleSubmit = async(e) => {
-    e.preventDefault();
+    const handleSubmit = async (e) => {
+        e.preventDefault();
 
     try {
     const response = await axios.post('/register', registerData);
@@ -53,25 +51,17 @@ const handleSubmit = async(e) => {
         alert(error.response.data.message)
     }
 
-    // TO BE CONTINUED
-}
+        // TO BE CONTINUED
+    };
 
+    // This code make sure that the email value of signInData is not defaultly set to "" when the user type in the password
+    const handleChange = (e) => {
+        setRegisterData({ ...registerData, [e.target.name]: e.target.value });
+    };
 
-// This code make sure that the email value of signInData is not defaultly set to "" when the user type in the password
-const handleChange = (e) => {
-    setRegisterData(
-        {...registerData,
-        [e.target.name]: e.target.value}
-    );
-}
+    console.log("this is register data", registerData);
 
-console.log("this is register data", registerData)
-
-
-
-
-
-const myRef = useRef(null);
+    const myRef = useRef(null);
     const executeScroll = () => myRef.current.scrollIntoView();
 
     return (
@@ -79,7 +69,6 @@ const myRef = useRef(null);
             <SearchResult
                 displayResults={displayResults}
                 movieResults={movieResults}
-                setMovieId={setMovieId}
                 setQuery={setQuery}
             />
 
@@ -125,7 +114,7 @@ const myRef = useRef(null);
                         </div>
                     </div>
                 </div>
-                
+
                 <div className="create-discuss">
                     <div className="create-discuss-heading">
                         <p>step three</p>
@@ -211,7 +200,6 @@ const myRef = useRef(null);
                     </form>
                 </div>
             </div>
-            
         </>
     );
 };

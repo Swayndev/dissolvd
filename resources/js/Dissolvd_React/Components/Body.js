@@ -1,6 +1,6 @@
 import { useState, useEffect, useContext } from "react";
 
-import { Routes, Route, Link } from "react-router-dom";
+import { Routes, Route, Link, useNavigate, useParams } from "react-router-dom";
 
 // importing components that display in the body
 import { Header } from "./Header/Header";
@@ -15,15 +15,13 @@ import axios from "axios";
 
 const Body = () => {
     const apiKey = "f1206acdc6dd0ff0374585c4b4b936a1";
-
+    const params = useParams()
     // ============ FETCH HOME =================
     // REACT HOOKS
 
     const [query, setQuery] = useState("");
 
     const [movieResults, setMovieResults] = useState([]);
-
-    const [movieId, setMovieId] = useState(550);
 
     // DO NOT FORGET TO DISPLAY ERROR MESSAGE IF TITLE DOES NOT EXIST OR IF LOADING TIME IS SLOW\
     const [errorMessage, setErrorMessage] = useState([]);
@@ -46,6 +44,7 @@ const Body = () => {
     }, []) */
 
     /* console.log(user) */
+    
     useEffect(() => {
         if (query !== "") {
             handleSearch();
@@ -53,9 +52,6 @@ const Body = () => {
             setMovieResults([]);
         }
     }, [query]);
-
-
-    // console.log(movieId)
 
     // FUNCTIONS AND LOGIC
     const handleSearch = async (e) => {
@@ -86,7 +82,6 @@ const Body = () => {
                                 !!movieResults.length && query !== ""
                             }
                             movieResults={movieResults}
-                            setMovieId={setMovieId}
                             setQuery={setQuery}
                         />
                     }
@@ -101,9 +96,7 @@ const Body = () => {
                                 !!movieResults.length && query !== ""
                             }
                             movieResults={movieResults}
-                            setMovieId={setMovieId}
                             setQuery={setQuery}
-                            movieId={movieId}
                             apiKey={apiKey}
                             query={query}
                         />
@@ -128,7 +121,6 @@ const Body = () => {
                                 !!movieResults.length && query !== ""
                             }
                             movieResults={movieResults}
-                            setMovieId={setMovieId}
                             setQuery={setQuery}
                         />
                     }

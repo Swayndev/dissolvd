@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import fakeposter from "../../img/fakeposter.png";
 import "./Cards.css";
 
-export const ResultCard = ({ movie, setMovieId }) => {
+export const ResultCard = ({ movie }) => {
 
   const navigate = useNavigate()
 
@@ -12,8 +12,7 @@ export const ResultCard = ({ movie, setMovieId }) => {
       key={movie.id}
       onClick={
 
-        () => {navigate("/movie/"+ movie.id ), setMovieId(movie.id)
-        }          
+        () => {navigate("/movie/"+ movie.id )}          
       }>
 
       {movie.poster_path ? (
