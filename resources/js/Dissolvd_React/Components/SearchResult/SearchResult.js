@@ -8,7 +8,8 @@ const SearchResult = ({
     displayResults, 
     movieResults, 
     setMovieId, 
-    setQuery }) => {
+    setQuery,
+    }) => {
   
   
   

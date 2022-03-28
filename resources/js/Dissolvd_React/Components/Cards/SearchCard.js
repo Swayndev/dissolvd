@@ -12,7 +12,7 @@ const SearchCard = ({ movieResult, setMovieId, setQuery }) => {
                 className="search-card"
                 key={movieResult.id}
                 onClick={() => {
-                    navigate("/movie/" + movieResult.id),
+                    navigate("/movie/" + movieResult.id),        
                         setMovieId(movieResult.id),
                         setQuery("");
                 }}

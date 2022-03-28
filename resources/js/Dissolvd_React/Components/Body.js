@@ -1,6 +1,6 @@
 import { useState, useEffect, useContext } from "react";
 
-import { Routes, Route, Link } from "react-router-dom";
+import { Routes, Route, Link, useNavigate, useParams } from "react-router-dom";
 
 // importing components that display in the body
 import { Header } from "./Header/Header";
@@ -14,7 +14,7 @@ import { createContext } from "react/cjs/react.production.min";
 
 const Body = () => {
     const apiKey = "f1206acdc6dd0ff0374585c4b4b936a1";
-
+    const params = useParams()
     // ============ FETCH HOME =================
     // REACT HOOKS
 
@@ -29,7 +29,6 @@ const Body = () => {
 
     // trying to implement usecontext
     const AppInfoContext = createContext();
-
 
 
     useEffect(() => {

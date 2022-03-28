@@ -18,6 +18,7 @@ import { CastCard } from "../Cards/CastCard";
 import { CrewCard } from "../Cards/CrewCard";
 import SearchResult from "../SearchResult/SearchResult";
 import { RecommendCard } from "../Cards/RecommendCard";
+import { useParams } from "react-router-dom";
 
 export const FilmPage = ({
     apiKey,
@@ -29,10 +30,15 @@ export const FilmPage = ({
 }) => {
     // HANDLE MOVIE //
 
+    const params = useParams()
+
+    console.log(params);
+    
+
     const [movie, setMovie] = useState([]);
 
     const handleMovie = async () => {
-        const movieUrl = `https://api.themoviedb.org/3/movie/${movieId}?api_key=${apiKey}&language=en-US`;
+        const movieUrl = `https://api.themoviedb.org/3/movie/${params.id}?api_key=${apiKey}&language=en-US`;
 
         const response = await fetch(movieUrl);
 
@@ -46,7 +52,7 @@ export const FilmPage = ({
     const [credits, setCredits] = useState({});
 
     const loadCredits = async () => {
-        const creditsUrl = `https://api.themoviedb.org/3/movie/${movie.id}/credits?api_key=${apiKey}&language=en-US`;
+        const creditsUrl = `https://api.themoviedb.org/3/movie/${params.id}/credits?api_key=${apiKey}&language=en-US`;
 
         const response = await fetch(creditsUrl);
 
@@ -60,7 +66,7 @@ export const FilmPage = ({
     const [recommend, setRecommend] = useState([]);
 
     const loadRecommend = async () => {
-        const recommendUrl = `https://api.themoviedb.org/3/movie/${movie.id}/recommendations?api_key=${apiKey}&language=en-US&page=1`;
+        const recommendUrl = `https://api.themoviedb.org/3/movie/${params.id}/recommendations?api_key=${apiKey}&language=en-US&page=1`;
 
         const response = await fetch(recommendUrl);
 
@@ -68,28 +74,28 @@ export const FilmPage = ({
 
         data && setRecommend(data.results);
     };
-
+    
     // USEEFFECT SECTION  //
 
     useEffect(() => {
         handleMovie();
-    }, [movieId]);
+    }, [movieId, params.id]);
 
     useEffect(() => {
         if (movie.id) {
             loadCredits();
         }
-    }, [movie]);
+    }, [movie, params.id]);
 
     useEffect(() => {
         if (movie.id) {
             loadRecommend();
         }
-    }, [movie]);
+    }, [movie, params.id]);
 
     useEffect(() => {
         window.scrollTo(0, 0);
-    }, [movieId]);
+    }, [movieId, params.id]);
 
     // MODAL //
 
