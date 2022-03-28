@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useContext, useRef, useState } from "react";
 import "./CreateAccountPage.css";
 
 // IMAGES //
@@ -13,6 +13,8 @@ import joinus from "../../img/joinus.svg";
 // IMPORT COMPONENTS //
 import SearchResult from "../SearchResult/SearchResult";
 import axios from "axios";
+import { UserContext } from "../../../context/context";
+import { useNavigate } from "react-router-dom";
 
 export const CreateAccountPage = ({ 
     displayResults, 
@@ -28,7 +30,10 @@ export const CreateAccountPage = ({
         password_confirmation: ""
 
     });
+    
+    const navigate = useNavigate();
 
+    const { user, setUser } = useContext(UserContext);
     // FUNCTIONS AND LOGIC ===============
 
 const handleSubmit = async(e) => {
@@ -37,9 +42,10 @@ const handleSubmit = async(e) => {
     try {
     const response = await axios.post('/register', registerData);
         
+        setUser(response.data)
+        console.log('this is reponse', response.data)
         
-        console.log('this is reponse', response)
-        alert(response.statusText);
+        navigate('/')
         
     } catch(error) {
         // console.log(error); // information about the error

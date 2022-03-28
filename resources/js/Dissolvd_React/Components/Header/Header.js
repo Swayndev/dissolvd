@@ -1,11 +1,12 @@
-import React from "react";
+import React, { Fragment, useContext } from "react";
 import { Link } from "react-router-dom";
 import logobd from "../../img/logobd.svg";
 import SearchBar from "../SearchBar/SearchBar";
 import Modal from "react-modal";
 import "./Header.css";
 import { useState } from "react";
-import { SignInModal } from "./SignInModal/SignInModal";
+import LoginModal from "./LoginModal/LoginModal";
+import { UserContext } from "../../../context/context";
 
 export const Header = ({ setQuery, query }) => {
     const [modalIsOpen, setIsOpen] = useState(false);
@@ -17,6 +18,11 @@ export const Header = ({ setQuery, query }) => {
     function closeModal() {
         setIsOpen(false);
     }
+
+    const { user } = useContext(UserContext)
+
+    // console.log('this is user', user)
+
     return (
         <div className="header-wrap">
             <header className="header">
@@ -36,24 +42,35 @@ export const Header = ({ setQuery, query }) => {
                     <Link to="/" className="desktop--item underline">
                         home
                     </Link>
-                    <a onClick={openModal} className="desktop--item underline">
-                        sign in
-                    </a>
-                    <Modal
-                        isOpen={modalIsOpen}
-                        onRequestClose={closeModal}
-                        contentLabel="Example Modal"
-                        className="sign-in-modal"
-                    >
-                        <SignInModal />
-                    </Modal>
+                    {
+                        !user &&
+                        <Fragment>
+                        
+                        
+                            <a onClick={openModal} className="desktop--item underline">
+                                Log in
+                            </a>
+                            <Modal
+                                isOpen={modalIsOpen}
+                                onRequestClose={closeModal}
+                                contentLabel="Example Modal"
+                                className="sign-in-modal"
+                            >
 
-                    <Link
-                        to="/create-account"
-                        className="desktop--item underline"
-                    >
-                        get started
-                    </Link>
+                                <LoginModal />
+
+
+                            </Modal>
+
+                            <Link
+                                to="/register"
+                                className="desktop--item underline"
+                            >
+                                register
+                            </Link>
+                        
+                        </Fragment>
+                    }
 
                     <Link to="/about-us" className="desktop--item underline">
                         about us

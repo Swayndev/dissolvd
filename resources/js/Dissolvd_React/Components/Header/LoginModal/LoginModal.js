@@ -1,15 +1,22 @@
 import axios from 'axios';
-import React, {useState} from 'react'
+import {useState, useContext } from 'react'
+import "./LoginModal.css";
+import { Link, useNavigate } from "react-router-dom";
+import { UserContext } from '../../../../context/context';
 
 
-const SignInPage = () => {
+const LoginModal = () => {
 
-  // HOOKS ==========================
+    const { setUser } = useContext(UserContext);
+
+    // HOOKS ==========================
     const [signInData, setSignInData] = useState({
         email: "",
         password: "",
     });
 
+    const navigate = useNavigate()
+    
   // FUNCTIONS AND LOGIC ===============
 
 const handleSubmit = async(e) => {
@@ -21,6 +28,11 @@ const handleSubmit = async(e) => {
             email:signInData.email,
             password: signInData.password,
         });
+        console.log('THIS IS response.data it contains user data',response.data)
+
+        setUser(response.data)
+
+        navigate('/')
         
     } catch(error) {
         if (error.response.status == 500) {
@@ -34,8 +46,6 @@ const handleSubmit = async(e) => {
             }
     }
     
-    // ASK MIKOLAI WHAT THIS THING DOES 
-    // send(signInData)
 }
 
 // This code make sure that the email value of signInData is not defaultly set to "" when the user type in the password
@@ -46,45 +56,47 @@ const handleChange = (e) => {
 
 console.log("this is signInData", signInData)
 
-  
+
+
     return (
-    <div>
         <form
+            className="signin-form"
             onSubmit={handleSubmit} >
             <br/>
-            <label htmlFor="email">Email</label>
-                <br/>
+            <label htmlFor="email"></label>
             <input
                 type="email"
                 name="email"
                 id="email"
+                placeholder="Email"
                 value={signInData.email}
                 onChange={handleChange}
-            />
-                <br/><br/>
+                />
 
-            {/* WE NEED EITHER EMAIL OR USERNAME NOT BOTH
-            <label htmlFor="username">Username</label>
-            <br/>
-            <input type="text" name="username" id="username"/>
-            <br/><br/>
-            */}
-
-            <label htmlFor="password">Create password</label>
-                <br/>
+            <label htmlFor="password"></label>
             <input
                 type="password"
                 name="password"
                 id="password"
+                placeholder="Password"
                 value={signInData.password}
                 onChange={handleChange}
             />
-                <br/><br/>
 
-            <button > Log In </button>
+            <button
+                className="signin-form-btn"
+                type="submit"
+                value="submit">
+                Login
+            </button>
+
+            {/*     */}
+            <p>
+                Don't have an account?{" "}
+                <Link to="/register">Register</Link>
+            </p>
         </form>
-    </div>
-  )
-}
+    );
+};
 
-export default SignInPage
+export default LoginModal

@@ -18,4 +18,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+
+// Our first basic API with 23 movies stored into PHPmyAdmin
 Route::get('/movies', 'Api\MovieController@index');

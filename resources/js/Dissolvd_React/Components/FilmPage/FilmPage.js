@@ -1,9 +1,10 @@
-import React, { Fragment, useState, useEffect } from "react";
+import React, { Fragment, useState, useEffect, useContext } from "react";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import "./FilmPage.css";
 import fakeposter from "../../img/fakeposter.png";
 import Modal from "react-modal";
+import { UserContext } from "../../../context/context";
 
 // MUI IMPORTS //
 import Rating from "@mui/material/Rating";
@@ -26,7 +27,7 @@ export const FilmPage = ({
     displayResults,
     setMovieId,
     setQuery,
-}) => {
+    }) => {
     // HANDLE MOVIE //
 
     const [movie, setMovie] = useState([]);
@@ -115,6 +116,11 @@ export const FilmPage = ({
         setListAlert(false);
     };
 
+
+    // CONTEXT
+
+    const { user } = useContext(UserContext);
+
     return (
         <>
             <SearchResult
@@ -183,6 +189,8 @@ export const FilmPage = ({
                                         )}
                                     </div>
                                 ))}
+                             {
+                                user &&
                             <div className="film-user-btns">
                                 <button
                                     className="film-user-eye"
@@ -197,6 +205,7 @@ export const FilmPage = ({
                                     <PlaylistAddIcon fontSize="large" />
                                 </button>
                             </div>
+                            }
                         </div>
                     </div>
                     <Modal

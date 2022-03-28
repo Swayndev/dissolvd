@@ -28,12 +28,12 @@ const Body = () => {
     // DO NOT FORGET TO DISPLAY ERROR MESSAGE IF TITLE DOES NOT EXIST OR IF LOADING TIME IS SLOW\
     const [errorMessage, setErrorMessage] = useState([]);
 
-    const [user, setUser] = useState(null);
+    /* const [user, setUser] = useState(null); */
 
     // trying to implement usecontext
     const AppInfoContext = createContext();
 
-    const getUser = async () => {
+    /* const getUser = async () => {
 
         const res = await axios.get('/api/user');
 
@@ -43,9 +43,9 @@ const Body = () => {
     }
     useEffect(() => {
         getUser();
-    }, [])
+    }, []) */
 
-    console.log(user)
+    /* console.log(user) */
     useEffect(() => {
         if (query !== "") {
             handleSearch();
@@ -111,7 +111,7 @@ const Body = () => {
                 />
                 
                 <Route 
-                    exact path="/sign-in"
+                    exact path="/login"
                     element={
                         <SignInPage
                         />
@@ -121,7 +121,7 @@ const Body = () => {
 
                 <Route
                     exact
-                    path="/create-account"
+                    path="/register"
                     element={
                         <CreateAccountPage
                             displayResults={
