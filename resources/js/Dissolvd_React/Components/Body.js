@@ -33,9 +33,7 @@ const Body = () => {
         }
     }, [query]);
 
-
-
-    console.log(movieId)
+    console.log(movieId);
 
     // FUNCTIONS AND LOGIC
     const handleSearch = async (e) => {
@@ -56,10 +54,13 @@ const Body = () => {
 
             <Routes>
                 <Route
-                    exact path="/"
+                    exact
+                    path="/"
                     element={
                         <HomePage
-                            displayResults={!!movieResults.length && query !== ""}
+                            displayResults={
+                                !!movieResults.length && query !== ""
+                            }
                             movieResults={movieResults}
                             setMovieId={setMovieId}
                             setQuery={setQuery}
@@ -68,10 +69,13 @@ const Body = () => {
                 />
 
                 <Route
-                    exact path="/movie/:id"
+                    exact
+                    path="/movie/:id"
                     element={
                         <FilmPage
-                            displayResults={!!movieResults.length && query !== ""}
+                            displayResults={
+                                !!movieResults.length && query !== ""
+                            }
                             movieResults={movieResults}
                             setMovieId={setMovieId}
                             setQuery={setQuery}
@@ -82,11 +86,14 @@ const Body = () => {
                     }
                 />
 
-                <Route 
-                    exact path="/create-account"
-                    element={ 
+                <Route
+                    exact
+                    path="/create-account"
+                    element={
                         <CreateAccountPage
-                            displayResults={!!movieResults.length && query !== ""}
+                            displayResults={
+                                !!movieResults.length && query !== ""
+                            }
                             movieResults={movieResults}
                             setMovieId={setMovieId}
                             setQuery={setQuery}
@@ -94,12 +101,9 @@ const Body = () => {
                     }
                 />
 
-
-
                 {/* FOR FUTURE ROUTE  */}
             </Routes>
 
-            
             <Footer />
         </div>
     );

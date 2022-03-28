@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef, useState } from "react";
 import "./CreateAccountPage.css";
 
 // IMAGES //
@@ -8,9 +8,12 @@ import stars from "../../img/stars.svg";
 import discussone from "../../img/discussone.svg";
 import discusstwo from "../../img/discusstwo.svg";
 import discussthree from "../../img/discussthree.svg";
+import joinus from "../../img/joinus.svg";
 
 // IMPORT COMPONENTS //
 import SearchResult from "../SearchResult/SearchResult";
+import Snackbar from "@mui/material/Snackbar";
+import Alert from "@mui/material/Alert";
 
 export const CreateAccountPage = ({
     displayResults,
@@ -18,6 +21,19 @@ export const CreateAccountPage = ({
     setMovieId,
     setQuery,
 }) => {
+    const myRef = useRef(null);
+    const executeScroll = () => myRef.current.scrollIntoView();
+
+    const [successAlert, setSuccessAlert] = useState(false);
+
+    const handleSuccessAlert = () => {
+        setSuccessAlert(true);
+    };
+
+    const handleSuccessAlertClose = () => {
+        setSucesstAlert(false);
+    };
+
     return (
         <>
             <SearchResult
@@ -30,22 +46,8 @@ export const CreateAccountPage = ({
             <div className="create-wrap">
                 <div className="create-header">
                     <h1>How does it work?</h1>
-                    <button>Already know how?</button>
+                    <button onClick={executeScroll}>Already know how?</button>
                 </div>
-                {/* <div className="create-goal">
-                <h3>Our goal</h3>
-                <p>
-                    our goal is to create a unique platform where you can
-                    discover new films without any preconceptions or bias.
-                </p>
-                <p>
-                    dissolvd loves opinions and supports the idea of importance
-                    every one of them.
-                </p>
-                <p className="">
-                    lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum
-                </p>
-            </div> */}
                 <div className="create-watch">
                     <div className="create-watch-heading">
                         <p>step one</p>
@@ -108,44 +110,70 @@ export const CreateAccountPage = ({
                             </p>
                         </div>
                     </div>
+                </div>
+                <div className="create-form-wrap">
+                    <img src={joinus}></img>
+                    <form
+                        className="create-form"
+                        ref={myRef}
+                        action=""
+                        method="post"
+                    >
+                        <label htmlFor="email"></label>
+                        <input
+                            type="email"
+                            name="email"
+                            id="email"
+                            placeholder="Email"
+                        />
 
-                    <form action="" method="post">
-                        <label htmlFor="email">Email</label>
-                        <br />
-                        <input type="email" name="email" id="email" />
-                        <br />
-                        <br />
+                        <label htmlFor="username"></label>
+                        <input
+                            type="text"
+                            name="username"
+                            id="username"
+                            placeholder="Username"
+                        />
 
-                        <label htmlFor="username">Username</label>
-                        <br />
-                        <input type="text" name="username" id="username" />
-                        <br />
-                        <br />
-
-                        <label htmlFor="password">Create password</label>
-                        <br />
-                        <input type="password" name="password" id="password" />
-                        <br />
-                        <br />
-
-                        <label htmlFor="password-confirm">
-                            Confirm password
-                        </label>
-                        <br />
+                        <label htmlFor="password"></label>
+                        <input
+                            type="password"
+                            name="password"
+                            id="password"
+                            placeholder="Password"
+                        />
+                        <label htmlFor="password-confirm"></label>
                         <input
                             type="password"
                             name="password-confirm"
                             id="password-confirm"
+                            placeholder="Confirm Password"
                         />
-                        <br />
-                        <br />
 
-                        <button type="submit" value="submit">
+                        <button
+                            className="create-form-btn"
+                            type="submit"
+                            value="submit"
+                            onClick={handleSuccessAlert}
+                        >
                             Create account
                         </button>
                     </form>
                 </div>
             </div>
+            <Snackbar
+                open={successAlert}
+                autoHideDuration={3000}
+                onClose={handleSuccessAlertClose}
+            >
+                <Alert
+                    severity="success"
+                    sx={{ width: "100%" }}
+                    onClose={handleSuccessAlertClose}
+                >
+                    {`Account creation successful!`}
+                </Alert>
+            </Snackbar>
         </>
     );
 };

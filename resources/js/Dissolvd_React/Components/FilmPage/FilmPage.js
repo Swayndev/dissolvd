@@ -1,11 +1,19 @@
 import React, { Fragment, useState, useEffect } from "react";
-
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import "./FilmPage.css";
 import fakeposter from "../../img/fakeposter.png";
+import Modal from "react-modal";
 
-// importing components that display in the body
+// MUI IMPORTS //
+import Rating from "@mui/material/Rating";
+import VisibilityIcon from "@mui/icons-material/Visibility";
+import PlaylistAddIcon from "@mui/icons-material/PlaylistAdd";
+import Snackbar from "@mui/material/Snackbar";
+import Alert from "@mui/material/Alert";
+import Checkbox from "@mui/material/Checkbox";
+
+// COMPONENTS THAT DISPLAY IN THE BODY //
 import { CastCard } from "../Cards/CastCard";
 import { CrewCard } from "../Cards/CrewCard";
 import SearchResult from "../SearchResult/SearchResult";
@@ -17,7 +25,7 @@ export const FilmPage = ({
     movieResults,
     displayResults,
     setMovieId,
-    setQuery
+    setQuery,
 }) => {
     // HANDLE MOVIE //
 
@@ -83,8 +91,32 @@ export const FilmPage = ({
         window.scrollTo(0, 0);
     }, [movieId]);
 
+    // MODAL //
+
+    const [modalIsOpen, setIsOpen] = useState(false);
+
+    const openModal = () => {
+        setIsOpen(true);
+    };
+
+    const closeModal = () => {
+        setIsOpen(false);
+    };
+
+    // WATCHLIST ALERT //
+
+    const [listAlert, setListAlert] = useState(false);
+
+    const handleListAlert = () => {
+        setListAlert(true);
+    };
+
+    const handleListAlertClose = () => {
+        setListAlert(false);
+    };
+
     return (
-        <Fragment>
+        <>
             <SearchResult
                 displayResults={displayResults}
                 movieResults={movieResults}
@@ -151,13 +183,88 @@ export const FilmPage = ({
                                         )}
                                     </div>
                                 ))}
+                            <div className="film-user-btns">
+                                <button
+                                    className="film-user-eye"
+                                    onClick={openModal}
+                                >
+                                    <VisibilityIcon fontSize="large" />
+                                </button>
+                                <button
+                                    onClick={handleListAlert}
+                                    className="film-user-add"
+                                >
+                                    <PlaylistAddIcon fontSize="large" />
+                                </button>
+                            </div>
                         </div>
                     </div>
-                    <div className="film-buttons"></div>
+                    <Modal
+                        className="film-review-modal"
+                        isOpen={modalIsOpen}
+                        onRequestClose={closeModal}
+                        contentLabel="Example Modal"
+                    >
+                        <form className="film-review">
+                            {movie.poster_path ? (
+                                <div className="film-review-info">
+                                    <img
+                                        className="film-review-poster"
+                                        src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+                                        alt={`${movie.title} Poster`}
+                                    />
+
+                                    <h3>{`${movie.title}`}</h3>
+                                </div>
+                            ) : (
+                                <div className="film-review-info">
+                                    <img
+                                        className="film-review-poster"
+                                        src={fakeposter}
+                                        alt="No Poster Found"
+                                    />
+                                    <h3>{`${movie.title}`}</h3>
+                                </div>
+                            )}
+                            <div className="film-review-rate">
+                                <p className="film-review-rating">
+                                    <strong>Rating</strong>
+                                </p>
+                                <Rating
+                                    className="film-review-stars"
+                                    name="half-rating"
+                                    defaultValue={0}
+                                    precision={0.5}
+                                    size="large"
+                                />
+
+                                <textarea
+                                    className="film-review-text"
+                                    placeholder="Add a review..."
+                                ></textarea>
+                                <div className="film-review-check">
+                                    <Checkbox
+                                        required="true"
+                                        color="success"
+                                        size="medium"
+                                    />
+                                    <p>{`I confirm I have seen ${movie.title}`}</p>
+                                </div>
+                                <button
+                                    className="film-review-btn"
+                                    type="submit"
+                                    value="submit"
+                                >
+                                    Save
+                                </button>
+                            </div>
+                        </form>
+                    </Modal>
                 </div>
                 <div className="film-overview">
                     <p>{movie.overview}</p>
                 </div>
+
                 <Tabs className="film-credits-wrap">
                     <TabList className="film-credits-heading">
                         <Tab>Cast</Tab>
@@ -174,8 +281,27 @@ export const FilmPage = ({
                         </Fragment>
                     )}
                 </Tabs>
-                <RecommendCard recommend={recommend} setMovieId={setMovieId} />
+                <RecommendCard
+                    recommend={recommend}
+                    setMovieId={setMovieId}
+                    movie={movie}
+                />
             </div>
-        </Fragment>
+
+            {/* ALERTS */}
+            <Snackbar
+                open={listAlert}
+                autoHideDuration={3000}
+                onClose={handleListAlertClose}
+            >
+                <Alert
+                    severity="success"
+                    sx={{ width: "100%" }}
+                    onClose={handleListAlertClose}
+                >
+                    {`${movie.title} has been added to your Watchlist`}
+                </Alert>
+            </Snackbar>
+        </>
     );
 };
