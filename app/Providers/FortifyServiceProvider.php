@@ -41,12 +41,10 @@ class FortifyServiceProvider extends ServiceProvider
 
         Fortify::viewPrefix('auth.');
 
-        // Fortify::loginView('auth.login');
+        Fortify::loginView('auth.login');
 
 
         // Fortify::registerView('auth.register');
-
-
 
 
         RateLimiter::for('login', function (Request $request) {

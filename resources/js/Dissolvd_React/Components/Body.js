@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 
 import { Routes, Route, Link } from "react-router-dom";
 
@@ -10,6 +10,7 @@ import { FilmPage } from "./FilmPage/FilmPage";
 import SignInPage from "./SignInPage/SignInPage";
 
 import { CreateAccountPage } from "./CreateAccountPage/CreateAccountPage";
+import { createContext } from "react/cjs/react.production.min";
 
 const Body = () => {
     const apiKey = "f1206acdc6dd0ff0374585c4b4b936a1";
@@ -26,6 +27,11 @@ const Body = () => {
     // DO NOT FORGET TO DISPLAY ERROR MESSAGE IF TITLE DOES NOT EXIST OR IF LOADING TIME IS SLOW\
     const [errorMessage, setErrorMessage] = useState([]);
 
+    // trying to implement usecontext
+    const AppInfoContext = createContext();
+
+
+
     useEffect(() => {
         if (query !== "") {
             handleSearch();
@@ -33,7 +39,6 @@ const Body = () => {
             setMovieResults([]);
         }
     }, [query]);
-
 
 
     // console.log(movieId)
@@ -53,6 +58,7 @@ const Body = () => {
 
     return (
         <div>
+            {/* <AppInfoContext.Provider > */}
             <Header setQuery={setQuery} query={query} />
 
             <Routes>
@@ -108,11 +114,14 @@ const Body = () => {
 
                 {/* FOR FUTURE ROUTE  */}
             </Routes>
-
+                
             
             <Footer />
+            {/* </AppInfoContext.Provider> */}
         </div>
     );
 };
 
 export default Body;
+
+// export AppInfoContext

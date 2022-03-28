@@ -33,14 +33,16 @@ export const CreateAccountPage = ({
 const handleSubmit = async(e) => {
     e.preventDefault();
 
-
     try {
     const response = await axios.post('/register', registerData);
         
-        console.log(response.data)
+        
+        console.log('this is reponse.data', response.data)
+        
     } catch(error) {
-        console.log(error); // information about the error
-        console.log(error.response); // the response object from the failed request
+        // console.log(error); // information about the error
+        console.log('this is error.response.data',error.response.data); // the response object from the failed request
+        alert(error.response.data.message)
     }
 
     // TO BE CONTINUED
@@ -49,7 +51,10 @@ const handleSubmit = async(e) => {
 
 // This code make sure that the email value of signInData is not defaultly set to "" when the user type in the password
 const handleChange = (e) => {
-    setRegisterData({...registerData,[e.target.name]: e.target.value});
+    setRegisterData(
+        {...registerData,
+        [e.target.name]: e.target.value}
+    );
 }
 
 console.log("this is register data", registerData)

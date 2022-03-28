@@ -9,7 +9,7 @@
     <title>Dissolvd</title>
 </head>
 <body>
-    {{-- <h1> THIS IS LARAVEL LAYOUT</h1> --}}
+    {{-- <h1> THIS IS OUR LARAVEL LAYOUT</h1> --}}
 
     @yield('content')
 
