@@ -14,15 +14,16 @@ body {
     display: flex;
     background-color: rgba(255, 190, 24, 1);
     mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+    z-index: -1;
 }
 
 .film-backdrop {
     margin: auto;
-    /* background-color: rgba(255, 190, 24, 1); */
 }
 
 .film-backdrop img {
     width: 1080px;
+    border-radius: 10px;
 }
 
 .film-details-wrap {
@@ -30,7 +31,6 @@ body {
     justify-content: center;
     align-items: center;
     margin: auto;
-    z-index: 1;
     position: relative;
     bottom: 13rem;
     width: 1080px;
@@ -85,6 +85,7 @@ body {
 
 .film-overview {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     margin: auto;
@@ -96,4 +97,119 @@ body {
 .film-overview {
     line-height: 2rem;
     text-align: justify;
+}
+
+.film-review-modal {
+    width: 50%;
+    height: 70%;
+    position: absolute;
+    inset: 40px;
+    border: 1px solid rgb(204, 204, 204);
+    background: rgb(255, 255, 255);
+    overflow: auto;
+    border-radius: 4px;
+    outline: none;
+    padding: 20px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.film-review {
+    border-radius: 1rem;
+    font-family: "Rubik", Helvetica, sans-serif;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.film-review-poster {
+    width: 200px;
+    height: 300px;
+    border-radius: 0.3rem;
+    border: 1px solid black;
+}
+
+.film-review-rate {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-left: 2.5rem;
+}
+
+.film-review-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.film-review-info h3 {
+    font-family: "Gibroma", "Rubik";
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+.film-review-rating {
+    margin: 0;
+    font-size: 1.25rem;
+    text-transform: uppercase;
+}
+
+.film-review-stars {
+    padding: 1rem;
+}
+
+.film-review-text {
+    font-family: "Rubik";
+    width: 350px;
+    height: 100px;
+    resize: none;
+    padding: 1rem;
+}
+
+.film-review-check {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.film-review-check p {
+    font-size: 1rem;
+}
+
+.film-review-btn {
+    font-family: "Rubik", Helvetica, sans-serif;
+    margin: 0;
+    border-radius: 2rem;
+    background-color: #f71647;
+    border: none;
+    cursor: pointer;
+    color: #ffffff;
+    font-size: 0.75rem;
+    padding: 0.75rem 2rem;
+    text-decoration: none;
+}
+
+.film-review-btn:hover {
+    background-color: #f64c72;
+}
+
+.film-user-btns {
+    padding: 1rem;
+}
+
+.film-user-eye,
+.film-user-add,
+.film-user-copy {
+    cursor: pointer;
+    padding-right: 1rem;
+    border: none;
+    background: none;
+}
+
+.film-user-copy {
+    padding-bottom: 0.3rem;
 }
