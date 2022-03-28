@@ -243,3 +243,15 @@
     height: 250px;
     background-color: rgba(255, 190, 24, 1);
 }
+
+button.rec-dot {
+    box-shadow: 0 0 0 0;
+    border: 1px solid black;
+}
+
+button.rec-dot:hover,
+button.rec-dot:active,
+button.rec-dot:focus {
+    background-color: black;
+    box-shadow: 0 0 0 0;
+}

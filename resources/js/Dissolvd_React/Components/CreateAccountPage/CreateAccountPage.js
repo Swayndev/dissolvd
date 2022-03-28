@@ -1,4 +1,4 @@
-import {useState}  from "react";
+import React, { useRef, useState } from "react";
 import "./CreateAccountPage.css";
 
 // IMAGES //
@@ -8,6 +8,7 @@ import stars from "../../img/stars.svg";
 import discussone from "../../img/discussone.svg";
 import discusstwo from "../../img/discusstwo.svg";
 import discussthree from "../../img/discussthree.svg";
+import joinus from "../../img/joinus.svg";
 
 // IMPORT COMPONENTS //
 import SearchResult from "../SearchResult/SearchResult";
@@ -61,6 +62,11 @@ console.log("this is register data", registerData)
 
 
 
+
+
+const myRef = useRef(null);
+    const executeScroll = () => myRef.current.scrollIntoView();
+
     return (
         <>
             <SearchResult
@@ -73,22 +79,8 @@ console.log("this is register data", registerData)
             <div className="create-wrap">
                 <div className="create-header">
                     <h1>How does it work?</h1>
-                    <button>Already know how?</button>
+                    <button onClick={executeScroll}>Already know how?</button>
                 </div>
-                {/* <div className="create-goal">
-                <h3>Our goal</h3>
-                <p>
-                    our goal is to create a unique platform where you can
-                    discover new films without any preconceptions or bias.
-                </p>
-                <p>
-                    dissolvd loves opinions and supports the idea of importance
-                    every one of them.
-                </p>
-                <p className="">
-                    lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum
-                </p>
-            </div> */}
                 <div className="create-watch">
                     <div className="create-watch-heading">
                         <p>step one</p>
@@ -152,62 +144,67 @@ console.log("this is register data", registerData)
                             </p>
                         </div>
                     </div>
+                </div>
+                <div className="create-form-wrap">
+                    <img src={joinus}></img>
 
-                {/* We do not need action and method in this case */}
-                <form onSubmit={handleSubmit}>
-                    <br/>
-                    <label htmlFor="email">Email</label>
-                    <br/>
-                    <input
-                        type="email"
-                        name="email"
-                        id="email"
-                        value={registerData.email}
-                        onChange={handleChange}
-                    />
-                    <br/><br/>
-
-                    <label htmlFor="username">Username</label>
-                    <br/>
-                    <input
-                        type="text"
-                        name="username"
-                        id="username"
-                        value={registerData.username}
-                        onChange={handleChange}
-
+                    <form
+                        onSubmit={handleSubmit}
+                        className="create-form"
+                        ref={myRef}
+                        action=""
+                        method="post"
+                    >
+                        <label htmlFor="email"></label>
+                        <input
+                            type="email"
+                            name="email"
+                            id="email"
+                            placeholder="Email"
+                            value={registerData.email}
+                            onChange={handleChange}
                         />
-                    <br/><br/>
 
-                    <label htmlFor="password">Create password</label>
-                        <br/>
-                    <input
-                        type="password"
-                        name="password"
-                        id="password"
-                        value={registerData.password}
-                        onChange={handleChange}
+                        <label htmlFor="username"></label>
+                        <input
+                            type="text"
+                            name="username"
+                            id="username"
+                            placeholder="Username"
+                            value={registerData.username}
+                            onChange={handleChange}
                         />
-                    <br/><br/>
 
-                    <label htmlFor="password_confirmation">Confirm password</label>
-                        <br/>
-                    <input
-                        type="password"
-                        name="password_confirmation"
-                        id="password_confirmation"
-                        value={registerData.password_confirmation}
-                        onChange={handleChange}
+                        <label htmlFor="password"></label>
+                        <input
+                            type="password"
+                            name="password"
+                            id="password"
+                            placeholder="Password"
+                            value={registerData.password}
+                            onChange={handleChange}
                         />
-                    <br/><br/>
+                        <label htmlFor="password_confirm"></label>
+                        <input
+                            type="password"
+                            name="password_confirm"
+                            id="password_confirm"
+                            placeholder="Confirm password"
+                            value={registerData.password_confirmation}
+                            onChange={handleChange}
+                        />
 
-                    <button >Create account</button>
-
-                </form>
-                
-
+                        <button
+                            className="create-form-btn"
+                            type="submit"
+                            value="submit"
+                        >
+                            Create account
+                        </button>
+                    </form>
                 </div>
             </div>
+            
         </>
     );
 };
