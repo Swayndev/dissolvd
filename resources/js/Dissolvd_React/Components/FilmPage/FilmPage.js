@@ -32,10 +32,10 @@ export const FilmPage = ({
     displayResults,
     setQuery,
     }) => {
+
     // HANDLE MOVIE //
 
     const params = useParams()
-
     console.log(params);
     
 
@@ -138,20 +138,27 @@ export const FilmPage = ({
         setIsOpen(false);
     };
 
-
-
-    // RATING LOGIC
+    // CONTEXT
+    
+    const { user } = useContext(UserContext);
+    
+    // RATING AND REVIEW LOGIC
 
     const [stars, setStars] = useState(2.5);
 
     console.log('this is stars value', stars);
-    // CONTEXT
+    
 
-    const { user } = useContext(UserContext);
+    const [reviewRating, setReviewRating] = ({
+        review: "",
+        rating: 0
+    });
 
-    // const handleSubmit = (e) => {
-
-    // }
+    const handleReviewRating = (e) => {
+        e.preventDefault();
+        
+        
+    }
 
     return (
         <>

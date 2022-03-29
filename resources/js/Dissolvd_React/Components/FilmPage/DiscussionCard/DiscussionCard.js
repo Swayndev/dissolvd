@@ -4,7 +4,7 @@ import "./DiscussionCard.css";
 
 export const DiscussionCard = ({ user, watched }) => {
     return (
-        <>
+        <div>
             {!user && (
                 <div className="discussion-wrap">
                     <h4 className="discussion-heading">Reviews & Discussion</h4>
@@ -20,6 +20,6 @@ export const DiscussionCard = ({ user, watched }) => {
             {user && watched === false ? (
                 <div>Watch this movie to see the discussion</div>
             ) : null}
-        </>
+        </div>
     );
 };
