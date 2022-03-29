@@ -32,9 +32,9 @@ const handleSubmit = async(e) => {
 
         console.log('This is response.data it contains user data',response.data)
 
-        setUser(response.data)
+        setUser('THIS IS RESPONSE.DATA',response.data)
 
-        navigate('/')
+        navigate('/');
         
     } catch(error) {
         if (error.response.status == 500) {
@@ -47,8 +47,10 @@ const handleSubmit = async(e) => {
                 console.log('This are the errors from the sign-in form', error.response)
             }
     }
-    
+
 }
+
+
 
 // This code make sure that the email value of signInData is not defaultly set to "" when the user type in the password
 const handleChange = (e) => {

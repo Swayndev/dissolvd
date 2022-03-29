@@ -29,8 +29,9 @@ const Body = () => {
     /* const [user, setUser] = useState(null); */
 
     // trying to implement usecontext
-    const AppInfoContext = createContext();
+    const AppInfoContext = createContext();5
 
+    // THIS CODE BELLOW IS CONTAINED INTO App.js
     /* const getUser = async () => {
 
         const res = await axios.get('/api/user');

@@ -1,8 +1,12 @@
-import React, { Fragment, useContext } from "react";
-import { Link } from "react-router-dom";
+import React, { Fragment, useContext, useEffect } from "react";
+
+import { Link, useNavigate } from "react-router-dom";
 import logobd from "../../img/logobd.svg";
 import SearchBar from "../SearchBar/SearchBar";
 import Modal from "react-modal";
+import axios from 'axios';
+
+
 import "./Header.css";
 import { useState } from "react";
 import LoginModal from "./LoginModal/LoginModal";
@@ -19,9 +23,27 @@ export const Header = ({ setQuery, query }) => {
         setIsOpen(false);
     }
 
-    const { user } = useContext(UserContext)
+    const { setUser, user } = useContext(UserContext)
 
     // console.log('this is user', user)
+
+
+    const navigate = useNavigate()
+
+
+    // 
+    const handleLogout = async (e)=> {
+
+    const responselogout = await axios.post('/logout');
+
+    console.log(responselogout)
+     setUser(responselogout);
+
+     navigate('/register');
+
+}
+
+
 
     return (
         <div className="header-wrap">
@@ -75,6 +97,9 @@ export const Header = ({ setQuery, query }) => {
                     <Link to="/about-us" className="desktop--item underline">
                         about us
                     </Link>
+
+                    <button onClick={handleLogout}>Log out</button>
+
                     <SearchBar setQuery={setQuery} query={query} />
                 </div>
             </header>
