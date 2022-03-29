@@ -6,13 +6,17 @@ import fakeposter from "../../img/fakeposter.png";
 import Modal from "react-modal";
 import { UserContext } from "../../../context/context";
 
+import { DiscussionCard } from "./DiscussionCard/DiscussionCard";
+
 // MUI IMPORTS //
 import Rating from "@mui/material/Rating";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import PlaylistAddIcon from "@mui/icons-material/PlaylistAdd";
-import Snackbar from "@mui/material/Snackbar";
-import Alert from "@mui/material/Alert";
+
 import Checkbox from "@mui/material/Checkbox";
+import { FormControlLabel } from "@mui/material";
+import PlaylistAddCheckIcon from "@mui/icons-material/PlaylistAddCheck";
+import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 
 // COMPONENTS THAT DISPLAY IN THE BODY //
 import { CastCard } from "../Cards/CastCard";
@@ -29,13 +33,12 @@ export const FilmPage = ({
     movieResults,
     displayResults,
     setQuery,
-    }) => {
+}) => {
     // HANDLE MOVIE //
 
-    const params = useParams()
+    const params = useParams();
 
     console.log(params);
-    
 
     const [movie, setMovie] = useState([]);
 
@@ -76,7 +79,32 @@ export const FilmPage = ({
 
         data && setRecommend(data.results);
     };
-    
+
+    // WATCHED AND WATCHLIST //
+
+    const [watched, setWatched] = useState(false);
+    const [watchlist, setWatchlist] = useState(false);
+
+    const handleWatched = () => {
+        setWatched(true);
+        console.log(watched);
+    };
+
+    const handleWatchedRemove = () => {
+        setWatched(false);
+        console.log(watched);
+    };
+
+    const handleWatchlist = () => {
+        setWatchlist(true);
+        console.log("this is watchlistadd", watchlist);
+    };
+
+    const handleWatchlistRemove = () => {
+        setWatchlist(false);
+        console.log("this is watchlistremove", watchlist);
+    };
+
     // USEEFFECT SECTION  //
 
     useEffect(() => {
@@ -111,22 +139,27 @@ export const FilmPage = ({
         setIsOpen(false);
     };
 
-    // WATCHLIST ALERT //
-
-    const [listAlert, setListAlert] = useState(false);
-
-    const handleListAlert = () => {
-        setListAlert(true);
-    };
-
-    const handleListAlertClose = () => {
-        setListAlert(false);
-    };
-
-
     // CONTEXT
-
+    
     const { user } = useContext(UserContext);
+    
+    // RATING AND REVIEW LOGIC
+
+    const [stars, setStars] = useState(2.5);
+
+    console.log('this is stars value', stars);
+    
+
+    // const [reviewRating, setReviewRating] = ({
+    //     review: "",
+    //     rating: 0
+    // });
+
+    // const handleReviewRating = (e) => {
+    //     e.preventDefault();
+        
+        
+    // }
 
     return (
         <>
@@ -195,23 +228,46 @@ export const FilmPage = ({
                                         )}
                                     </div>
                                 ))}
-                             {
-                                user &&
-                            <div className="film-user-btns">
-                                <button
-                                    className="film-user-eye"
-                                    onClick={openModal}
-                                >
-                                    <VisibilityIcon fontSize="large" />
-                                </button>
-                                <button
-                                    onClick={handleListAlert}
-                                    className="film-user-add"
-                                >
-                                    <PlaylistAddIcon fontSize="large" />
-                                </button>
-                            </div>
-                            }
+                            {user && (
+                                <div className="film-user-btns">
+                                    {watched === false ? (
+                                        <button
+                                            className="film-user-eye"
+                                            onClick={openModal}
+                                        >
+                                            <VisibilityOffIcon fontSize="large" />
+                                        </button>
+                                    ) : (
+                                        <button
+                                            className="film-user-eye"
+                                            onClick={handleWatchedRemove}
+                                        >
+                                            <VisibilityIcon
+                                                color="action"
+                                                fontSize="large"
+                                            />
+                                        </button>
+                                    )}
+                                    {watchlist === false ? (
+                                        <button
+                                            onClick={handleWatchlist}
+                                            className="film-user-add"
+                                        >
+                                            <PlaylistAddIcon fontSize="large" />
+                                        </button>
+                                    ) : (
+                                        <button
+                                            onClick={handleWatchlistRemove}
+                                            className="film-user-add"
+                                        >
+                                            <PlaylistAddCheckIcon
+                                                color="action"
+                                                fontSize="large"
+                                            />
+                                        </button>
+                                    )}
+                                </div>
+                            )}
                         </div>
                     </div>
 
@@ -234,7 +290,11 @@ export const FilmPage = ({
                         onRequestClose={closeModal}
                         contentLabel="Example Modal"
                     >
-                        <form className="film-review">
+                        <form
+                            className="film-review"
+                            // ADRIEN WORKING ON THIS FORM
+                            // onSubmit={handleSubmit}
+                        >
                             {movie.poster_path ? (
                                 <div className="film-review-info">
                                     <img
@@ -259,12 +319,30 @@ export const FilmPage = ({
                                 <p className="film-review-rating">
                                     <strong>Rating</strong>
                                 </p>
-                                <Rating
-                                    className="film-review-stars"
-                                    name="half-rating"
-                                    defaultValue={0}
-                                    precision={0.5}
-                                    size="large"
+                                <FormControlLabel
+                                    control={
+                                        <>
+                                            <input
+                                                name="rating"
+                                                type="number"
+                                                value={stars}
+                                                hidden
+                                                readOnly
+                                            />
+                                            <Rating
+                                                name="rating"
+                                                className="film-review-stars"
+                                                value={stars}
+                                                defaultValue={0}
+                                                precision={0.5}
+                                                size="large"
+                                                onChange={(_, value) => {
+                                                    setStars(value);
+                                                }}
+                                            />
+                                        </>
+                                    }
+                                    label={" "}
                                 />
 
                                 <textarea
@@ -277,12 +355,11 @@ export const FilmPage = ({
                                         color="success"
                                         size="medium"
                                     />
-                                    <p>{`I confirm I have seen ${movie.title}`}</p>
+                                    <p>{`I confirm I have watched ${movie.title}`}</p>
                                 </div>
                                 <button
                                     className="film-review-btn"
                                     type="submit"
-                                    value="submit"
                                 >
                                     Save
                                 </button>
@@ -290,6 +367,7 @@ export const FilmPage = ({
                         </form>
                     </Modal> */}
                 </div>
+
                 <div className="film-overview">
                     <p>{movie.overview}</p>
                 </div>
@@ -310,26 +388,11 @@ export const FilmPage = ({
                         </Fragment>
                     )}
                 </Tabs>
-                <RecommendCard
-                    recommend={recommend}
-                    movie={movie}
-                />
-            </div>
 
-            {/* ALERTS */}
-            <Snackbar
-                open={listAlert}
-                autoHideDuration={3000}
-                onClose={handleListAlertClose}
-            >
-                <Alert
-                    severity="success"
-                    sx={{ width: "100%" }}
-                    onClose={handleListAlertClose}
-                >
-                    {`${movie.title} has been added to your Watchlist`}
-                </Alert>
-            </Snackbar>
+                <DiscussionCard watched={watched}/>
+
+                <RecommendCard recommend={recommend} movie={movie} />
+            </div>
         </>
     );
 };
