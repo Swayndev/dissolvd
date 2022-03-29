@@ -1,37 +1,55 @@
-import React, { Fragment, useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import "react-tabs/style/react-tabs.css";
 import "../FilmPage.css";
 import Modal from "react-modal";
-
 
 // MUI IMPORTS //
 import Rating from "@mui/material/Rating";
 import Checkbox from "@mui/material/Checkbox";
 import { FormControlLabel } from "@mui/material";
+import { useParams } from "react-router-dom";
+import { UserContext } from "../../../../context/context";
 
 
 export const ReviewModal = (
-    {modalIsOpen, 
-    closeModal,
-    movie,
-    fakeposter}
-) => {
+                            {modalIsOpen, 
+                            closeModal,
+                            movie,
+                            fakeposter} ) => {
 
+    // PARAMS is used to retrieved the movie.id from the database
+    const params = useParams(); 
+    
+    // CONTEXT
+    
+    const { user } = useContext(UserContext);
 
+    // STATES
     const [reviewRating, setReviewRating] = useState ({
-        review: "",
         rating: 2.5,
-        watched:false,
+        review: "",
+        checked: false,
     });
 
-    console.log('CIAO BELLA THIS IS reviewRating', reviewRating)
+    console.log('reviewRating ==>', reviewRating)
+
+    useEffect(() => {
+        setReviewRating({
+            ...reviewRating,
+            movie_id: Number(params.id),
+            user_id: user ? user.id : null,
+        });
+    }, [params, user]);
+    
 
 
-    // const handleReviewRatingSubmit = (e) => {
-    //     e.preventDefault();
-        
-        
-    // }
+    const handleReviewRatingSubmit = (e) => {
+        e.preventDefault();
+        // axios.post('/movie/{movie_id}', reviewRating)
+        // 
+        // setReviewRating();
+        console.log()
+    }
 
     return  (
 
@@ -43,9 +61,8 @@ export const ReviewModal = (
                     >
                         <form
                             className="film-review"
-                            // ADRIEN WORKING ON THIS FORM
-                            // onSubmit={handleSubmit}
-                        >
+                            onSubmit={handleReviewRatingSubmit}
+                            >
                             {movie.poster_path ? (
                                 <div className="film-review-info">
                                     <img
@@ -77,21 +94,21 @@ export const ReviewModal = (
                                         <input
                                             name="rating"
                                             type="number"
-                                            value={reviewRating.rating}
-                                            onChange={(e) => {
-                                                setReviewRating({...reviewRating, rating: Number(e.target.value)});
-                                            }}
                                             hidden
                                             readOnly
+                                            // value={reviewRating.rating}
+                                            // onChange={(e) => {
+                                            //     setReviewRating({...reviewRating, rating: Number(e.target.value)});
+                                            // }}
                                         />
 
                                         <Rating
                                             name="rating"
                                             className="film-review-stars"
-                                            value={reviewRating.rating}
                                             defaultValue={0}
                                             precision={0.5}
                                             size="large"
+                                            value={reviewRating.rating}
                                             onChange={(e) => {
                                                 setReviewRating({...reviewRating, rating: Number(e.target.value)});
                                             }}
@@ -118,7 +135,7 @@ export const ReviewModal = (
                                         size="medium"
                                         value={reviewRating.checked}
                                         onChange={(e) => {
-                                            setReviewRating({...reviewRating, checked: e.target.value});
+                                          setReviewRating({...reviewRating, checked: e.target.checked});
                                         }}
                                     />
                                     

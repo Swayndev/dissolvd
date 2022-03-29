@@ -45,6 +45,8 @@ export const CreateAccountPage = ({
         console.log('this is reponse', response.data)
         
         navigate('/')
+
+        location.reload()
         
     } catch(error) {
         // console.log(error); // information about the error
@@ -60,7 +62,7 @@ export const CreateAccountPage = ({
         setRegisterData({ ...registerData, [e.target.name]: e.target.value });
     };
 
-    console.log("this is register data", registerData);
+    // console.log("this is handleChange => registerData", registerData);
 
     const myRef = useRef(null);
     const executeScroll = () => myRef.current.scrollIntoView();

@@ -283,7 +283,8 @@ export const FilmPage = ({
                            modalIsOpen={modalIsOpen}
                            closeModal={closeModal}
                            movie={movie}
-                           fakeposter={fakeposter} 
+                           fakeposter={fakeposter}
+                        //    user={user}
                     />
 
 

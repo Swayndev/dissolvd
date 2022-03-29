@@ -24,10 +24,13 @@ class MovieController extends Controller
         }
         $movie->rating = $request->input('rating') ?? null;
         $movie->review = $request->input('review') ?? '';
+        $movie->checked = $request->input('checked') ?? false;
+
+        $movie->movie_id = $request->input('movie_id') ?? null;
+        $movie->user_id = $request->input('user_id') ?? null;
 
         $movie->save();
 
         return $movie;
-        
     }
 }

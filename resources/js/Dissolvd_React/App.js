@@ -9,7 +9,8 @@ import axios from "axios";
 function App() {
 
     const [user, setUser] = useState(null)
-    const [hasWatched, setHasWatched] = useState(null)
+
+    // const [hasWatched, setHasWatched] = useState(null)
 
     const getUser = async () => {
 
@@ -26,7 +27,7 @@ function App() {
 
     const value = useMemo(() => ({ user, setUser }), [user]);
 
-
+    
     return (
         <div>
             <Router>

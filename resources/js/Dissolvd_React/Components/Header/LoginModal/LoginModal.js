@@ -32,9 +32,11 @@ const handleSubmit = async(e) => {
 
         console.log('This is response.data it contains user data',response.data)
 
-        setUser('THIS IS RESPONSE.DATA',response.data)
+        setUser(response.data);
 
         navigate('/');
+
+        location.reload();
         
     } catch(error) {
         if (error.response.status == 500) {
