@@ -151,17 +151,18 @@ export const FilmPage = ({
     const [reviewRating, setReviewRating] = useState ({
         review: "",
         rating: 2.5,
-        checked:false,
+        watched:false,
     });
 
-    console.log('CIAO BELLA THIS IS PRETTY REVIEWRATING', reviewRating)
+    console.log('CIAO BELLA THIS IS reviewRating', reviewRating)
 
 
-    // const handleReviewRatingSubmit = (e) => {
-    //     e.preventDefault();
+    const handleReviewRatingSubmit = (e) => {
+        e.preventDefault();
         
+
         
-    // }
+    }
 
     return (
         <>
@@ -307,6 +308,7 @@ export const FilmPage = ({
                                 <p className="film-review-rating">
                                     <strong>Rating</strong>
                                 </p>
+                                
                             <FormControlLabel
                                 control={
                                     <div>
@@ -347,6 +349,7 @@ export const FilmPage = ({
                                 >
                                 </textarea>
                                 <div className="film-review-check">
+                                {/*
                                     <Checkbox
                                         required="true"
                                         color="success"
@@ -356,6 +359,7 @@ export const FilmPage = ({
                                             setReviewRating({...reviewRating, checked: e.target.value});
                                     }}
                                     />
+                                    */}
                                     <p>{`I confirm I have watched ${movie.title}`}</p>
                                 </div>
                                 <button
