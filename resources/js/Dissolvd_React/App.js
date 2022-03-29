@@ -15,7 +15,8 @@ function App() {
     const getUser = async () => {
 
         const res = await axios.get('/api/user');
-        console.log(res.data)
+        console.log("this is the user data once connected", res.data)
+        
         setUser(res.data)
     }
 

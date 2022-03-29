@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use App\Models\Movie;
+use App\Models\Opinion;
 
 class User extends Authenticatable
 {
@@ -16,6 +17,11 @@ class User extends Authenticatable
     public function movie()
     {
         return $this->belongsTo(Movie::class);
+    }
+
+    public function opinions()
+    {
+        return $this->hasMany(Opinion::class);
     }
 
     /**

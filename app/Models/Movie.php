@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\Genre;
 use App\Models\Person;
 use App\Models\User;
+use App\Models\Opinion;
 
 class Movie extends Model
 {
@@ -23,9 +24,14 @@ class Movie extends Model
         return $this->hasMany(Genre::class);
     }
 
-    public function users()
+    // public function users()
+    // {
+    //     return $this->hasMany(User::class);
+    // }
+
+    public function opinions()
     {
-        return $this->hasMany(User::class);
+        return $this->hasMany(Opinion::class);
     }
 
 

@@ -8,7 +8,7 @@ use App\Models\Movie;
 
 class MovieController extends Controller
 {
-    public function index(Request $request)
+    public function index()
     {
         // // get the search term from the request
         // $search_term = $request->input('search');
