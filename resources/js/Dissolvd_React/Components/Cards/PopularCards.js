@@ -27,16 +27,16 @@ const PopularCards = () => {
         <>
             <div className="popular">
                 <div className="popular-heading">
-                    <p>Popular this week</p>
+                    <p>
+                        <strong>{`Popular`}</strong> this week
+                    </p>
                 </div>
 
                 <div className="popular-movie">
                     <Carousel breakPoints={breakPoints}>
                         {popular.map((movie) => (
                             <div key={movie.id}>
-                                <ResultCard
-                                    movie={movie}
-                                />
+                                <ResultCard movie={movie} />
                             </div>
                         ))}
                     </Carousel>

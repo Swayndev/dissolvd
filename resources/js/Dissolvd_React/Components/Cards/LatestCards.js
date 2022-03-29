@@ -5,48 +5,44 @@ import Carousel from "react-elastic-carousel";
 import "./Cards.css";
 
 const LatestCards = () => {
+    const apiKey = "f1206acdc6dd0ff0374585c4b4b936a1";
+    const url = `https://api.themoviedb.org/3/movie/now_playing?api_key=${apiKey}&language=en-US&page=1`;
 
+    const [latest, setLatest] = useState([]);
 
-  const apiKey = "f1206acdc6dd0ff0374585c4b4b936a1";
-  const url = `https://api.themoviedb.org/3/movie/now_playing?api_key=${apiKey}&language=en-US&page=1`;
+    const loadLatest = async () => {
+        const response = await fetch(url);
+        const data = await response.json();
 
-  const [latest, setLatest] = useState([]);
+        data && setLatest(data.results);
+    };
 
-  const loadLatest = async () => {
-    const response = await fetch(url);
-    const data = await response.json();
+    useEffect(() => {
+        loadLatest();
+    }, []);
 
-    data && setLatest(data.results);
-  };
+    const breakPoints = [{ itemsToShow: 4 }];
 
-
-
-  useEffect(() => {
-    loadLatest();
-  }, []);
-
-  const breakPoints = [{ itemsToShow: 4 }];
-
-  return (
-    <div>
-      <div className="latest">
-        <div className="latest-heading">
-          <p>Latest films</p>
+    return (
+        <div>
+            <div className="latest">
+                <div className="latest-heading">
+                    <p>
+                        <strong>{`Latest`}</strong> films
+                    </p>
+                </div>
+                <div className="latest-movie">
+                    <Carousel breakPoints={breakPoints}>
+                        {latest.map((movie) => (
+                            <div key={movie.id}>
+                                <ResultCard movie={movie} />
+                            </div>
+                        ))}
+                    </Carousel>
+                </div>
+            </div>
         </div>
-        <div className="latest-movie">
-          <Carousel breakPoints={breakPoints}>
-            {latest.map((movie) => (
-              <div key={movie.id}>
-                <ResultCard 
-                movie={movie} 
-                />
-              </div>
-            ))}
-          </Carousel>
-        </div>
-      </div>
-    </div>
-  );
+    );
 };
 
 export default LatestCards;

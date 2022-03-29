@@ -14,4 +14,20 @@ class MovieController extends Controller
         return json_encode($movies);
         // return view('layouts.main', compact('movies'));
     }
+
+    public function rate_and_review($movie_id, Request $request)
+    {
+        $movie = Movie::findOrFail($movie_id);
+
+        if (!$request->input('rating') && !$request->input('review')) {
+            return $movie;
+        }
+        $movie->rating = $request->input('rating') ?? null;
+        $movie->review = $request->input('review') ?? '';
+
+        $movie->save();
+
+        return $movie;
+        
+    }
 }

@@ -11,16 +11,17 @@ export const RecommendCard = ({ recommend, movie }) => {
         <>
             <div className="recommend">
                 <div className="recommend-heading">
-                    <p>{`If you liked this film, check out these`}</p>
+                    <p>
+                        <strong>{`Recommended for `}</strong>
+                        {`'${movie.title}'`}
+                    </p>
                 </div>
 
                 <div className="recommend-movie">
                     <Carousel breakPoints={breakPoints}>
                         {recommend.map((movie) => (
                             <div key={movie.id}>
-                                <ResultCard
-                                    movie={movie}
-                                />
+                                <ResultCard movie={movie} />
                             </div>
                         ))}
                     </Carousel>
