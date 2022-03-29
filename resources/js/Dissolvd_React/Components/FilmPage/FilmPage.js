@@ -20,6 +20,9 @@ import { CrewCard } from "../Cards/CrewCard";
 import SearchResult from "../SearchResult/SearchResult";
 import { RecommendCard } from "../Cards/RecommendCard";
 import { useParams } from "react-router-dom";
+import { ReviewModal } from "./ReviewModal/ReviewModal";
+
+
 
 export const FilmPage = ({
     apiKey,
@@ -211,7 +214,21 @@ export const FilmPage = ({
                             }
                         </div>
                     </div>
-                    <Modal
+
+
+    
+
+                    <ReviewModal 
+                           modalIsOpen={modalIsOpen}
+                           closeModal={closeModal}
+                           movie={movie}
+                           fakeposter={fakeposter} 
+                    />
+
+    
+
+
+                    {/* <Modal
                         className="film-review-modal"
                         isOpen={modalIsOpen}
                         onRequestClose={closeModal}
@@ -271,7 +288,7 @@ export const FilmPage = ({
                                 </button>
                             </div>
                         </form>
-                    </Modal>
+                    </Modal> */}
                 </div>
                 <div className="film-overview">
                     <p>{movie.overview}</p>
