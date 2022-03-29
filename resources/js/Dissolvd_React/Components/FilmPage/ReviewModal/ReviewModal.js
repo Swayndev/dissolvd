@@ -1,5 +1,4 @@
 import React, { Fragment, useState, useEffect, useContext } from "react";
-import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import "../FilmPage.css";
 import Modal from "react-modal";
@@ -7,10 +6,6 @@ import Modal from "react-modal";
 
 // MUI IMPORTS //
 import Rating from "@mui/material/Rating";
-import VisibilityIcon from "@mui/icons-material/Visibility";
-import PlaylistAddIcon from "@mui/icons-material/PlaylistAdd";
-import Snackbar from "@mui/material/Snackbar";
-import Alert from "@mui/material/Alert";
 import Checkbox from "@mui/material/Checkbox";
 
 
