@@ -6,6 +6,8 @@ import fakeposter from "../../img/fakeposter.png";
 import Modal from "react-modal";
 import { UserContext } from "../../../context/context";
 
+import { DiscussionCard } from "./DiscussionCard/DiscussionCard";
+
 // MUI IMPORTS //
 import Rating from "@mui/material/Rating";
 import VisibilityIcon from "@mui/icons-material/Visibility";
@@ -13,6 +15,9 @@ import PlaylistAddIcon from "@mui/icons-material/PlaylistAdd";
 import Snackbar from "@mui/material/Snackbar";
 import Alert from "@mui/material/Alert";
 import Checkbox from "@mui/material/Checkbox";
+import { FormControlLabel } from "@mui/material"
+import PlaylistAddCheckIcon from "@mui/icons-material/PlaylistAddCheck";
+import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 
 // COMPONENTS THAT DISPLAY IN THE BODY //
 import { CastCard } from "../Cards/CastCard";
@@ -108,19 +113,13 @@ export const FilmPage = ({
         setIsOpen(false);
     };
 
-    // WATCHLIST ALERT //
-
-    const [listAlert, setListAlert] = useState(false);
-
-    const handleListAlert = () => {
-        setListAlert(true);
-    };
-
-    const handleListAlertClose = () => {
-        setListAlert(false);
-    };
 
 
+    // RATING LOGIC
+
+    const [stars, setStars] = useState(2.5);
+
+    console.log('this is stars value', stars);
     // CONTEXT
 
     const { user } = useContext(UserContext);
@@ -206,7 +205,7 @@ export const FilmPage = ({
                                     <VisibilityIcon fontSize="large" />
                                 </button>
                                 <button
-                                    onClick={handleListAlert}
+                                    
                                     className="film-user-add"
                                 >
                                     <PlaylistAddIcon fontSize="large" />
@@ -251,12 +250,30 @@ export const FilmPage = ({
                                 <p className="film-review-rating">
                                     <strong>Rating</strong>
                                 </p>
-                                <Rating
-                                    className="film-review-stars"
-                                    name="half-rating"
-                                    defaultValue={0}
-                                    precision={0.5}
-                                    size="large"
+                                <FormControlLabel
+                                    control={
+                                        <>
+                                            <input
+                                                name="rating"
+                                                type="number"
+                                                value={stars}
+                                                hidden
+                                                readOnly
+                                            />
+                                            <Rating
+                                                name="rating"
+                                                className="film-review-stars"
+                                                value={stars}
+                                                defaultValue={0}
+                                                precision={0.5}
+                                                size="large"
+                                                onChange={(_, value) => {
+                                                    setStars(value);
+                                                }}
+                                            />
+                                        </>
+                                    }
+                                    label={" "}
                                 />
 
                                 <textarea
@@ -281,6 +298,7 @@ export const FilmPage = ({
                         </form>
                     </Modal>
                 </div>
+
                 <div className="film-overview">
                     <p>{movie.overview}</p>
                 </div>
@@ -301,26 +319,14 @@ export const FilmPage = ({
                         </Fragment>
                     )}
                 </Tabs>
+
+                <DiscussionCard user={user} />
                 <RecommendCard
                     recommend={recommend}
                     movie={movie}
                 />
             </div>
 
-            {/* ALERTS */}
-            <Snackbar
-                open={listAlert}
-                autoHideDuration={3000}
-                onClose={handleListAlertClose}
-            >
-                <Alert
-                    severity="success"
-                    sx={{ width: "100%" }}
-                    onClose={handleListAlertClose}
-                >
-                    {`${movie.title} has been added to your Watchlist`}
-                </Alert>
-            </Snackbar>
         </>
     );
 };
