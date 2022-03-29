@@ -3,18 +3,17 @@ import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import "./FilmPage.css";
 import fakeposter from "../../img/fakeposter.png";
-import Modal from "react-modal";
+
 import { UserContext } from "../../../context/context";
 
 import { DiscussionCard } from "./DiscussionCard/DiscussionCard";
 
 // MUI IMPORTS //
-import Rating from "@mui/material/Rating";
+
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import PlaylistAddIcon from "@mui/icons-material/PlaylistAdd";
 
-import Checkbox from "@mui/material/Checkbox";
-import { FormControlLabel } from "@mui/material";
+
 import PlaylistAddCheckIcon from "@mui/icons-material/PlaylistAddCheck";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 
@@ -126,6 +125,7 @@ export const FilmPage = ({
     useEffect(() => {
         window.scrollTo(0, 0);
     }, [params.id]);
+    
 
     // MODAL //
 
@@ -278,7 +278,6 @@ export const FilmPage = ({
                     </div>
 
 
-    
 
                     <ReviewModal 
                            modalIsOpen={modalIsOpen}
@@ -287,7 +286,6 @@ export const FilmPage = ({
                            fakeposter={fakeposter} 
                     />
 
-    
 
 
                     {/* <Modal
@@ -376,7 +374,7 @@ export const FilmPage = ({
                                             setReviewRating({...reviewRating, checked: e.target.value});
                                     }}
                                     />
-                                    */}
+                                    
                                     <p>{`I confirm I have watched ${movie.title}`}</p>
                                 </div>
                                 <button
@@ -387,7 +385,8 @@ export const FilmPage = ({
                                 </button>
                             </div>
                         </form>
-                    </Modal> */}
+                    </Modal> 
+                                */}
                 </div>
 
                 <div className="film-overview">
