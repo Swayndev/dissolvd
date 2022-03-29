@@ -41,6 +41,7 @@ export const CreateAccountPage = ({
     const response = await axios.post('/register', registerData);
         
         setUser(response.data)
+        // display confirmation message with css style 
         console.log('this is reponse', response.data)
         
         navigate('/')

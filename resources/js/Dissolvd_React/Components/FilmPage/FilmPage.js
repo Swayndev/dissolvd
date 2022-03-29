@@ -125,6 +125,10 @@ export const FilmPage = ({
 
     const { user } = useContext(UserContext);
 
+    // const handleSubmit = (e) => {
+
+    // }
+
     return (
         <>
             <SearchResult
@@ -217,7 +221,12 @@ export const FilmPage = ({
                         onRequestClose={closeModal}
                         contentLabel="Example Modal"
                     >
-                        <form className="film-review">
+                        <form
+                            className="film-review"
+                            // ADRIEN WORKING ON THIS FORM
+                            // onSubmit={handleSubmit}
+                            >
+
                             {movie.poster_path ? (
                                 <div className="film-review-info">
                                     <img
@@ -265,7 +274,6 @@ export const FilmPage = ({
                                 <button
                                     className="film-review-btn"
                                     type="submit"
-                                    value="submit"
                                 >
                                     Save
                                 </button>

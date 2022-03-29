@@ -32,10 +32,10 @@ export const Header = ({ setQuery, query }) => {
 
 
     // 
-    const handleLogout = async (e)=> {
+    const handleLogout = async () => {
 
     const responselogout = await axios.post('/logout');
-
+        // location.reload()
     console.log(responselogout)
      setUser(responselogout);
 
@@ -98,7 +98,9 @@ export const Header = ({ setQuery, query }) => {
                         about us
                     </Link>
 
-                    <button onClick={handleLogout}>Log out</button>
+                    <button onClick={handleLogout} className="desktop--item underline">
+                        Log out
+                    </button>
 
                     <SearchBar setQuery={setQuery} query={query} />
                 </div>
