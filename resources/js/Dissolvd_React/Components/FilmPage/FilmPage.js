@@ -78,6 +78,31 @@ export const FilmPage = ({
 
         data && setRecommend(data.results);
     };
+
+       // WATCHED AND WATCHLIST //
+
+    const [watched, setWatched] = useState(false);
+    const [watchlist, setWatchlist] = useState(false);
+
+    const handleWatched = () => {
+        setWatched(true);
+        console.log(watched);
+    };
+
+    const handleWatchedRemove = () => {
+        setWatched(false);
+        console.log(watched);
+    };
+
+    const handleWatchlist = () => {
+        setWatchlist(true);
+        console.log('this is watchlistadd', watchlist);
+    };
+
+    const handleWatchlistRemove = () => {
+        setWatchlist(false);
+        console.log('this is watchlistremove',watchlist);
+    };
     
     // USEEFFECT SECTION  //
 
@@ -195,23 +220,46 @@ export const FilmPage = ({
                                         )}
                                     </div>
                                 ))}
-                             {
-                                user &&
-                            <div className="film-user-btns">
-                                <button
-                                    className="film-user-eye"
-                                    onClick={openModal}
-                                >
-                                    <VisibilityIcon fontSize="large" />
-                                </button>
-                                <button
-                                    
-                                    className="film-user-add"
-                                >
-                                    <PlaylistAddIcon fontSize="large" />
-                                </button>
-                            </div>
-                            }
+                             {user && (
+                                <div className="film-user-btns">
+                                    {watched === false ? (
+                                        <button
+                                            className="film-user-eye"
+                                            onClick={openModal}
+                                        >
+                                            <VisibilityOffIcon fontSize="large" />
+                                        </button>
+                                    ) : (
+                                        <button
+                                            className="film-user-eye"
+                                            onClick={handleWatchedRemove}
+                                        >
+                                            <VisibilityIcon
+                                                color="action"
+                                                fontSize="large"
+                                            />
+                                        </button>
+                                    )}
+                                    {watchlist === false ? (
+                                        <button
+                                            onClick={handleWatchlist}
+                                            className="film-user-add"
+                                        >
+                                            <PlaylistAddIcon fontSize="large" />
+                                        </button>
+                                    ) : (
+                                        <button
+                                            onClick={handleWatchlistRemove}
+                                            className="film-user-add"
+                                        >
+                                            <PlaylistAddCheckIcon
+                                                color="action"
+                                                fontSize="large"
+                                            />
+                                        </button>
+                                    )}
+                                </div>
+                            )}
                         </div>
                     </div>
                     <Modal
