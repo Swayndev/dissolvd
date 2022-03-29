@@ -142,17 +142,22 @@ export const FilmPage = ({
     
     // RATING AND REVIEW LOGIC
 
-    const [stars, setStars] = useState(2.5);
+    // const [stars, setStars] = useState(2.5);
+    const [review, setReview] = useState('');
 
-    console.log('this is stars value', stars);
+    // console.log('this is stars value', stars);
     
 
-    // const [reviewRating, setReviewRating] = ({
-    //     review: "",
-    //     rating: 0
-    // });
+    const [reviewRating, setReviewRating] = useState ({
+        review: "",
+        rating: 2.5,
+        checked:false,
+    });
 
-    // const handleReviewRating = (e) => {
+    console.log('CIAO BELLA THIS IS PRETTY REVIEWRATING', reviewRating)
+
+
+    // const handleReviewRatingSubmit = (e) => {
     //     e.preventDefault();
         
         
@@ -302,41 +307,54 @@ export const FilmPage = ({
                                 <p className="film-review-rating">
                                     <strong>Rating</strong>
                                 </p>
-                                <FormControlLabel
-                                    control={
-                                        <>
-                                            <input
-                                                name="rating"
-                                                type="number"
-                                                value={stars}
-                                                hidden
-                                                readOnly
-                                            />
-                                            <Rating
-                                                name="rating"
-                                                className="film-review-stars"
-                                                value={stars}
-                                                defaultValue={0}
-                                                precision={0.5}
-                                                size="large"
-                                                onChange={(_, value) => {
-                                                    setStars(value);
-                                                }}
-                                            />
-                                        </>
-                                    }
-                                    label={" "}
-                                />
+                            <FormControlLabel
+                                control={
+                                    <div>
+                                        <input
+                                            name="rating"
+                                            type="number"
+                                            value={reviewRating.rating}
+                                            onChange={(e) => {
+                                                setReviewRating({...reviewRating, rating: Number(e.target.value)});
+                                            }}
+                                            hidden
+                                            readOnly
+                                        />
+
+                                        <Rating
+                                            name="rating"
+                                            className="film-review-stars"
+                                            value={reviewRating.rating}
+                                            defaultValue={0}
+                                            precision={0.5}
+                                            size="large"
+                                            onChange={(e) => {
+                                                setReviewRating({...reviewRating, rating: Number(e.target.value)});
+                                            }}
+                                        />
+                                    </div>
+                                }
+                                label={" "}
+                            />
 
                                 <textarea
                                     className="film-review-text"
                                     placeholder="Add a review..."
-                                ></textarea>
+                                    value={reviewRating.review}
+                                    onChange={(e) => {
+                                        setReviewRating({...reviewRating, review: e.target.value});
+                                    }}
+                                >
+                                </textarea>
                                 <div className="film-review-check">
                                     <Checkbox
                                         required="true"
                                         color="success"
                                         size="medium"
+                                        value={reviewRating.checked}
+                                        onChange={(e) => {
+                                            setReviewRating({...reviewRating, checked: e.target.value});
+                                    }}
                                     />
                                     <p>{`I confirm I have watched ${movie.title}`}</p>
                                 </div>
