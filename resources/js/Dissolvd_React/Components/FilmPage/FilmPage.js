@@ -15,7 +15,7 @@ import PlaylistAddIcon from "@mui/icons-material/PlaylistAdd";
 import Snackbar from "@mui/material/Snackbar";
 import Alert from "@mui/material/Alert";
 import Checkbox from "@mui/material/Checkbox";
-import { FormControlLabel } from "@mui/material"
+import { FormControlLabel } from "@mui/material";
 import PlaylistAddCheckIcon from "@mui/icons-material/PlaylistAddCheck";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 
@@ -31,13 +31,12 @@ export const FilmPage = ({
     movieResults,
     displayResults,
     setQuery,
-    }) => {
+}) => {
     // HANDLE MOVIE //
 
-    const params = useParams()
+    const params = useParams();
 
     console.log(params);
-    
 
     const [movie, setMovie] = useState([]);
 
@@ -79,7 +78,7 @@ export const FilmPage = ({
         data && setRecommend(data.results);
     };
 
-       // WATCHED AND WATCHLIST //
+    // WATCHED AND WATCHLIST //
 
     const [watched, setWatched] = useState(false);
     const [watchlist, setWatchlist] = useState(false);
@@ -96,14 +95,14 @@ export const FilmPage = ({
 
     const handleWatchlist = () => {
         setWatchlist(true);
-        console.log('this is watchlistadd', watchlist);
+        console.log("this is watchlistadd", watchlist);
     };
 
     const handleWatchlistRemove = () => {
         setWatchlist(false);
-        console.log('this is watchlistremove',watchlist);
+        console.log("this is watchlistremove", watchlist);
     };
-    
+
     // USEEFFECT SECTION  //
 
     useEffect(() => {
@@ -138,13 +137,11 @@ export const FilmPage = ({
         setIsOpen(false);
     };
 
-
-
     // RATING LOGIC
 
     const [stars, setStars] = useState(2.5);
 
-    console.log('this is stars value', stars);
+    console.log("this is stars value", stars);
     // CONTEXT
 
     const { user } = useContext(UserContext);
@@ -220,7 +217,7 @@ export const FilmPage = ({
                                         )}
                                     </div>
                                 ))}
-                             {user && (
+                            {!user && (
                                 <div className="film-user-btns">
                                     {watched === false ? (
                                         <button
@@ -272,8 +269,7 @@ export const FilmPage = ({
                             className="film-review"
                             // ADRIEN WORKING ON THIS FORM
                             // onSubmit={handleSubmit}
-                            >
-
+                        >
                             {movie.poster_path ? (
                                 <div className="film-review-info">
                                     <img
@@ -369,12 +365,8 @@ export const FilmPage = ({
                 </Tabs>
 
                 <DiscussionCard user={user} />
-                <RecommendCard
-                    recommend={recommend}
-                    movie={movie}
-                />
+                <RecommendCard recommend={recommend} movie={movie} />
             </div>
-
         </>
     );
 };
