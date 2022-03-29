@@ -25,5 +25,5 @@ Route::get('/movie', 'Api\MovieController@index');
 
 Route::post('/movie/{movie_id?}', 'Api\MovieController@rate_and_review');
 
-
+// This is the route to save users opinon (review+rating) on a movie
 Route::post('/opinion/{opinion_id?}', 'Api\OpinionController@rate_and_review');
