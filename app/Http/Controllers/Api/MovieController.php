@@ -28,6 +28,6 @@ class MovieController extends Controller
         $movie->save();
 
         return $movie;
-        // return view('layouts.main', compact('movies'));
+        
     }
 }

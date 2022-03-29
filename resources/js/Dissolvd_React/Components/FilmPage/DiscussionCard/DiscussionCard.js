@@ -1,8 +1,16 @@
-import React from "react";
+import {useContext} from "react";
 import { Link } from "react-router-dom";
 import "./DiscussionCard.css";
 
-export const DiscussionCard = ({ user, watched }) => {
+import { UserContext } from "../../../../context/context";
+
+export const DiscussionCard = ({ watched }) => {
+    
+    // CONTEXT
+    
+    const { user } = useContext(UserContext);
+    
+    
     return (
         <div>
             {!user && (

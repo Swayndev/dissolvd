@@ -1,4 +1,4 @@
-import React, { useContext, useRef, useState } from "react";
+import React, { useContext, useRef, useState, useEffect } from "react";
 import "./CreateAccountPage.css";
 
 // IMAGES //
@@ -64,6 +64,13 @@ export const CreateAccountPage = ({
 
     const myRef = useRef(null);
     const executeScroll = () => myRef.current.scrollIntoView();
+
+
+    // EFFECT
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
 
     return (
         <>

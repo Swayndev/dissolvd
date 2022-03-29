@@ -4,8 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import logobd from "../../img/logobd.svg";
 import SearchBar from "../SearchBar/SearchBar";
 import Modal from "react-modal";
-import axios from 'axios';
-
+import axios from "axios";
 
 import "./Header.css";
 import { useState } from "react";
@@ -23,27 +22,23 @@ export const Header = ({ setQuery, query }) => {
         setIsOpen(false);
     }
 
-    const { setUser, user } = useContext(UserContext)
+    const { setUser, user } = useContext(UserContext);
 
     // console.log('this is user', user)
 
+    const navigate = useNavigate();
 
-    const navigate = useNavigate()
-
-
-    // 
+    //
     const handleLogout = async () => {
+        // e.preventDefault();
 
-    const responselogout = await axios.post('/logout');
-        // location.reload()
-    console.log(responselogout)
-     setUser(responselogout);
-
-     navigate('/register');
-
-}
-
-
+        const responselogout = await axios.post("/logout");
+        console.log(responselogout);
+        setUser(responselogout);
+        
+        navigate("/");
+        location.reload()
+    };
 
     return (
         <div className="header-wrap">
@@ -64,12 +59,12 @@ export const Header = ({ setQuery, query }) => {
                     <Link to="/" className="desktop--item underline">
                         home
                     </Link>
-                    {
-                        !user &&
+                    {!user ? (
                         <Fragment>
-                        
-                        
-                            <a onClick={openModal} className="desktop--item underline">
+                            <a
+                                onClick={openModal}
+                                className="desktop--item underline"
+                            >
                                 Log in
                             </a>
                             <Modal
@@ -78,10 +73,7 @@ export const Header = ({ setQuery, query }) => {
                                 contentLabel="Example Modal"
                                 className="sign-in-modal"
                             >
-
                                 <LoginModal />
-
-
                             </Modal>
 
                             <Link
@@ -90,17 +82,19 @@ export const Header = ({ setQuery, query }) => {
                             >
                                 register
                             </Link>
-                        
                         </Fragment>
-                    }
+                    ) : (
+                        <a
+                            onClick={handleLogout}
+                            className="desktop--item underline"
+                        >
+                            Log out
+                        </a>
+                    )}
 
                     <Link to="/about-us" className="desktop--item underline">
                         about us
                     </Link>
-
-                    <button onClick={handleLogout} className="desktop--item underline">
-                        Log out
-                    </button>
 
                     <SearchBar setQuery={setQuery} query={query} />
                 </div>
