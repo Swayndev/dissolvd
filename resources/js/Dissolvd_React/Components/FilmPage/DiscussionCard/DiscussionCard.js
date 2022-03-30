@@ -33,22 +33,21 @@ export const DiscussionCard = ({ is_watched }) => {
     return (
 
         <Fragment>
+        {user && opinions.length ? (
             <div className="discussion-open-wrap">
                 <h4 className="discussion-open-heading">
                     Reviews & Discussion
                 </h4>
-
-                {user && opinions.length ? ( 
-                    opinions.map((element) => (
+                    {user && opinions.map((element) => (
                     <div className="discussion-open" key={element.id}>
                         <div className="discussion-open-info">
                             {
-                                element.user && 
+                                element.user && (
                                 <p className="discussion-open-user">
                                     Review by
                                     <strong> {element.user.username}</strong>
                                 </p>
-                            }
+                                )}
                                     
                             <Rating
                                     name="rating"
@@ -58,7 +57,7 @@ export const DiscussionCard = ({ is_watched }) => {
                                     value={element.rating} 
                                     readOnly
                                     /> 
-                        </div>
+                            </div>
 
                             <div className="discussion-open-review">
                                 {
@@ -66,15 +65,21 @@ export const DiscussionCard = ({ is_watched }) => {
                                 }
                             </div>
                         
-                    </div>))
-            ) : ( <Fragment>
+                        </div>
+                    ))}
+                    </div>
+            ) : (null)}
+
+            {user && opinions.length < 1 ? (
+                <div className="discussion-wrap">
+                    <h4 className="discussion-heading">Reviews & Discussion</h4>
                     <div className="discussion-guest-blur"></div>
-                    <p className="discussion-wrap-p">
+                    <p>
                         {" "}
                         <i>Watch this film to see the discussion!</i>
                     </p>
-                </Fragment>)}
-            </div>
+                </div>
+            ) : (null)}
 
 
             {!user && (
