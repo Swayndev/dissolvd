@@ -33,7 +33,6 @@ class MovieSeeder extends Seeder
                 'overview' => "The spoiled daughter of a well-to-do plantation owner is forced to use every means at her disposal to claw her way out of poverty, following Maj. Gen. William Sherman's destructive March to the Sea, during the American Civil War.",
                 'runtime' => 233,
 
-
             ],
 
             [
@@ -339,6 +338,7 @@ class MovieSeeder extends Seeder
 
                 'id' => 313369,
                 'title' => "La La Land",
+
                 'original_title' => "La La Land",
                 'release_date' => "2016-11-29",
 
@@ -354,6 +354,7 @@ class MovieSeeder extends Seeder
 
                 'id' => 153,
                 'title' => "Lost in Translation",
+
                 'original_title' => "Lost in Translation",
                 'release_date' => "2003-09-18",
 
@@ -374,6 +375,7 @@ class MovieSeeder extends Seeder
             // dd($movies_test_seeder);
 
             $new_movie = new Movie();
+
             $new_movie->id = $movie['id'];    // CHECK THIS 
             $new_movie->title = $movie['title'];
 
@@ -393,11 +395,13 @@ class MovieSeeder extends Seeder
         Movie::create(
             [
                 'id' => $movie['id'],
+                'title' => $movie['title'],
+
                 'original_title' => $movie['original_title'],
                 'release_date' => $movie['release_date'],
 
-                'poster_path' => $movie['poster_path'],
                 'backdrop_path' => $movie['backdrop_path'],
+                'poster_path' => $movie['poster_path'],
 
                 'overview' => $movie['overview'],
                 'runtime' => $movie['runtime'],

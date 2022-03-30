@@ -39,6 +39,8 @@ export const FilmPage = ({
 
     console.log(params);
 
+    //STATES
+
     const [movie, setMovie] = useState([]);
 
     const handleMovie = async () => {

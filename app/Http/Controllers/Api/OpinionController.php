@@ -28,15 +28,20 @@ class OpinionController extends Controller
         $user_opinion->save();
     }
 
-    // public function display()
-    // {
-    // }
+    public function display()
+    {
+        $opinion_displayed = Opinion::orderby('created_at', 'desc')
+            ->limit(15)
+            ->get();
 
-    // public function update()
-    // {
-    // }
+        return $opinion_displayed;
+    }
 
-    // public function delete()
-    // {
-    // }
+    public function update()
+    {
+    }
+
+    public function delete()
+    {
+    }
 }

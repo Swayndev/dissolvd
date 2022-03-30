@@ -11,6 +11,7 @@ export const DiscussionCard = ({ is_watched }) => {
     const { user } = useContext(UserContext);
     
     
+    
     return (
         <div>
             {!user && (
