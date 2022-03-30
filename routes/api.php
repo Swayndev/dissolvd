@@ -23,7 +23,13 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::get('/movie', 'Api\MovieController@index');
 
 
-// Route::post('/movie/{movie_id?}', 'Api\MovieController@rate_and_review');
 
 // This is the route to save users opinon (review+rating) on a movie
-Route::post('/opinion/{movie_id}', 'Api\OpinionController@rate_and_review');
+// STORE
+Route::post('/opinion/{movie_id}', 'Api\OpinionController@store');
+
+// DISPLAY
+
+// UPDATE
+
+// DELETE

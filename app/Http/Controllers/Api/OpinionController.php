@@ -9,7 +9,7 @@ use App\Models\Opinion;
 
 class OpinionController extends Controller
 {
-    public function rate_and_review(Request $request)
+    public function store(Request $request)
     {
 
         $user_opinion = new Opinion;
@@ -26,5 +26,23 @@ class OpinionController extends Controller
         $user_opinion->user_id = $request->input('user_id') ?? null;
 
         $user_opinion->save();
+    }
+
+    public function display()
+    {
+
+
+    }
+
+    public function update()
+    {
+
+
+    }
+
+    public function delete()
+    {
+
+        
     }
 }

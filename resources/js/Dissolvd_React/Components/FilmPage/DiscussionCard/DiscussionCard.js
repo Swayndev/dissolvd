@@ -4,7 +4,7 @@ import "./DiscussionCard.css";
 
 import { UserContext } from "../../../../context/context";
 
-export const DiscussionCard = ({ watched }) => {
+export const DiscussionCard = ({ is_watched }) => {
     
     // CONTEXT
     
@@ -24,8 +24,8 @@ export const DiscussionCard = ({ watched }) => {
                     </Link>
                 </div>
             )}
-            {user && watched === true ? <div>YES DISCUSSION</div> : null}
-            {user && watched === false ? (
+            {user && is_watched === true ? <div>YES DISCUSSION</div> : null}
+            {user && is_watched === false ? (
                 <div>Watch this movie to see the discussion</div>
             ) : null}
         </div>

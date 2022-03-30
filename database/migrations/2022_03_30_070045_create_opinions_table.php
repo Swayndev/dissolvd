@@ -22,7 +22,7 @@ return new class extends Migration
             $table->text('review');
             $table->float('rating');
 
-            // $table->boolean('is_watched');
+            $table->boolean('is_watched');
             // $table->boolean('is_watchlist');
             // $table->boolean('is_favorite');
 

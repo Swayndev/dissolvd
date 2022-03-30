@@ -29,7 +29,7 @@ export const ReviewModal = (
     const [reviewRating, setReviewRating] = useState ({
         rating: 2.5,
         review: "",
-        checked: false,
+        is_watched: false,
         // movie_id: Number(params.id),
         // user_id: user ? user.id : null,
     });
@@ -140,9 +140,9 @@ export const ReviewModal = (
                             required="true"
                             color="success"
                             size="medium"
-                            value={reviewRating.checked}
+                            value={reviewRating.is_watched}
                             onChange={(e) => {
-                                setReviewRating({...reviewRating, checked: e.target.checked});
+                                setReviewRating({...reviewRating, is_watched: e.target.is_watched});
                             }}
                         />
                         
