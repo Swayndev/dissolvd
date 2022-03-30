@@ -132,6 +132,7 @@ export const ReviewModal = (
                         className="film-review-text"
                         placeholder="Add a review..."
                         value={reviewRating.review}
+                        maxLength={1200}
                         onChange={(e) => {
                             setReviewRating({...reviewRating, review: e.target.value});
                         }}>

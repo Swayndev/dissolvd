@@ -32,21 +32,44 @@ export const DiscussionCard = ({ is_watched }) => {
     
     return (
 
-        <div>
-            {
-                user && opinions.map((element) => (<Fragment key={element.id}>
-                    {
-                        element.user && <h3>{element.user.username}</h3>
-                    }
-                            
-                    <Rating value={element.rating} readOnly />
-                    <p>
-                        {
-                            element.review
-                        }
-                    </p>
-                </Fragment>))
+        <Fragment>
+            <div className="discussion-open-wrap">
+                <h4 className="discussion-open-heading">
+                    Reviews & Discussion
+                </h4>
+
+                {user && opinions.map((element) => (
+                    <div className="discussion-open" key={element.id}>
+                        <div className="discussion-open-info">
+                            {
+                                element.user && 
+                                <p className="discussion-open-user">
+                                    Review by
+                                    <strong> {element.user.username}</strong>
+                                </p>
+                            }
+                                    
+                            <Rating
+                                    name="rating"
+                                    className="discussion-open-rating"
+                                    precision={0.5}
+                                    size="small"
+                                    value={element.rating} 
+                                    readOnly
+                                    /> 
+                        </div>
+
+                            <div className="discussion-open-review">
+                                {
+                                    element.review
+                                }
+                            </div>
+                        
+                    </div>))
             }
+            </div>
+
+
             {!user && (
                 <div className="discussion-wrap">
                     <h4 className="discussion-heading">Reviews & Discussion</h4>
@@ -62,6 +85,6 @@ export const DiscussionCard = ({ is_watched }) => {
             {user && is_watched === false ? (
                 <div>Watch this movie to see the discussion</div>
             ) : null}
-        </div>
+        </Fragment>
     );
 };
