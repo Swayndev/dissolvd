@@ -30,8 +30,8 @@ export const ReviewModal = (
         rating: 2.5,
         review: "",
         checked: false,
-        movie_id: Number(params.id),
-        user_id: user ? user.id : null,
+        // movie_id: Number(params.id),
+        // user_id: user ? user.id : null,
     });
 
     console.log('reviewRating ==>', reviewRating)
@@ -40,17 +40,23 @@ export const ReviewModal = (
     useEffect(() => {
         setReviewRating({
             ...reviewRating,
+            // movie_id and user_id need to be included into 
+            movie_id: Number(params.id),
+            user_id: user ? user.id : null,
         });
     }, [params, user]);
     
 
-    // const handleReviewRatingSubmit = (e) => {
-    //     e.preventDefault();
-    //     axios.post('api/opinion/{movie_id}', reviewRating)
-    //     // 
-    //     // setReviewRating();
-    //     console.log()
-    // }
+    const handleReviewRatingSubmit = (e) => {
+        e.preventDefault();
+
+        axios.post('/api/opinion/'+params.id, reviewRating)
+        
+        // setReviewRating();
+
+        location.reload();
+        
+    }
 
     return  (
 
@@ -62,11 +68,8 @@ export const ReviewModal = (
         >
             <form
                 className="film-review"
-                //
-                //
-                // onSubmit={handleReviewRatingSubmit}
-                //
-                //
+                onSubmit={handleReviewRatingSubmit}
+               
                 >
                 {movie.poster_path ? (
                     <div className="film-review-info">

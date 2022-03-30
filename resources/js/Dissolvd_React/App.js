@@ -12,6 +12,7 @@ function App() {
 
     // const [hasWatched, setHasWatched] = useState(null)
 
+    
     const getUser = async () => {
 
         const res = await axios.get('/api/user');
@@ -20,12 +21,14 @@ function App() {
         setUser(res.data)
     }
 
+    // EFFECT
     useEffect(() => {
 
         getUser();
 
     }, [])
 
+    // MEMO
     const value = useMemo(() => ({ user, setUser }), [user]);
 
     

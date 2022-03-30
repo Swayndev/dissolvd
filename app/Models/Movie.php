@@ -14,6 +14,12 @@ class Movie extends Model
 {
     use HasFactory;
 
+    public function opinions()
+    {
+        return $this->hasMany(Opinion::class);
+    }
+
+
     public function people()
     {
         return $this->hasMany(Person::class);
@@ -29,10 +35,6 @@ class Movie extends Model
     //     return $this->hasMany(User::class);
     // }
 
-    public function opinions()
-    {
-        return $this->hasMany(Opinion::class);
-    }
 
 
 }

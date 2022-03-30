@@ -16,6 +16,7 @@ import { Watched } from "./Watched/Watched";
 import { Watchlist } from "./Watchlist/Watchlist";
 
 export const ProfilePage = () => {
+    
     const [value, setValue] = useState("1");
 
     const handleChange = (event, newValue) => {
