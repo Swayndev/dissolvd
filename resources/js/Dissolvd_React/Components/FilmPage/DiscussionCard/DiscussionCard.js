@@ -38,7 +38,8 @@ export const DiscussionCard = ({ is_watched }) => {
                     Reviews & Discussion
                 </h4>
 
-                {user && opinions.map((element) => (
+                {user && opinions.length ? ( 
+                    opinions.map((element) => (
                     <div className="discussion-open" key={element.id}>
                         <div className="discussion-open-info">
                             {
@@ -66,7 +67,13 @@ export const DiscussionCard = ({ is_watched }) => {
                             </div>
                         
                     </div>))
-            }
+            ) : ( <Fragment>
+                    <div className="discussion-guest-blur"></div>
+                    <p className="discussion-wrap-p">
+                        {" "}
+                        <i>Watch this film to see the discussion!</i>
+                    </p>
+                </Fragment>)}
             </div>
 
 
@@ -81,10 +88,7 @@ export const DiscussionCard = ({ is_watched }) => {
                     </Link>
                 </div>
             )}
-            {user && is_watched === true ? <div>YES DISCUSSION</div> : null}
-            {user && is_watched === false ? (
-                <div>Watch this movie to see the discussion</div>
-            ) : null}
+            
         </Fragment>
     );
 };

@@ -9,6 +9,7 @@ export const RecommendCard = ({ recommend, movie }) => {
 
     return (
         <>
+            {recommend.length ? (
             <div className="recommend">
                 <div className="recommend-heading">
                     <p>
@@ -26,7 +27,7 @@ export const RecommendCard = ({ recommend, movie }) => {
                         ))}
                     </Carousel>
                 </div>
-            </div>
+            </div> ) : null}
         </>
     );
 };
