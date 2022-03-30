@@ -40,6 +40,7 @@ export const ReviewModal = (
     useEffect(() => {
         setReviewRating({
             ...reviewRating,
+            
             // movie_id and user_id need to be included into 
             movie_id: Number(params.id),
             user_id: user ? user.id : null,
@@ -50,7 +51,7 @@ export const ReviewModal = (
     const handleReviewRatingSubmit = (e) => {
         e.preventDefault();
 
-        axios.post('/api/opinion/'+params.id, reviewRating)
+        axios.post('/api/opinion/'+ params.id, reviewRating)
         
         // setReviewRating();
 
@@ -142,7 +143,7 @@ export const ReviewModal = (
                             size="medium"
                             value={reviewRating.is_watched}
                             onChange={(e) => {
-                                setReviewRating({...reviewRating, is_watched: e.target.is_watched});
+                                setReviewRating({...reviewRating, is_watched: e.target.checked});
                             }}
                         />
                         

@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('opinions', function (Blueprint $table) {
             $table->id();
-
+            
             $table->foreignId('movie_id');
             $table->foreignId('user_id');
 

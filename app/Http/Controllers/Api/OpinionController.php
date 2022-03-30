@@ -20,7 +20,7 @@ class OpinionController extends Controller
 
         $user_opinion->rating = $request->input('rating') ?? null;
         $user_opinion->review = $request->input('review') ?? '';
-        //$user_opinion->checked = $request->input('checked') ?? false;
+        $user_opinion->is_watched = $request->input('is_watched') ?? false;
 
         $user_opinion->movie_id = $request->input('movie_id') ?? null;
         $user_opinion->user_id = $request->input('user_id') ?? null;
@@ -28,21 +28,15 @@ class OpinionController extends Controller
         $user_opinion->save();
     }
 
-    public function display()
-    {
+    // public function display()
+    // {
+    // }
 
+    // public function update()
+    // {
+    // }
 
-    }
-
-    public function update()
-    {
-
-
-    }
-
-    public function delete()
-    {
-
-        
-    }
+    // public function delete()
+    // {
+    // }
 }
