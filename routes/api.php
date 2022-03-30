@@ -28,11 +28,11 @@ Route::get('/movie', 'Api\MovieController@index');
 // STORE
 Route::post('/opinion/{movie_id}', 'Api\OpinionController@store');
 
-// // DISPLAY
-// Route::get('/opinion/{}', 'Api\OpinionController@display');
+// // DISPLAY = INDEX
+Route::get('/opinion/index/{id}', 'Api\OpinionController@index');
 
-// // UPDATE
-// Route::put('/opinion/{}', 'Api\OpinionController@update');
+// // EDIT
+// Route::put('/opinion/{}', 'Api\OpinionController@edit');
 
 // // DELETE
 // Route::delete('/opinion/{}', 'Api\OpinionController@delete');

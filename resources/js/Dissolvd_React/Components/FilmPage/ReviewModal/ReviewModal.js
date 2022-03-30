@@ -21,9 +21,10 @@ export const ReviewModal = (
     // PARAMS is used to retrieved the movie.id from the database
     const params = useParams(); 
     
-    // CONTEXT
     
+    // CONTEXT
     const {user} = useContext(UserContext);
+
 
     // STATES
     const [reviewRating, setReviewRating] = useState ({

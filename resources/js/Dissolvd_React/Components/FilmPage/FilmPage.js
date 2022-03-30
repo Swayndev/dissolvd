@@ -413,7 +413,7 @@ export const FilmPage = ({
                     )}
                 </Tabs>
 
-                <DiscussionCard watched={watched}/>
+                <DiscussionCard watched={watched} />
 
                 <RecommendCard recommend={recommend} movie={movie} />
             </div>
