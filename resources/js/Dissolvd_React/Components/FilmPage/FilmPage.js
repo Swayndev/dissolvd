@@ -13,7 +13,6 @@ import { DiscussionCard } from "./DiscussionCard/DiscussionCard";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import PlaylistAddIcon from "@mui/icons-material/PlaylistAdd";
 
-
 import PlaylistAddCheckIcon from "@mui/icons-material/PlaylistAddCheck";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 
@@ -24,8 +23,6 @@ import SearchResult from "../SearchResult/SearchResult";
 import { RecommendCard } from "../Cards/RecommendCard";
 import { useParams } from "react-router-dom";
 import { ReviewModal } from "./ReviewModal/ReviewModal";
-
-
 
 export const FilmPage = ({
     apiKey,
@@ -127,7 +124,6 @@ export const FilmPage = ({
     useEffect(() => {
         window.scrollTo(0, 0);
     }, [params.id]);
-    
 
     // MODAL //
 
@@ -142,32 +138,27 @@ export const FilmPage = ({
     };
 
     // CONTEXT
-    
+
     const { user } = useContext(UserContext);
-    
+
     // RATING AND REVIEW LOGIC
 
     // const [stars, setStars] = useState(2.5);
-    const [review, setReview] = useState('');
+    const [review, setReview] = useState("");
 
     // console.log('this is stars value', stars);
-    
 
-    const [reviewRating, setReviewRating] = useState ({
+    const [reviewRating, setReviewRating] = useState({
         review: "",
         rating: 2.5,
-        watched:false,
+        watched: false,
     });
 
-    console.log('CIAO BELLA THIS IS reviewRating', reviewRating)
-
+    console.log("CIAO BELLA THIS IS reviewRating", reviewRating);
 
     const handleReviewRatingSubmit = (e) => {
         e.preventDefault();
-        
-
-        
-    }
+    };
 
     return (
         <>
@@ -279,124 +270,19 @@ export const FilmPage = ({
                         </div>
                     </div>
 
-
-
-                    <ReviewModal 
-                           modalIsOpen={modalIsOpen}
-                           closeModal={closeModal}
-                           movie={movie}
-                           fakeposter={fakeposter}
-                        //    user={user}
+                    <ReviewModal
+                        modalIsOpen={modalIsOpen}
+                        closeModal={closeModal}
+                        movie={movie}
+                        fakeposter={fakeposter}
                     />
-
-
-
-                    {/* <Modal
-                        className="film-review-modal"
-                        isOpen={modalIsOpen}
-                        onRequestClose={closeModal}
-                        contentLabel="Example Modal"
-                    >
-                        <form
-                            className="film-review"
-                            // ADRIEN WORKING ON THIS FORM
-                            // onSubmit={handleSubmit}
-                        >
-                            {movie.poster_path ? (
-                                <div className="film-review-info">
-                                    <img
-                                        className="film-review-poster"
-                                        src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
-                                        alt={`${movie.title} Poster`}
-                                    />
-
-                                    <h3>{`${movie.title}`}</h3>
-                                </div>
-                            ) : (
-                                <div className="film-review-info">
-                                    <img
-                                        className="film-review-poster"
-                                        src={fakeposter}
-                                        alt="No Poster Found"
-                                    />
-                                    <h3>{`${movie.title}`}</h3>
-                                </div>
-                            )}
-                            <div className="film-review-rate">
-                                <p className="film-review-rating">
-                                    <strong>Rating</strong>
-                                </p>
-                                
-                            <FormControlLabel
-                                control={
-                                    <div>
-                                        <input
-                                            name="rating"
-                                            type="number"
-                                            value={reviewRating.rating}
-                                            onChange={(e) => {
-                                                setReviewRating({...reviewRating, rating: Number(e.target.value)});
-                                            }}
-                                            hidden
-                                            readOnly
-                                        />
-
-                                        <Rating
-                                            name="rating"
-                                            className="film-review-stars"
-                                            value={reviewRating.rating}
-                                            defaultValue={0}
-                                            precision={0.5}
-                                            size="large"
-                                            onChange={(e) => {
-                                                setReviewRating({...reviewRating, rating: Number(e.target.value)});
-                                            }}
-                                        />
-                                    </div>
-                                }
-                                label={" "}
-                            />
-
-                                <textarea
-                                    className="film-review-text"
-                                    placeholder="Add a review..."
-                                    value={reviewRating.review}
-                                    onChange={(e) => {
-                                        setReviewRating({...reviewRating, review: e.target.value});
-                                    }}
-                                >
-                                </textarea>
-                                <div className="film-review-check">
-                                {/*
-                                    <Checkbox
-                                        required="true"
-                                        color="success"
-                                        size="medium"
-                                        value={reviewRating.checked}
-                                        onChange={(e) => {
-                                            setReviewRating({...reviewRating, checked: e.target.value});
-                                    }}
-                                    />
-                                    
-                                    <p>{`I confirm I have watched ${movie.title}`}</p>
-                                </div>
-                                <button
-                                    className="film-review-btn"
-                                    type="submit"
-                                >
-                                    Save
-                                </button>
-                            </div>
-                        </form>
-                    </Modal> 
-                                */}
                 </div>
 
                 <div className="film-overview">
                     <p>{movie.overview}</p>
                 </div>
 
-                <Tabs className="film-credits-wrap">
+                <Tabs className="film-credits-wrap" forceRenderTabPanel={true}>
                     <TabList className="film-credits-heading">
                         <Tab>Cast</Tab>
                         <Tab>Crew</Tab>

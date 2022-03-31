@@ -123,6 +123,7 @@ body {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    margin: 0;
 }
 
 .film-review-poster {
@@ -159,8 +160,14 @@ body {
     text-transform: uppercase;
 }
 
+.test {
+    margin-left: 0;
+    margin-right: 0;
+}
 .film-review-stars {
     padding: 1rem;
+    margin-left: 0;
+    margin-right: 0;
 }
 
 .film-review-text {
