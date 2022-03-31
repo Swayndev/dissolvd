@@ -8,7 +8,7 @@ import { Rating } from "@mui/material";
 
 import ReactPaginate from 'react-paginate';
 
-export const DiscussionCard = ({ is_watched, opinionPerPage}) => {
+export const DiscussionCard = ({ is_watched }) => {
     
     // CONTEXT
 
@@ -19,10 +19,8 @@ export const DiscussionCard = ({ is_watched, opinionPerPage}) => {
     // STATES
     const [opinions, setOpinions] = useState([])
     
-    const [pageCount, setPageCount] = useState(0);
     // Here we use opinion offsets; we could also use page offsets
     // following the API or data you're working with.
-    const [opinionOffset, setOpinionOffset] = useState(0);
 
 
     // EFFECTS
@@ -45,7 +43,27 @@ export const DiscussionCard = ({ is_watched, opinionPerPage}) => {
     }
 
 
-  useEffect(() => {
+    const [currentPage, setCurrentPage] = useState(1);
+    const [opinionsPerPage, setOpinionsPerPage] = useState(5);
+
+
+
+    const indexOfLastPost = currentPage * opinionsPerPage;
+    const indexOfFirstPost = indexOfLastPost - opinionsPerPage;
+    const selectedList = opinions.slice(indexOfFirstPost, indexOfLastPost);
+
+
+    const totalOpinions = opinions.length;
+    const lastPageNumber = Math.ceil(totalOpinions / opinionsPerPage);
+    
+    const pageNumbers = []
+
+    for(let i = 1; i <= lastPageNumber; i++){
+        pageNumbers.push(i)
+    }
+
+
+  /* useEffect(() => {
     // Fetch opinions from another resources.
     const endOffset = opinionOffset + opinionPerPage;
 
@@ -53,7 +71,7 @@ export const DiscussionCard = ({ is_watched, opinionPerPage}) => {
 
     setOpinions(opinions.slice(opinionOffset, endOffset));
     setPageCount(Math.ceil(opinions.length / opinionPerPage));
-  }, [opinionOffset, opinionPerPage]);
+  }, [opinionOffset, opinionPerPage]); */
 
 
   const handlePageClick = (event) => {
@@ -74,7 +92,7 @@ export const DiscussionCard = ({ is_watched, opinionPerPage}) => {
                         <h4 className="discussion-open-heading">
                             Reviews & Discussion
                         </h4>
-                            {user && opinions.map((opinion) => (
+                            {user && selectedList.map((opinion) => (
                                 <div className="discussion-open" key={opinion.id}>
                                     <div className="discussion-open-info">
 
@@ -103,15 +121,11 @@ export const DiscussionCard = ({ is_watched, opinionPerPage}) => {
                             ))}
                     </div>
                 ) : (null)}
-                <ReactPaginate
-                    breakLabel="..."
-                    nextLabel="next >"
-                    onPageChange= {handlePageClick}
-                    pageRangeDisplayed={5}
-                    pageCount= {pageCount}
-                    previousLabel="< previous"
-                    renderOnZeroPageCount={null}
-                />
+                {
+                    pageNumbers.map((element) => <button onClick={() => setCurrentPage(element)}>{element}</button>)
+                }
+                
+                
             </div>
 
             {user && opinions.length < 1 ? (
