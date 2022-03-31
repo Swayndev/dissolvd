@@ -7,7 +7,7 @@ import { Header } from "./Header/Header";
 import HomePage from "./HomePage/HomePage";
 import { Footer } from "./Footer/Footer";
 import { FilmPage } from "./FilmPage/FilmPage";
-import SignInPage from "./SignInPage/SignInPage";
+
 
 import { CreateAccountPage } from "./CreateAccountPage/CreateAccountPage";
 import { createContext } from "react/cjs/react.production.min";
@@ -62,8 +62,7 @@ const Body = () => {
 
             <Routes>
                 <Route
-                    exact
-                    path="/"
+                    exact path="/"
                     element={
                         <HomePage
                             displayResults={
@@ -76,8 +75,7 @@ const Body = () => {
                 />
 
                 <Route
-                    exact
-                    path="/movie/:id"
+                    exact path="/movie/:id"
                     element={
                         <FilmPage
                             displayResults={
@@ -91,13 +89,14 @@ const Body = () => {
                     }
                 />
                 
+                {/*
                 <Route 
                     exact path="/login"
                     element={
                         <SignInPage />
                     }
                 />
-
+                */}
 
                 <Route
                     exact
