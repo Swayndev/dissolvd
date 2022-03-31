@@ -55,7 +55,7 @@ body {
 }
 
 .film-title {
-    font-family: "Gibroma";
+    font-family: "Rubik", sans-serif;
     display: flex;
     text-align: left;
     letter-spacing: 0.1rem;
