@@ -1,4 +1,5 @@
 import React, { useContext, useRef, useState, useEffect } from "react";
+
 import "./CreateAccountPage.css";
 
 // IMAGES //

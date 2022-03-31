@@ -3,16 +3,13 @@ import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import "./FilmPage.css";
 import fakeposter from "../../img/fakeposter.png";
-
 import { UserContext } from "../../../context/context";
-
 import { DiscussionCard } from "./DiscussionCard/DiscussionCard";
 
 // MUI IMPORTS //
 
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import PlaylistAddIcon from "@mui/icons-material/PlaylistAdd";
-
 import PlaylistAddCheckIcon from "@mui/icons-material/PlaylistAddCheck";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 
@@ -277,6 +274,7 @@ export const FilmPage = ({
                         fakeposter={fakeposter}
                     />
                 </div>
+                {/* this div is the end of film wrapper */}
 
                 <div className="film-overview">
                     <p>{movie.overview}</p>
@@ -299,7 +297,7 @@ export const FilmPage = ({
                     )}
                 </Tabs>
 
-                <DiscussionCard watched={watched} />
+                <DiscussionCard watched={watched} opinionPerPage={5} />
 
                 <RecommendCard recommend={recommend} movie={movie} />
             </div>

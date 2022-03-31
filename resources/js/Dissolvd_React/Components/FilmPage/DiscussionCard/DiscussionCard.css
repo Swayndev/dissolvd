@@ -74,7 +74,6 @@
 .discussion-open {
     display: flex;
     flex-direction: column;
-    border-top: 1px solid black;
 }
 
 .discussion-open-info {
@@ -82,6 +81,12 @@
     justify-content: flex-start;
     align-items: center;
     font-size: 0.9rem;
+}
+
+.discussion-open-border {
+    border-top: 1px solid black;
+    display: flex;
+    flex-direction: row;
 }
 
 .discussion-open-rating {
@@ -103,4 +108,35 @@
     font-size: 1.5rem;
     text-align: center;
     text-transform: uppercase;
+}
+
+.page-btn-container {
+    display: flex;
+    width: 10%;
+    margin: auto;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    position: relative;
+    bottom: 7.5rem;
+}
+
+.page-btn {
+    justify-content: center;
+    align-items: center;
+    font-family: "Rubik", Helvetica, sans-serif;
+    border-radius: 2rem;
+    background-color: #f71647;
+    border: none;
+    cursor: pointer;
+    color: #ffffff;
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    margin: 1rem, 1rem;
+    text-decoration: none;
+}
+
+.page-btn:hover {
+    background-color: #f64c72;
+    opacity: 0.8;
 }
