@@ -12,7 +12,9 @@ import LoginModal from "./LoginModal/LoginModal";
 import { UserContext } from "../../../context/context";
 
 export const Header = ({ setQuery, query }) => {
+
     const [modalIsOpen, setIsOpen] = useState(false);
+    
 
     function openModal() {
         setIsOpen(true);
@@ -39,6 +41,8 @@ export const Header = ({ setQuery, query }) => {
         navigate("/");
         location.reload()
     };
+
+    // console.log("THIS IS THE USERNAME:",user.username);
 
     return (
         <div className="header-wrap">
@@ -84,12 +88,17 @@ export const Header = ({ setQuery, query }) => {
                             </Link>
                         </Fragment>
                     ) : (
-                        <a
-                            onClick={handleLogout}
-                            className="desktop--item underline"
-                        >
-                            Log out
-                        </a>
+                        <Fragment>
+                            <Link to="/user" className="desktop--item underline">
+                                {/*user.username*/}
+                            </Link>
+                            <a
+                                onClick={handleLogout}
+                                className="desktop--item underline"
+                            >
+                                Log out
+                            </a>
+                        </Fragment>
                     )}
 
                     <Link to="/about-us" className="desktop--item underline">

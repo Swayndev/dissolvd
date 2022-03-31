@@ -21,9 +21,10 @@ export const ReviewModal = (
     // PARAMS is used to retrieved the movie.id from the database
     const params = useParams(); 
     
-    // CONTEXT
     
+    // CONTEXT
     const {user} = useContext(UserContext);
+
 
     // STATES
     const [reviewRating, setReviewRating] = useState ({
@@ -40,7 +41,7 @@ export const ReviewModal = (
     useEffect(() => {
         setReviewRating({
             ...reviewRating,
-            
+
             // movie_id and user_id need to be included into 
             movie_id: Number(params.id),
             user_id: user ? user.id : null,
@@ -48,10 +49,10 @@ export const ReviewModal = (
     }, [params, user]);
     
 
-    const handleReviewRatingSubmit = (e) => {
+    const handleReviewRatingSubmit = async (e) => {
         e.preventDefault();
 
-        axios.post('/api/opinion/'+ params.id, reviewRating)
+        await axios.post('/api/opinion/'+ params.id, reviewRating)
         
         // setReviewRating();
 
@@ -131,6 +132,7 @@ export const ReviewModal = (
                         className="film-review-text"
                         placeholder="Add a review..."
                         value={reviewRating.review}
+                        maxLength={1200}
                         onChange={(e) => {
                             setReviewRating({...reviewRating, review: e.target.value});
                         }}>

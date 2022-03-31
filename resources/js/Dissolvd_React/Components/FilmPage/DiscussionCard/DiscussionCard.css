@@ -13,7 +13,8 @@
 
 .discussion-heading {
     font-family: "Gibroma", "Rubik";
-    font-size: 2rem;
+    font-size: 1.5rem;
+    text-transform: uppercase;
 }
 
 .discussion-guest-blur {
@@ -48,4 +49,58 @@
 
 .discussion-guest-btn:hover {
     background-color: #f64c72;
+}
+
+.discussion-wrap p {
+    font-weight: 100;
+    font-size: 2rem;
+    width: 65%;
+    text-align: center;
+    line-height: 3.5rem;
+    position: relative;
+    bottom: 16rem;
+}
+
+.discussion-open-wrap {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    bottom: 10rem;
+    width: 700px;
+    margin: auto;
+    border-bottom: 1px solid black;
+}
+
+.discussion-open {
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid black;
+}
+
+.discussion-open-info {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    font-size: 0.9rem;
+}
+
+.discussion-open-rating {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 0.5rem;
+}
+
+.discussion-open-review {
+    text-align: justify;
+    padding-bottom: 1rem;
+    line-height: 1.5rem;
+    font-size: 1rem;
+}
+
+.discussion-open-heading {
+    font-family: "Rubik";
+    font-size: 1.5rem;
+    text-align: center;
+    text-transform: uppercase;
 }

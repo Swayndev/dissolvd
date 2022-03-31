@@ -11,7 +11,6 @@ class OpinionController extends Controller
 {
     public function store(Request $request)
     {
-
         $user_opinion = new Opinion;
 
         // if (!$request->input('rating') && !$request->input('review')) {
@@ -28,15 +27,26 @@ class OpinionController extends Controller
         $user_opinion->save();
     }
 
-    // public function display()
-    // {
-    // }
+    public function index($id)
+    {
+        $opinion_displayed = Opinion::query()
+            ->where('movie_id', $id)
+            ->with('user')
+            ->orderby('created_at', 'desc')
+            ->get();
 
-    // public function update()
-    // {
-    // }
+        return $opinion_displayed;
+    }
 
-    // public function delete()
-    // {
-    // }
+
+    public function edit($opinion_id)
+    {
+        $user_opinion = Opinion::findOrFail($opinion_id);
+
+        $user_opinion->save();
+    }
+
+    public function delete()
+    {
+    }
 }

@@ -12,6 +12,7 @@ import SignInPage from "./SignInPage/SignInPage";
 import { CreateAccountPage } from "./CreateAccountPage/CreateAccountPage";
 import { createContext } from "react/cjs/react.production.min";
 import axios from "axios";
+import { ProfilePage } from "./ProfilePage/ProfilePage";
 
 const Body = () => {
     const apiKey = "f1206acdc6dd0ff0374585c4b4b936a1";
@@ -64,7 +65,6 @@ const Body = () => {
                     exact
                     path="/"
                     element={
-                        
                         <HomePage
                             displayResults={
                                 !!movieResults.length && query !== ""
@@ -94,8 +94,7 @@ const Body = () => {
                 <Route 
                     exact path="/login"
                     element={
-                        <SignInPage
-                        />
+                        <SignInPage />
                     }
                 />
 
@@ -113,7 +112,14 @@ const Body = () => {
                         />
                     }
                 />
-
+                
+                <Route
+                    exact
+                    path="/user"
+                    element={
+                        <ProfilePage />
+                    }
+                />
                 {/* FOR FUTURE ROUTE  */}
             </Routes>
             <Footer />
