@@ -120,13 +120,14 @@ export const DiscussionCard = ({ is_watched }) => {
                             ))}
                     </div>
                 ) : (null)}
-                {
-                    pageNumbers.map((element) =>
-                    <button className="page-btn"
-                        onClick={() => setCurrentPage(element)}>
-                        page {element}
-                    </button>)
-                }
+                <div className="page-btn-container">
+                    {pageNumbers.map((element) =>
+                        <button className="page-btn"
+                            onClick={() => setCurrentPage(element)}>
+                            page {element}
+                        </button>
+                    )}
+                </div>
                 
                 
             </div>
