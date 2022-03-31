@@ -1,11 +1,11 @@
 import React, { Fragment, useState, useEffect, useContext } from "react";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
+import ReactPaginate from 'react-paginate';
 import "react-tabs/style/react-tabs.css";
 import "./FilmPage.css";
 import fakeposter from "../../img/fakeposter.png";
 
 import { UserContext } from "../../../context/context";
-
 import { DiscussionCard } from "./DiscussionCard/DiscussionCard";
 
 // MUI IMPORTS //
@@ -286,7 +286,6 @@ export const FilmPage = ({
                            closeModal={closeModal}
                            movie={movie}
                            fakeposter={fakeposter}
-                        //    user={user}
                     />
 
 
@@ -391,6 +390,7 @@ export const FilmPage = ({
                     </Modal> 
                                 */}
                 </div>
+                {/* this div is the end of film wrapper */}
 
                 <div className="film-overview">
                     <p>{movie.overview}</p>
@@ -413,7 +413,7 @@ export const FilmPage = ({
                     )}
                 </Tabs>
 
-                <DiscussionCard watched={watched} />
+                <DiscussionCard watched={watched} opinionPerPage={6}/>
 
                 <RecommendCard recommend={recommend} movie={movie} />
             </div>
