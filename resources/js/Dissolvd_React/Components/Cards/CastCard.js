@@ -1,10 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./Cards.css";
 import Carousel from "react-elastic-carousel";
 import fakeposter from "../../img/fakeposter.png";
 
 export const CastCard = ({ credits }) => {
-    const breakPoints = [{ itemsToShow: 4 }];
+    const breakPoints = [{ itemsToShow: 4, itemPadding: [10, 10, 10, 10] }];
 
     return (
         <>

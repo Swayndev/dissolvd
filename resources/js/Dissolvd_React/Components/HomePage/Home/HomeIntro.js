@@ -1,5 +1,5 @@
 import React from "react";
-import discuss from "../../../img/discuss.png";
+import discuss from "../../../img/discusscropped.png";
 
 import { Link } from "react-router-dom";
 
@@ -15,12 +15,6 @@ export const HomeIntro = () => {
                     <h2 className="intro__info--subtitle">
                         Watch. Post. Discuss.
                     </h2>
-                    {/* 
-          ORIGINAL BUTTON DESIGNED BY JAYKE:
-          <button type="type" className="intro__info--btn">
-            Get Started
-          </button>
-        */}
                     <Link to="/register">
                         <button type="type" className="intro__info--btn">
                             Get Started

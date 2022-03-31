@@ -33,7 +33,6 @@ export const Header = ({ setQuery, query }) => {
         // e.preventDefault();
 
         const responselogout = await axios.post("/logout");
-        console.log(responselogout);
         setUser(responselogout);
         
         navigate("/");

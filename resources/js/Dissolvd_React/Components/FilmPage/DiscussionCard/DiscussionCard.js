@@ -1,4 +1,4 @@
-import {Fragment, useContext, useEffect, useState} from "react";
+import { Fragment, useContext, useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import "./DiscussionCard.css";
 
@@ -6,40 +6,32 @@ import { UserContext } from "../../../../context/context";
 import axios from "axios";
 import { Rating } from "@mui/material";
 
-export const DiscussionCard = ({ is_watched }) => {
-    
+export const DiscussionCard = () => {
     // CONTEXT
 
-    const params = useParams()
+    const params = useParams();
 
     const { user } = useContext(UserContext);
 
     // STATES
-    const [opinions, setOpinions] = useState([])
-    
+    const [opinions, setOpinions] = useState([]);
+
     // Here we use opinion offsets; we could also use page offsets
     // following the API or data you're working with.
 
-    console.log('this is opinions from DiscussionCard', opinions)
     // EFFECTS
     useEffect(() => {
         if (params.id !== undefined) {
-
-            displayDiscussion()
+            displayDiscussion();
         }
-    }, [ params.id ])
-
+    }, [params.id]);
 
     // FUNCTION AND LOGIC
     const displayDiscussion = async (e) => {
+        const res = await axios.get("/api/opinion/index/" + params.id);
 
-        const res = await axios.get('/api/opinion/index/'+ params.id)
-
-        console.log('opinions', res.data)
-
-        setOpinions(res.data)
-    }
-
+        setOpinions(res.data);
+    };
 
     const [currentPage, setCurrentPage] = useState(1);
     const [opinionsPerPage, setOpinionsPerPage] = useState(5);
@@ -47,38 +39,18 @@ export const DiscussionCard = ({ is_watched }) => {
     const indexOfLastPost = currentPage * opinionsPerPage;
     const indexOfFirstPost = indexOfLastPost - opinionsPerPage;
     const totalOpinions = opinions.length;
-    
-    
+
     const selectedList = opinions.slice(indexOfFirstPost, indexOfLastPost);
     const lastPageNumber = Math.ceil(totalOpinions / opinionsPerPage);
-    
-    const pageNumbers = []
 
-    for(let i = 1; i <= lastPageNumber; i++){
-        pageNumbers.push(i)
+    const pageNumbers = [];
+
+    for (let i = 1; i <= lastPageNumber; i++) {
+        pageNumbers.push(i);
     }
 
 
-  /* useEffect(() => {
-    // Fetch opinions from another resources.
-    const endOffset = opinionOffset + opinionPerPage;
-
-    console.log(`Loading opinions from ${opinionOffset} to ${endOffset}`);
-
-    setOpinions(opinions.slice(opinionOffset, endOffset));
-    setPageCount(Math.ceil(opinions.length / opinionPerPage));
-  }, [opinionOffset, opinionPerPage]); */
-
-
-//   const handlePageClick = (event) => {
-//     const newOffset = (event.selected * opinionPerPage) % opinions.length;
-
-//     console.log(`User requested page number ${event.selected}, which is offset ${newOffset}`);
-//     setOpinionOffset(newOffset);
-//   };
-    
     return (
-
         <Fragment>
             <div>
                 {user && opinions.length ? (
@@ -86,46 +58,57 @@ export const DiscussionCard = ({ is_watched }) => {
                         <h4 className="discussion-open-heading">
                             Reviews & Discussion
                         </h4>
-                            {user && selectedList.map((opinion) => (
-                                <div className="discussion-open" key={opinion.id}>
-                                    <div className="discussion-open-info">
-
-                                        {opinion.user && (
-                                            <p className="discussion-open-user">
-                                                Review written by
-                                                <strong> {opinion.user.username}</strong>
-                                            </p>
-                                        )}
-                                    
-                                        <Rating
-                                            name="rating"
-                                            className="discussion-open-rating"
-                                            precision={0.5}
-                                            size="small"
-                                            value={opinion.rating} 
-                                            readOnly
-                                        />
-                                        
-                                    </div>
-
-                                    <div className="discussion-open-review">
-                                        {opinion.review}
-                                    </div>
-                                    
+                        {user &&
+                            selectedList.map((opinion) => (
+                                <div
+                                    className="discussion-open"
+                                    key={opinion.id}
+                                >
+                                    {(opinion.user && opinion.rating) ||
+                                    opinion.review ? (
+                                        <div className="discussion-open-border">
+                                            <div className="discussion-open-info">
+                                                <p className="discussion-open-user">
+                                                    Review by
+                                                    <strong>
+                                                        {" "}
+                                                        {opinion.user.username}
+                                                    </strong>
+                                                </p>
+                                            </div>
+                                            {opinion.rating ? (
+                                                <Rating
+                                                    name="rating"
+                                                    className="discussion-open-rating"
+                                                    precision={0.5}
+                                                    size="small"
+                                                    value={opinion.rating}
+                                                    readOnly
+                                                />
+                                            ) : null}
+                                        </div>
+                                    ) : null}
+                                    {opinion.review && (
+                                        <div className="discussion-open-review">
+                                            {opinion.review}
+                                        </div>
+                                    )}
                                 </div>
                             ))}
                     </div>
-                ) : (null)}
-                <div className="page-btn-container">
-                    {pageNumbers.map((element) =>
-                        <button className="page-btn"
-                            onClick={() => setCurrentPage(element)}>
-                            page {element}
-                        </button>
-                    )}
-                </div>
-                
-                
+                ) : null}
+                {user && (
+                    <div className="page-btn-container">
+                        {pageNumbers.map((element) => (
+                            <button
+                                className="page-btn"
+                                onClick={() => setCurrentPage(element)}
+                            >
+                                {element}
+                            </button>
+                        ))}
+                    </div>
+                )}
             </div>
 
             {user && opinions.length < 1 ? (
@@ -137,9 +120,7 @@ export const DiscussionCard = ({ is_watched }) => {
                         <i>Watch this film to see the discussion!</i>
                     </p>
                 </div>
-            ) : (null)}
-
-
+            ) : null}
             {!user && (
                 <div className="discussion-wrap">
                     <h4 className="discussion-heading">Reviews & Discussion</h4>
@@ -151,7 +132,6 @@ export const DiscussionCard = ({ is_watched }) => {
                     </Link>
                 </div>
             )}
-            
         </Fragment>
     );
 };

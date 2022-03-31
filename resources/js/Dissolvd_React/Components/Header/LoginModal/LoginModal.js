@@ -30,8 +30,6 @@ const handleSubmit = async(e) => {
             password: signInData.password,
         });
 
-        console.log('This is response.data it contains user data',response.data)
-
         setUser(response.data);
 
         navigate('/');
@@ -46,7 +44,7 @@ const handleSubmit = async(e) => {
             } else if (error.response.status == 422) {
                 alert('Validation error.');
             } else if (error.response) {
-                console.log('This are the errors from the sign-in form', error.response)
+                alert(error.response)
             }
     }
 
@@ -60,7 +58,7 @@ const handleChange = (e) => {
 
 }
 
-console.log("this is signInData for confirmation message", signInData)
+
 
 
     return (

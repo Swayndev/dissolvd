@@ -18,7 +18,6 @@ import { Watched } from "./Watched/Watched";
 import { Watchlist } from "./Watchlist/Watchlist";
 
 export const ProfilePage = () => {
-    
     const [value, setValue] = useState("1");
 
     const { user } = useContext(UserContext);
@@ -27,7 +26,8 @@ export const ProfilePage = () => {
         setValue(newValue);
     };
 
-    console.log('this is user from ProfilePage', user)
+    // console.log("this is user from ProfilePage", user);
+
     return (
         <>
             <div className="profile-wrap">
@@ -37,13 +37,13 @@ export const ProfilePage = () => {
                         className="profile-info-picture"
                         src={profilepic}
                     ></img>
-                    {user &&
+                    {user && (
                         <Fragment>
-                            <h2 className="profile-info-name">{user.username}</h2>
-                            
-                            <p className="profile-info-user">{user.email}</p>
+                            <h2 className="profile-info-name">
+                                {user.username}
+                            </h2>
                         </Fragment>
-                    }
+                    )}
                     <p className="profile-info-location">
                         <LocationOnIcon />
                         Prague, Czech Republic

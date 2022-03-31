@@ -32,7 +32,7 @@ export const CreateAccountPage = ({
     
     const navigate = useNavigate();
 
-    const { user, setUser } = useContext(UserContext);
+    const { setUser } = useContext(UserContext);
     // FUNCTIONS AND LOGIC ===============
 
     const handleSubmit = async (e) => {
@@ -42,16 +42,15 @@ export const CreateAccountPage = ({
     const response = await axios.post('/register', registerData);
         
         setUser(response.data)
-        // display confirmation message with css style 
-        console.log('this is reponse', response.data)
+        
         
         navigate('/')
 
         location.reload()
         
     } catch(error) {
-        // console.log(error); // information about the error
-        console.log('this is error.response.data',error.response.data); // the response object from the failed request
+        // console.log(error.response.data); // information about the error
+        
         alert(error.response.data.message)
     }
 
@@ -62,8 +61,6 @@ export const CreateAccountPage = ({
     const handleChange = (e) => {
         setRegisterData({ ...registerData, [e.target.name]: e.target.value });
     };
-
-    // console.log("this is handleChange => registerData", registerData);
 
     const myRef = useRef(null);
     const executeScroll = () => myRef.current.scrollIntoView();
