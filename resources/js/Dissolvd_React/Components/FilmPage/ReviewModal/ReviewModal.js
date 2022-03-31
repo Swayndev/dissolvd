@@ -28,7 +28,7 @@ export const ReviewModal = (
 
     // STATES
     const [reviewRating, setReviewRating] = useState ({
-        rating: 2.5,
+        rating: 0,
         review: "",
         is_watched: false,
         // movie_id: Number(params.id),

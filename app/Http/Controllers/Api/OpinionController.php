@@ -48,5 +48,6 @@ class OpinionController extends Controller
 
     public function delete()
     {
+        
     }
 }

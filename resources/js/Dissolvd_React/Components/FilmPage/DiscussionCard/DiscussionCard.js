@@ -6,8 +6,6 @@ import { UserContext } from "../../../../context/context";
 import axios from "axios";
 import { Rating } from "@mui/material";
 
-import ReactPaginate from 'react-paginate';
-
 export const DiscussionCard = ({ is_watched }) => {
     
     // CONTEXT
@@ -22,7 +20,7 @@ export const DiscussionCard = ({ is_watched }) => {
     // Here we use opinion offsets; we could also use page offsets
     // following the API or data you're working with.
 
-
+    console.log('this is opinions from DiscussionCard', opinions)
     // EFFECTS
     useEffect(() => {
         if (params.id !== undefined) {
@@ -45,7 +43,6 @@ export const DiscussionCard = ({ is_watched }) => {
 
     const [currentPage, setCurrentPage] = useState(1);
     const [opinionsPerPage, setOpinionsPerPage] = useState(5);
-
 
     const indexOfLastPost = currentPage * opinionsPerPage;
     const indexOfFirstPost = indexOfLastPost - opinionsPerPage;
@@ -79,8 +76,6 @@ export const DiscussionCard = ({ is_watched }) => {
 //     console.log(`User requested page number ${event.selected}, which is offset ${newOffset}`);
 //     setOpinionOffset(newOffset);
 //   };
-
-
     
     return (
 
@@ -101,7 +96,7 @@ export const DiscussionCard = ({ is_watched }) => {
                                                 <strong> {opinion.user.username}</strong>
                                             </p>
                                         )}
-                                                
+                                    
                                         <Rating
                                             name="rating"
                                             className="discussion-open-rating"
@@ -109,7 +104,8 @@ export const DiscussionCard = ({ is_watched }) => {
                                             size="small"
                                             value={opinion.rating} 
                                             readOnly
-                                        /> 
+                                        />
+                                        
                                     </div>
 
                                     <div className="discussion-open-review">

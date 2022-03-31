@@ -1,6 +1,6 @@
 import React, { Fragment, useState, useEffect, useContext } from "react";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
-import ReactPaginate from 'react-paginate';
+
 import "react-tabs/style/react-tabs.css";
 import "./FilmPage.css";
 import fakeposter from "../../img/fakeposter.png";
@@ -413,7 +413,8 @@ export const FilmPage = ({
                     )}
                 </Tabs>
 
-                <DiscussionCard watched={watched} opinionPerPage={5}/>
+                <DiscussionCard
+                    watched={watched} />
 
                 <RecommendCard recommend={recommend} movie={movie} />
             </div>
