@@ -47,13 +47,12 @@ export const DiscussionCard = ({ is_watched }) => {
     const [opinionsPerPage, setOpinionsPerPage] = useState(5);
 
 
-
     const indexOfLastPost = currentPage * opinionsPerPage;
     const indexOfFirstPost = indexOfLastPost - opinionsPerPage;
-    const selectedList = opinions.slice(indexOfFirstPost, indexOfLastPost);
-
-
     const totalOpinions = opinions.length;
+    
+    
+    const selectedList = opinions.slice(indexOfFirstPost, indexOfLastPost);
     const lastPageNumber = Math.ceil(totalOpinions / opinionsPerPage);
     
     const pageNumbers = []
@@ -74,12 +73,12 @@ export const DiscussionCard = ({ is_watched }) => {
   }, [opinionOffset, opinionPerPage]); */
 
 
-  const handlePageClick = (event) => {
-    const newOffset = (event.selected * opinionPerPage) % opinions.length;
+//   const handlePageClick = (event) => {
+//     const newOffset = (event.selected * opinionPerPage) % opinions.length;
 
-    console.log(`User requested page number ${event.selected}, which is offset ${newOffset}`);
-    setOpinionOffset(newOffset);
-  };
+//     console.log(`User requested page number ${event.selected}, which is offset ${newOffset}`);
+//     setOpinionOffset(newOffset);
+//   };
 
 
     
@@ -122,7 +121,11 @@ export const DiscussionCard = ({ is_watched }) => {
                     </div>
                 ) : (null)}
                 {
-                    pageNumbers.map((element) => <button onClick={() => setCurrentPage(element)}>{element}</button>)
+                    pageNumbers.map((element) =>
+                    <button className="page-btn"
+                        onClick={() => setCurrentPage(element)}>
+                        page {element}
+                    </button>)
                 }
                 
                 

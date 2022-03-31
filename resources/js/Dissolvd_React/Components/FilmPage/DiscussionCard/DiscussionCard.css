@@ -104,3 +104,22 @@
     text-align: center;
     text-transform: uppercase;
 }
+
+
+.page-btn {
+    font-family: "Rubik", Helvetica, sans-serif;
+    margin: 0;
+    border-radius: 2rem;
+    background-color: #f71647;
+    border: none;
+    cursor: pointer;
+    color: #ffffff;
+    font-size: 0.8rem;
+    padding: 0.75rem 2rem;
+    margin: 1rem, 0.4em;
+    text-decoration: none;
+}
+
+.page-btn:hover {
+    background-color: #f64c72;
+}
