@@ -1,4 +1,4 @@
-import React, { Fragment, useContext, useEffect } from "react";
+import React, { Fragment, useContext} from "react";
 
 import { Link, useNavigate } from "react-router-dom";
 import logobd from "../../img/logobd.svg";
@@ -24,9 +24,7 @@ export const Header = ({ setQuery, query }) => {
         setIsOpen(false);
     }
 
-    const { setUser, user } = useContext(UserContext);
-
-    // console.log('this is user', user)
+    const { user, setUser } = useContext(UserContext);
 
     const navigate = useNavigate();
 
@@ -42,7 +40,6 @@ export const Header = ({ setQuery, query }) => {
         location.reload()
     };
 
-    // console.log("THIS IS THE USERNAME:",user.username);
 
     return (
         <div className="header-wrap">
@@ -89,8 +86,12 @@ export const Header = ({ setQuery, query }) => {
                         </Fragment>
                     ) : (
                         <Fragment>
-                            <Link to="/user" className="desktop--item underline">
-                                {/*user.username*/}
+                            <Link
+                                to="/user"
+                                className="desktop--item underline"
+                            >
+                                {user.username}
+                                {/* */}
                             </Link>
                             <a
                                 onClick={handleLogout}
