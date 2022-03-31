@@ -60,8 +60,7 @@ const handleChange = (e) => {
 
 }
 
-console.log("this is signInData", signInData)
-
+console.log("this is signInData for confirmation message", signInData)
 
 
     return (
