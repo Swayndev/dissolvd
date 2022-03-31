@@ -32,7 +32,7 @@ Route::post('/opinion/{movie_id}', 'Api\OpinionController@store');
 Route::get('/opinion/index/{id}', 'Api\OpinionController@index');
 
 // // EDIT
-// Route::put('/opinion/{}', 'Api\OpinionController@edit');
+Route::put('/opinion/{opinion_id}', 'Api\OpinionController@edit');
 
 // // DELETE
 // Route::delete('/opinion/{}', 'Api\OpinionController@delete');

@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import React, { Fragment, useState, useContext } from "react";
+import { UserContext } from "../../../context/context";
+
 import "./ProfilePage.css";
 import profilepic from "../../img/profilepic.svg";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
@@ -19,9 +21,13 @@ export const ProfilePage = () => {
     
     const [value, setValue] = useState("1");
 
+    const { user } = useContext(UserContext);
+
     const handleChange = (event, newValue) => {
         setValue(newValue);
     };
+
+    console.log('this is user from ProfilePage', user)
     return (
         <>
             <div className="profile-wrap">
@@ -31,8 +37,13 @@ export const ProfilePage = () => {
                         className="profile-info-picture"
                         src={profilepic}
                     ></img>
-                    <h2 className="profile-info-name">Jayke Alan</h2>
-                    <p className="profile-info-user">@jayke_alan</p>
+                    {user &&
+                        <Fragment>
+                            <h2 className="profile-info-name">{user.username}</h2>
+                            
+                            <p className="profile-info-user">{user.email}</p>
+                        </Fragment>
+                    }
                     <p className="profile-info-location">
                         <LocationOnIcon />
                         Prague, Czech Republic
