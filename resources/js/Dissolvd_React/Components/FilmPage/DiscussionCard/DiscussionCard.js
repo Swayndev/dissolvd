@@ -33,6 +33,14 @@ export const DiscussionCard = () => {
         setOpinions(res.data);
     };
 
+
+    const deleteDiscussion = async (opinion_id) => {
+        
+        const res = await axios.delete("/api/opinion/" + opinion_id);
+
+        res.status === 200 && displayDiscussion();
+    }
+
     const [currentPage, setCurrentPage] = useState(1);
     const [opinionsPerPage, setOpinionsPerPage] = useState(5);
 
@@ -49,6 +57,9 @@ export const DiscussionCard = () => {
         pageNumbers.push(i);
     }
 
+    console.log('this is the opinions array from DiscussionCard', opinions);
+
+    console.log('params.id=', params.id);
 
     return (
         <Fragment>
@@ -66,6 +77,7 @@ export const DiscussionCard = () => {
                                 >
                                     {(opinion.user && opinion.rating) ||
                                     opinion.review ? (
+                                        <Fragment>
                                         <div className="discussion-open-border">
                                             <div className="discussion-open-info">
                                                 <p className="discussion-open-user">
@@ -75,28 +87,45 @@ export const DiscussionCard = () => {
                                                         {opinion.user.username}
                                                     </strong>
                                                 </p>
-                                            </div>
-                                            {opinion.rating ? (
-                                                <Rating
-                                                    name="rating"
-                                                    className="discussion-open-rating"
-                                                    precision={0.5}
-                                                    size="small"
-                                                    value={opinion.rating}
-                                                    readOnly
-                                                />
+                                                {opinion.rating ? (
+                                                    <Rating
+                                                        name="rating"
+                                                        className="discussion-open-rating"
+                                                        precision={0.5}
+                                                        size="small"
+                                                        value={opinion.rating}
+                                                        readOnly
+                                                    />
+                                                    
                                             ) : null}
+                                            </div>
+                                            
+                                            <div>
+                                            {opinion.user_id === user.id ? (
+                                                <div className="delete-btn-wrap">
+                                                <button
+                                                    className="delete-btn"
+                                                    onClick={() => {deleteDiscussion(opinion.id)}}>Delete</button>
+                                                    </div> ): 
+                                            ''}
+                                            </div>
+                                            
                                         </div>
+                                            
+                                    </Fragment>            
                                     ) : null}
                                     {opinion.review && (
                                         <div className="discussion-open-review">
-                                            {opinion.review}
+                                             {opinion.review}
                                         </div>
                                     )}
                                 </div>
                             ))}
+                        
                     </div>
-                ) : null}
+                )
+                
+                : null}
                 {user && (
                     <div className="page-btn-container">
                         {pageNumbers.map((element) => (

@@ -87,6 +87,7 @@
     border-top: 1px solid black;
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
 }
 
 .discussion-open-rating {
@@ -139,4 +140,21 @@
 .page-btn:hover {
     background-color: #f64c72;
     opacity: 0.8;
+}
+
+.delete-btn-wrap {
+    padding: 1rem 0.5rem 1rem 1rem;
+}
+
+.delete-btn {
+    border: none;
+    background: none;
+    font-family: "Rubik", sans-serif;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.delete-btn:hover {
+    color: rgb(104, 102, 102);
 }

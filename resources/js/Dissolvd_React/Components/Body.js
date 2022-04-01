@@ -29,10 +29,6 @@ const Body = () => {
 
     /* const [user, setUser] = useState(null); */
 
-    // trying to implement usecontext
-    const AppInfoContext = createContext();
-
-   
     
     useEffect(() => {
         if (query !== "") {
@@ -129,4 +125,4 @@ const Body = () => {
 
 export default Body;
 
-// export AppInfoContext
+

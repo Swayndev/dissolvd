@@ -1,16 +1,47 @@
 @import url(https://fonts.googleapis.com/css2?family=Rubik:wght@400;600;700;900&display=swap);
+/*
 html {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 body {
-  background-size: cover;
-  margin: auto;
+    background-size: cover;
+    margin: auto;
 }
 
 @font-face {
-  font-family: "Gibroma";
-  src: local("Gibroma"), url(../fonts/Gibroma/Gibroma.woff) format("woff");
+    font-family: "Gibroma";
+    src: local("Gibroma"), url(../fonts/Gibroma/Gibroma.woff) format("woff");
+} */
+@media (min-width: 800px) {
+  .welcome-mobile {
+    display: none;
+  }
+}
+@media (max-width: 800px) {
+  .welcome-mobile {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    align-content: center;
+    width: 100%;
+    height: 100vh;
+    background-color: #ffbe18;
+    font-family: "Rubik", sans-serif;
+    font-size: 1.5rem;
+  }
+
+  .welcome-mobile div {
+    padding: 2rem;
+    width: 75%;
+  }
+}
+@media (max-width: 801px) {
+  .main-desktop {
+    display: none;
+  }
 }
 
 /*# sourceMappingURL=app.css.map*/

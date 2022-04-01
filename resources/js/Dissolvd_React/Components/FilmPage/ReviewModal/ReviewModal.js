@@ -41,6 +41,7 @@ export const ReviewModal = ({ modalIsOpen, closeModal, movie, fakeposter }) => {
         e.preventDefault();
 
         await axios.post("/api/opinion/" + params.id, reviewRating);
+        console.log('executing opinion creation')
 
         location.reload();
     };

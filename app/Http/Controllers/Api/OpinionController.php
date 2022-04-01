@@ -16,7 +16,6 @@ class OpinionController extends Controller
         // if (!$request->input('rating') && !$request->input('review')) {
         //     return $user_opinion;
         // }
-
         $user_opinion->rating = $request->input('rating') ?? null;
         $user_opinion->review = $request->input('review') ?? '';
         $user_opinion->is_watched = $request->input('is_watched') ?? false;
@@ -39,15 +38,17 @@ class OpinionController extends Controller
     }
 
 
-    public function edit($opinion_id)
+    public function edit($id)
     {
-        $user_opinion = Opinion::findOrFail($opinion_id);
+        $user_opinion = Opinion::findOrFail($id);
 
         $user_opinion->save();
     }
 
-    public function delete()
+    
+    public function delete($id)
     {
-        
+        Opinion::where('id', $id)->delete();
+        return true;
     }
 }
