@@ -22,17 +22,7 @@ const SearchBar = ({ setQuery, query }) => {
                 alt="search-icon"
             />
 
-            <div className="results-movie">
-                {/*
-
-        {!!results.length && results.map((movie) => (
-          <div key={movie.id}>
-            <ResultCard movie={movie} />
-          </div>
-        ))}
-
-      */}
-            </div>
+            
         </div>
     );
 };

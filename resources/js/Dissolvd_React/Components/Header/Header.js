@@ -44,7 +44,7 @@ export const Header = ({ setQuery, query }) => {
         <div className="header-wrap">
             <header className="header">
                 {/* NAV BAR LOGOS */}
-                <div className="logo">
+                <div className="logo" onClick={() => setQuery('')}>
                     {/*  LOGO FOR BROWSER VERSION */}
                     <Link to="/">
                         <img
@@ -56,7 +56,10 @@ export const Header = ({ setQuery, query }) => {
                 </div>
                 {/* NAV BAR DESKTOP */}
                 <div className="desktop open">
-                    <Link to="/" className="desktop--item underline">
+                    <Link to="/"
+                        className="desktop--item underline"
+                        onClick={() => setQuery('')}
+                    >
                         home
                     </Link>
                     {!user ? (

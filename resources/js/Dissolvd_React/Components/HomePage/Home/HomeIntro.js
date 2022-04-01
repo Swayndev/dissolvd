@@ -1,9 +1,13 @@
-import React from "react";
+import {useContext} from "react";
 import discuss from "../../../img/discusscropped.png";
+import { UserContext } from "../../../../context/context";
 
 import { Link } from "react-router-dom";
 
 export const HomeIntro = () => {
+
+     const { user } = useContext(UserContext);
+
     return (
         <div className="intro-wrap">
             {/* INTRO */}
@@ -15,11 +19,14 @@ export const HomeIntro = () => {
                     <h2 className="intro__info--subtitle">
                         Watch. Post. Discuss.
                     </h2>
-                    <Link to="/register">
+                    {!user && (
+                        <Link to="/register">
                         <button type="type" className="intro__info--btn">
                             Get Started
                         </button>
                     </Link>
+                    )}
+                    
                 </div>
                 <div className="intro__photo">
                     <img
