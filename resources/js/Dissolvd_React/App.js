@@ -1,5 +1,5 @@
 // import React, { useState, useEffect } from "react";
-import "../../css/app.scss";
+import "../../css/app.css";
 import Body from "./Components/Body";
 import { BrowserRouter as Router } from "react-router-dom";
 import { UserContext } from "../context/context";
@@ -45,7 +45,7 @@ function App() {
                 </i>
             </div>
             <div>
-                Dissolvdへようこそ U+ff01
+                Dissolvdへようこそ 
                 モバイル版はまだ準備ができていませんので、 デスクトップ版をご利用してください。
             </div>
             <div>
