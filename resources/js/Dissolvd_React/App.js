@@ -38,10 +38,19 @@ function App() {
             <div>
            <strong> Welcome to Dissolvd! </strong>
             </div>
-            <div><i>
-            Mobile version isn't ready yet but it will be soon.
-            Please check out the desktop version
-            </i>
+            <div>
+                <i>
+                Mobile version isn't ready yet but it will be soon.
+                Please check out the desktop version
+                </i>
+            </div>
+            <div>
+                Dissolvdへようこそ U+ff01
+                モバイル版はまだ準備ができていませんので、 デスクトップ版をご利用してください。
+            </div>
+            <div>
+                La version mobile de notre application mobile n'est disponible pour le moment.
+                Veuillez consulter la version pour ordinateur.
             </div>
         </div>
         <div className="main-desktop">
